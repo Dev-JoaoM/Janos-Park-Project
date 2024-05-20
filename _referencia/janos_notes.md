@@ -82,3 +82,4 @@ model --> views --> url --> template.html
 
 - Curso [TreinaWeb](https://www.treinaweb.com.br)
     - Valor de [12x de 75,00](https://www.treinaweb.com.br/checkout/pagamento/plano/anual?forma=cartao)
+*Não é propaganda*
