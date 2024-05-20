@@ -36,6 +36,7 @@ model --> views --> url --> template.html
     python manage.py migrate
     ```
 
+
 ## Extenções do VS Code
 
 
@@ -62,6 +63,10 @@ model --> views --> url --> template.html
 	``` 
     black . 
     ```
+- Removendo [Pacotes](https://horadecodar.com.br/como-remover-pacotes-instalados-em-python/)
+    ```
+    pip uninstall package
+    ```
 
 - Biblioteca para estilização dos templates
     - Precisa ser adiciona como um app no arquivo **setup/settings.py**
@@ -75,10 +80,7 @@ model --> views --> url --> template.html
 
 - Códigos de páginas [HTML do Bootstrap5](https://getbootstrap.com/docs/5.3/content/tables/#overview)
 
-- Removendo [Pacotes](https://horadecodar.com.br/como-remover-pacotes-instalados-em-python/)
-    ```
-    pip uninstall package
-    ```
-
 - Curso [TreinaWeb](https://www.treinaweb.com.br)
     - Valor de [12x de 75,00](https://www.treinaweb.com.br/checkout/pagamento/plano/anual?forma=cartao)
+
+*Não é propaganda*
