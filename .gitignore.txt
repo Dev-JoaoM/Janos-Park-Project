@@ -1,0 +1,3 @@
+# Pastas Ignoradas
+.git
+.venv

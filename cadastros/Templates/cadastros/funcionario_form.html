@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}
+    {% if funcionario.pk %}
+        Edição de Cadastro
+    {% else %}
+        Cadastro de Funcionários(as)
+    {% endif %}
+{% endblock page_title %}
+
+{% block content %}
+    {% if funcionario.pk %}
+		<h1> Editar Cadastro </h1>
+
+	{% else %}
+        <h1> Cadastro de Funcionários </h1>
+                <p>Cadastro dos funcionários ADM</p>
+        <h1> Novo Funcionário(a) </h1>
+	{% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form| crispy }}
+
+        {% if funcionario.pk %}
+            <button type="submit" class="btn btn-primary" >Editar</button>
+            <a href="{% url 'funcionarios_lista' %}" class="btn btn-warning disabled ">Demitir</a>
+            <a href="{% url 'funcionarios_lista' %}" class="btn btn-danger">Cancelar</a>
+
+        {% else %}
+            <button type="submit" class="btn btn-primary" >Cadastrar</button>
+            <a href="{% url 'funcionarios_cadastro' %}" class="btn btn-danger">Cancelar</a>
+            <a href="{% url 'funcionarios_lista' %}" class="btn btn-secondary">Funcionários Cadastrados</a>
+
+        {% endif %}
+
+    </form>
+{% endblock content %}

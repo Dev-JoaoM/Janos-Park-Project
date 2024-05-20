@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block body %}
+<title>Veiculo {{placa}}</title>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <div class="card text-center">
+        <div class="card-body">
+          {% if veiculos %}
+          <h5 class="card-title">Placa: {{placa|upper}}</h5>
+            {% for veiculo in veiculos %}
+              <p class="card-text">
+                <b>Marca:</b> {{veiculo.marca}}
+              </p>
+              <p class="card-text">
+                <b>Modelo:</b> {{veiculo.modelo}}
+              </p>
+              <p class="card-text">
+                <b>Cor:</b> {{veiculo.cor}}
+              </p>
+              <p class="card-text">
+                <b>Horário:</b>{{veiculo.data_entrada|date:'H:i'}}
+              </p>
+                {% load static pagamento %}
+              <a href="" class="btn btn-success">
+                Valor Atual: {% pagamento veiculo.placa %}
+              </a>
+            {% endfor %}
+          {% else %}
+            <p class="card-text">
+                <i>Nenhuma Veículo registrado para esta placa</i>
+            </p>
+          {% endif %} 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

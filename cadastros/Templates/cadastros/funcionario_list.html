@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block page_title %}
+    Lista de Funcionários
+{% endblock page_title %}
+
+{% block content %}
+    <h1> Lista de Funcionários </h1>
+
+    {% if funcionario_list %}
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">id</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Dt. Nascimento</th>
+              <th scope="col">Telefone</th>
+              <th scope="col">E-mail</th>
+              <th scope="col">Função</th>
+              <th scope="col">Dt. Admissão</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in funcionario_list %}
+                <tr>
+                    <th scope="row">{{ i.pk }}</th>
+                    <td>{{i.nome}}</td>
+                    <td>{{i.dt_nasto}}</td>
+                    <td>{{i.telefone|default:"-"}}</td>
+                    <td>{{i.email|default:"-"}}</td>
+                    <td>{{i.funcao}}</td>
+                    <td>{{i.dt_admissao}}</td>
+                    <td>
+                        <a href="{% url 'funcionarios_detalhes' pk=i.pk %}"
+                           class="btn btn-primary btn-sm disabled ">Detalhar</a>
+
+                        <a href="{% url 'funcionarios_edicao' pk=i.pk %}"
+                           class="btn btn-secondary btn-sm {% if i.dt_demissao %} disabled {% endif %}">Editar</a>
+                        <a href="{% url 'funcionarios_exclusao' pk=i.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                    </td>
+                </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    {% else %}
+        <p>Não há funcionários cadastrados</p>
+    {% endif %}
+
+    <a href="{% url 'funcionarios_cadastro' %} " class="btn btn-primary btn-sm">Novo Cadastro</a>
+{% endblock content %}
