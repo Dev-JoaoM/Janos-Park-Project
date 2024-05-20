@@ -23,7 +23,7 @@ class Cadastro(models.Model):
 
 class Cargo(models.Model):
     nome = models.CharField(verbose_name="Nome", max_length=20, null=False, blank=False)
-    carga_horaria_semanal = models.IntegerField(verbose_name="Carga Horária Semanal", max_length=2, null=False, blank=False)
+    carga_horaria_semanal = models.IntegerField(verbose_name="Carga Horária Semanal", null=False, blank=False)
     descricao_atividades = models.CharField(verbose_name="Descrição das atividades", max_length=150, null=False, blank=False)
 
 class Funcionario(models.Model):
@@ -31,12 +31,12 @@ class Funcionario(models.Model):
     dt_nasto = models.DateField(verbose_name="Data de Nascimento", null=False, blank=False)
     doc_rg = models.CharField(verbose_name="RG", max_length=9, null=False, blank=False)
     doc_cpf = models.CharField(verbose_name="CPF", max_length=11, null=False, blank=False)
-    telefone_apto = models.CharField(verbose_name="Telefone", max_length=8, null=False, blank=False)
-    email = models.CharField(verbose_name="Telefone", max_length=30, null=False, blank=False)
+    telefone_apto = models.CharField(verbose_name="Telefone", max_length=8, null=False, blank=False, default="1234-5678")
+    email = models.CharField(verbose_name="Email", max_length=30, null=False, blank=False, default="none@gmail.com")
     funcao = models.CharField(verbose_name="Função", max_length=15, null=False, blank=False)
     dt_admissao = models.DateField(verbose_name="Data de Admissão", null=False, blank=False)
     dt_demissao = models.DateField(verbose_name="Data de Demissão", null=True)
-    motivo_demissao = models.CharField(verbose_name="Motivo da Demissão", max_length=200, null=False, blank=False)
+    motivo_demissao = models.CharField(verbose_name="Motivo da Demissão", max_length=200, null=False, blank=False, default="motivo da demissao")
     login = models.CharField(verbose_name="Login", max_length=10, null=False, blank=False)
     senha = models.CharField(verbose_name="Senha", max_length=6, null=False, blank=False)
     # TODO: inserir confirmação e validação de senha
@@ -57,7 +57,7 @@ class Apartamento(models.Model):
         verbose_name="Andar", max_length=5, null=False, blank=False
     )
     numero_apto = models.IntegerField(
-        verbose_name="Numero do Apartamento", max_length=4, null=False, blank=False
+        verbose_name="Numero do Apartamento", null=False, blank=False
     )
     telefone_apto = models.CharField(
         verbose_name="Telefone", max_length=8, null=False, blank=False
@@ -112,8 +112,8 @@ class RegistroMorador(models.Model):
 
 class QntVagasVisita(models.Model):
     registro_visitante = models.ForeignKey(RegistroVisitante, on_delete=models.DO_NOTHING)  # rever esse parametro
-    qnt_vagas = models.IntegerField(max_length=3, null=False, blank=False)
-    vagas_disponiveis = models.IntegerField(max_length=3, null=False, blank=False)
+    qnt_vagas = models.IntegerField(null=False, blank=False)
+    vagas_disponiveis = models.IntegerField(null=False, blank=False)
     # Talvez não precise do 'vagas_disponiveis' por ser um campo calculado
 
 
