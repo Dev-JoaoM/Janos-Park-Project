@@ -1,10 +1,10 @@
 <p align="center">
-<img alt="Logo" height="400" src="https://github.com/Dev-JoaoM/Janos-Park-Project/blob/master/_referencia/img/Logo%20editado.png"/>
+<img alt="Logo" height="300" src="https://github.com/Dev-JoaoM/Janos-Park-Project/blob/master/_referencia/img/Logo%20editado.png"/>
 </p>
 
-<p align="center">
-<img alt="Status de Projeto" loading="lazy" src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=yellow&style=for-the-badge"/>
-</p>
+<h3 align="center"> 
+    :construction:  Projeto em construção  :construction:
+</h3>
 
 
 ## Ferramentas utilizadas
@@ -20,6 +20,14 @@
 ![Django Version](https://img.shields.io/badge/Django-v5.0.6-green?logo=django&logoColor=green)
 ![Bootstrap Version](https://img.shields.io/badge/Bootstrap_5-v2.1-purple?logo=bootstrap&logoColor=purple)
 
+
+<!-- # :hammer: Funcionalidades do projeto
+
+- `Funcionalidade 1`: descrição da funcionalidade 1
+- `Funcionalidade 2`: descrição da funcionalidade 2
+- `Funcionalidade 2a`: descrição da funcionalidade 2a relacionada à funcionalidade 2
+- `Funcionalidade 3`: descrição da funcionalidade 3
+-->
 
 
 ## 📢 Sobre o [Projeto](https://github.com/Dev-JoaoM/Janos-Park-Project/blob/master/_referencia/Sobre%20o%20Projeto.md)
@@ -67,3 +75,8 @@ pip install -r requirements.txt
   ```
   python manage.py runserver
   ```
+
+# Autores do Projeto
+
+| [<img loading="lazy" src="https://avatars.githubusercontent.com/u/140906032?v=4" width=115><br><sub>João Marcos</sub>](https://github.com/Dev-JoaoM) |  [<img loading="lazy" src="https://avatars.githubusercontent.com/u/91342788?v=4" width=115><br><sub>Pedro Henrique</sub>](https://github.com/pedrohriquefs) | [<img loading="lazy" src="https://avatars.githubusercontent.com/u/99366619?v=4" width=115><br><sub>Thiago Batixta</sub>](https://github.com/TiagoBatixta) |
+| :---: | :---: | :---: |
