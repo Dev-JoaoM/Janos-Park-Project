@@ -1,9 +1,9 @@
 <p align="center">
-<img loading="lazy" src="https://github.com/Dev-JoaoM/Janos-Park-Project/blob/master/_referencia/img/Logo%20editado.png"/>
+<img alt="Logo" height="400" src="https://github.com/Dev-JoaoM/Janos-Park-Project/blob/master/_referencia/img/Logo%20editado.png"/>
 </p>
 
 <p align="center">
-<img loading="lazy" src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=yellow&style=for-the-badge"/>
+<img alt="Status de Projeto" loading="lazy" src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=yellow&style=for-the-badge"/>
 </p>
 
 
