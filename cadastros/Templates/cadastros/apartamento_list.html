@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block page_title %}
+    Lista de Apartamentos
+{% endblock page_title %}
+
+{% block content %}
+    <h1> Lista de Apartamentos </h1>
+
+    {% if apartamento_list %}
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Bloco</th>
+              <th scope="col">Andar</th>
+              <th scope="col">Número</th>
+              <th scope="col">Telefone</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {% for apartamento in apartamento_list %}
+                <tr>
+                    <th scope="row">{{ apartamento.pk }}</th>
+                    <td>{{apartamento.bloco}}</td>
+                    <td>{{apartamento.andar}}</td>
+                    <td>{{apartamento.numero_apto}}</td>
+                    <td>{{apartamento.telefone_apto}}</td>
+                    <td>
+
+                        <a href="{% url 'apartamentos_edicao' pk=apartamento.pk %}"
+                           class="btn btn-secondary btn-sm {% if apartamento.dt_demissao %} disabled {% endif %}">Editar</a>
+                        <a href="{% url 'apartamentos_exclusao' pk=apartamento.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                    </td>
+                </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    {% else %}
+        <p>Não há apartamentos cadastrados</p>
+    {% endif %}
+
+    <a href="{% url 'apartamentos_cadastro' %} " class="btn btn-primary btn-sm">Novo Cadastro</a>
+{% endblock content %}

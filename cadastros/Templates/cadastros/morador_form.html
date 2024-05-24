@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}
+    {% if morador.pk %}
+        Edição de Cadastro
+    {% else %}
+        Cadastro de Moradores(as)
+    {% endif %}
+{% endblock page_title %}
+
+{% block content %}
+    {% if morador.pk %}
+		<h1> Editar Cadastro </h1>
+
+	{% else %}
+        <h1> Cadastro de Moradores </h1>
+                <p>Cadastro dos moradores ADM</p>
+        <h1> Novo Morador(a) </h1>
+	{% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form| crispy }}
+
+        {% if morador.pk %}
+            <button type="submit" class="btn btn-primary" >Editar</button>
+            <a href="{% url 'moradores_lista' %}" class="btn btn-danger">Cancelar</a>
+
+        {% else %}
+            <button type="submit" class="btn btn-primary" >Cadastrar</button>
+            <a href="{% url 'moradores_cadastro' %}" class="btn btn-danger">Cancelar</a>
+            <a href="{% url 'moradores_lista' %}" class="btn btn-secondary">Moradores Cadastrados</a>
+
+        {% endif %}
+
+    </form>
+{% endblock content %}

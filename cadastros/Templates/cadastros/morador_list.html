@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block page_title %}
+    Lista de Moradores
+{% endblock page_title %}
+
+{% block content %}
+    <h1> Lista de Moradores </h1>
+
+    {% if morador_list %}
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Dt. Nascimento</th>
+              <th scope="col">RG</th>
+              <th scope="col">CPF</th>
+              <th scope="col">Apartamento</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {% for morador in morador_list %}
+                <tr>
+                    <th scope="row">{{ morador.pk }}</th>
+                    <td>{{morador.nome}}</td>
+                    <td>{{morador.dt_nasto}}</td>
+                    <td>{{morador.doc_rg}}</td>
+                    <td>{{morador.doc_cpf}}</td>
+                    <td>{{morador.apartamento}}</td>
+                    <td>
+
+                        <a href="{% url 'moradores_edicao' pk=morador.pk %}"
+                           class="btn btn-secondary btn-sm {% if morador.dt_demissao %} disabled {% endif %}">Editar</a>
+                        <a href="{% url 'moradores_exclusao' pk=morador.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                    </td>
+                </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    {% else %}
+        <p>Não há moradores cadastrados</p>
+    {% endif %}
+
+    <a href="{% url 'moradores_cadastro' %} " class="btn btn-primary btn-sm">Novo Cadastro</a>
+{% endblock content %}

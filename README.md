@@ -75,6 +75,10 @@ pip install -r requirements.txt
   ```
   python manage.py runserver
   ```
+#### 8. Acesse o endereço no seu navegador
+```
+http://127.0.0.1:8000/
+```
 
 # Autores do Projeto
 

@@ -2,28 +2,29 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, View
 from django.urls import reverse_lazy  # usado para acessar as rotas 'path' pelos nomes
-from .models import Funcionario  # importação da class 'Cadastro' do arquivo models
+from .models import Funcionario, Morador, Apartamento  # importação das classes do arquivo models
 
 
 # Essa é uma FBV: Function Base the View
 def home(request):  # recebe uma solicitação
     # cadastros = Cadastro.objects.all()  # Busca as informações no banco
+    # nome = ["cleitin", "maria", "joana", "silva"]
+    # return render(request, "cadastros/home.html", {"funcionarios": funcionarios, "nome": nome})
     return render(request, "cadastros/home.html") #, {"cadastros": cadastros})
-    # renderiza uma template.html com as informações passadas
-    # TODO: Ver o que está aparecendo no template da home (listagem de cadastro ou funcionario)
-
-"""Essa é uma CBV: Class Base the View
-São mais recomendadas para se utilizar por poder reutilizar a classe pela herança (POO)"""
+    # renderiza uma template.html com as informações passadas, quando se tem  uma request
 
 
+# Essas são CBV: Class Base the View
+# São mais recomendadas para se utilizar por poder reutilizar a classe pela herança (POO)
+
+            ##### VIEWS DE MORADOR
 class FuncionarioListView(ListView):
     model = Funcionario  # Procura um template que tem o mesmo nome da model 'funcionario' acrescido de '_list'
-    # TODO: mudar o nome do template Cadastro_list
 
 
 class FuncionarioCreateView(CreateView):
     model = Funcionario
-    fields = ["nome", "dt_nasto", "doc_rg", "doc_cpf","telefone_apto", "email", "funcao", "dt_admissao", "login", "senha"]
+    fields = ["nome", "dt_nasto", "doc_rg", "doc_cpf", "telefone_apto", "email", "funcao", "dt_admissao", "login", "senha"]
     # campos que o usuário vai poder inserir
     success_url = reverse_lazy("funcionarios_lista")
     # redireciona em caso de sucesso da solicitação
@@ -31,8 +32,8 @@ class FuncionarioCreateView(CreateView):
 
 class FuncionarioUptadeView(UpdateView):
     model = Funcionario
-    fields = ["nome", "dt_nasto", "doc_rg", "doc_cpf", "funcao", "dt_admissao", "login", "senha"]
-    # campos que o usuário vai poder inserir
+    fields = ["nome", "dt_nasto", "doc_rg", "doc_cpf", "telefone_apto", "email", "funcao", "dt_admissao", "login", "senha"]
+    # campos que o usuário vai poder editar
     success_url = reverse_lazy("funcionarios_lista")
 
 
@@ -54,26 +55,59 @@ class FuncionarioDetalhesView(View):
     fields = ["nome", "dt_nasto", "doc_rg", "doc_cpf", "funcao", "dt_admissao", "login", "senha",
               "dt_demissao"]  # campos que o usuário vai poder inserir
     #success_url = reverse_lazy("funcionarios-lista/")
+    # TODO: faze o detalhamento do cadastro
 
 
 
-
-# Cadastro.objects.get(pk=id) um meio de pegar um item do BD
-
-
-# data_fim_real = models.DateField(null=True)
+##### VIEWS DE APARTAMENTO
 
 
-""" 
-nome = ["cleitin", "maria", "joana", "silva"]
-return render(request, "cadastros/home.html", {"funcionarios": funcionarios, "nome": nome})
-"""
-# return render(request, "cadastros/home.html")
-# renderiza a request no arquivo html especificado
+class ApartamentoListView(ListView):
+    model = Apartamento  # Procura um template que tem o mesmo nome da model 'Apartamento' acrescido de '_list'
 
 
-"""def listar_funcionarios(request):  # recebe uma solicitação
-    nome = ["cleitin", "maria", "joana", "silva"]
-    return render(request, "cadastros/home.html", {"nome": nome})
-    # envia o 'context' para o arquivo html
-"""
+class ApartamentoCreateView(CreateView):
+    model = Apartamento
+    fields = ["bloco", "andar", "numero_apto", "telefone_apto"]
+    # campos que o usuário vai poder inserir
+    success_url = reverse_lazy("apartamentos_lista")
+    # redireciona em caso de sucesso da solicitação
+
+
+class ApartamentoUptadeView(UpdateView):
+    model = Apartamento
+    fields = ["bloco", "andar", "numero_apto", "telefone_apto"]
+    # campos que o usuário vai poder editar
+    success_url = reverse_lazy("apartamentos_lista")
+
+
+class ApartamentoDeleteView(DeleteView):
+    model = Apartamento
+    success_url = reverse_lazy("apartamentos_lista")
+
+
+##### VIEWS DE MORADOR
+
+class MoradorListView(ListView):
+    model = Morador  # Procura um template que tem o mesmo nome da model 'Morador' acrescido de '_list'
+
+
+class MoradorCreateView(CreateView):
+    model = Morador
+    fields = ["apartamento", "nome", "dt_nasto", "doc_rg", "doc_cpf"]
+    # campos que o usuário vai poder inserir
+    success_url = reverse_lazy("moradores_lista")
+    # redireciona em caso de sucesso da solicitação
+
+
+class MoradorUptadeView(UpdateView):
+    model = Morador
+    fields = ["apartamento", "nome", "dt_nasto", "doc_rg", "doc_cpf"]
+    # campos que o usuário vai poder editar
+    success_url = reverse_lazy("moradores_lista")
+
+
+class MoradorDeleteView(DeleteView):
+    model = Morador
+    success_url = reverse_lazy("moradores_lista")
+
