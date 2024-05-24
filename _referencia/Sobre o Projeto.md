@@ -1,13 +1,23 @@
 ## 📢 Requisitos
 
-- [ ]  CRUD de usuários ADM
-- [ ]  CRUD de moradores (feito pelos ADM)
-- [ ]  CRUD de visitantes (feito pelos porteiros)
+- [ ]  Tela de login
+   - [ ] Redefinição de senha
+- [ ]  Diferenciar as atividade de ADM e de porteiros
+    - [ ] CRUD de morador feito pelos ADM
+    - [ ] CRUD de porteiro feito pelos ADM
+    - [ ] CRUD de visita feito pelos porteiros
+- [ ]  CRUD de funcionários
+- [ ]  CRUD de apartamentos
+- [ ]  CRUD de moradores 
+- [ ]  CRUD de visitantes
+- [ ]  CRUD de Carro e Moto (Pedro)
 - [ ]  Acompanhamento pela placa do veículo e documento do visitante;
 - [ ]  Registrar a entrada do visitante com um morador
 - [ ]  Consulta da situação do estacionamento de visitantes
 - [ ]  Alerta de visita (com véiculo) com 3 dias de estadia (portaria)
 - [ ]  Alerta de visita (com véiculo) com mais de 3 dias de estadia (administração)
+- [ ]  Telas (Thiago e Larissa)
+- [ ]  Models (Vitor e Amanda)
 
 <details>
 

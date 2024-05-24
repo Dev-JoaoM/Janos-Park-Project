@@ -66,22 +66,18 @@ class Morador(models.Model):
     doc_rg = models.CharField(verbose_name="RG", max_length=9, null=False, blank=False)
     doc_cpf = models.CharField(verbose_name="CPF", max_length=11, null=False, blank=False)
     def __str__(self):
-        return f"Morador {self.nome}, apartamento: {self.apartamento}"
+        return f"Morador {self.nome}, {self.apartamento}"
 
 
 class Visitante(models.Model):
     morador = models.ForeignKey(Morador, on_delete=models.DO_NOTHING)  # rever esse parametro
     nome = models.CharField(verbose_name="Nome", max_length=50, null=False, blank=False)
-    dt_nasto = models.DateField(
-        verbose_name="Data de Nascimento", null=False, blank=False
-    )
+    dt_nasto = models.DateField(verbose_name="Data de Nascimento", null=False, blank=False)
     doc_rg = models.CharField(verbose_name="RG", max_length=9, null=False, blank=False)
-    doc_cpf = models.CharField(
-        verbose_name="CPF", max_length=11, null=False, blank=False
-    )
-    telefone = models.CharField(
-        verbose_name="Telefone", max_length=8, null=False, blank=False
-    )
+    doc_cpf = models.CharField(verbose_name="CPF", max_length=11, null=False, blank=False)
+    telefone = models.CharField(verbose_name="Telefone", max_length=8, null=False, blank=False)
+    def __str__(self):
+        return (f"Visitante {self.nome}, telefone: {self.telefone}. \nEstá visitando {self.morador}")
 
 
 class RegistroVisitante(models.Model):

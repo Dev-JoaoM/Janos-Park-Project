@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block page_title %}
+    Excluir Morador
+{% endblock page_title %}
+
+{% block content %}
+    <h1> Excluir Morador </h1>
+        <h4>Confirmação do exclusão!</h4>
+
+    <p>Tem certeza que desseja excluir o registro do morador(a) <strong>"{{morador.nome}}"</strong>?</p>
+    <p>Que mora no <strong>{{morador.apartamento}}</strong>.</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Excluir</button>
+        <a href="{% url 'moradores_lista' %}" class="btn btn-primary">Cancelar</a>
+    </form>
+
+{% endblock content %}
