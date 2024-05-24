@@ -29,18 +29,23 @@
 
 </details>
 
-
-## 📒 Documentação 
-- Framework Utilizado [Django](https://www.djangoproject.com)
-- Instruções para configuração do [ambiente de desenvolvimento](https://github.com/treinaweb/treinaweb-youtube-introducao-ao-django/tree/main)
-
 ## 📝 IDLE Pycharm
 
 - PYCHARM – Como instalar e [configurar](https://www.hashtagtreinamentos.com/pycharm-python?gad_source=1&gclid=CjwKCAjw5v2wBhBrEiwAXDDoJfM3oHcCfQ7RzryHcNdJ0cbHfaMopiIaosGDTPNCWg8fv_nKHlYiPBoCSdwQAvD_BwE)
-
 - Instalando Pacote com [Pip install](https://www.treinaweb.com.br/blog/como-instalar-um-pacote-com-pip-e-utiliza-lo-em-seu-projeto)
-
 -  Criando um Ambiente virtual no [Pycharm](https://www.youtube.com/watch?v=n_yRhe37Yt4)
+
+## 📒 Como funciona o Django
+### Padrão da arquitetura MVT (Model View Template)
+
+- Model: modelo e estrutura do BD
+- View (back): Lógica da aplicação, como as coisas vão funcionar
+- Template (Front): Telas da aplicação, arquivos html/css/javascript
+
+### Documentação
+- Framework Utilizado [Django](https://www.djangoproject.com)
+- Instruções para configuração do [ambiente de desenvolvimento](https://github.com/treinaweb/treinaweb-youtube-introducao-ao-django/tree/main)
+
 
 ## 🎞️ Cursos Curtos
 
@@ -65,15 +70,6 @@
 
 ## 🔍 Referências
 
-### Como funciona o Django
-
-Padrão da arquitetura MVT (Model View Template)
-
-- Model: modelo e estrutura do BD
-- View (back): Lógica da aplicação, como as coisas vão funcionar
-- Template (Front): Telas da aplicação, arquivos html/css/javascript
-
--------------------------------------
 - Como é a estrutura de pastas de um projeto [Django](https://www.youtube.com/watch?v=PHZjZODh9gU)
 
 - Como Sair do Zero em Django no Python [Passo a Passo Primeiro Site](https://www.youtube.com/watch?v=DNGI5aD9MJs)
