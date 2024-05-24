@@ -1,4 +1,3 @@
-q
 ## Comandos úteis no projeto
 
 model --> views --> url --> template.html
