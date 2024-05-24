@@ -17,12 +17,18 @@ url_funcionarios = [
     # TODO: criar uma tela para detalhar as informações
 ]
 
+url_apartamentos = [
+    path("apartamentos-lista/", ApartamentoListView.as_view(),name="apartamentos_lista"),
+    path("apartamentos-cadastro/", ApartamentoCreateView.as_view(), name="apartamentos_cadastro",),
+    path("apartamentos-edicao/<int:pk>", ApartamentoUptadeView.as_view(), name="apartamentos_edicao",),
+    path("apartamentos-exclucao/<int:pk>", ApartamentoDeleteView.as_view(), name="apartamentos_exclusao",)
+]
+
 url_moradores = [
     path("moradores-lista/", MoradorListView.as_view(),name="moradores_lista"),
     path("moradores-cadastro/", MoradorCreateView.as_view(), name="moradores_cadastro",),
     path("moradores-edicao/<int:pk>", MoradorUptadeView.as_view(), name="moradores_edicao",),
     path("moradores-exclucao/<int:pk>", MoradorDeleteView.as_view(), name="moradores_exclusao",)
-
 ]
 
 urlpatterns = [
@@ -31,4 +37,4 @@ urlpatterns = [
 
     # configura o final do caminho por uma variavel que contém o numero do id ou da pk
     # path(caminho_do_link,nome da view --> template.html)
-] + url_funcionarios + url_moradores
+] + url_funcionarios + url_apartamentos + url_moradores

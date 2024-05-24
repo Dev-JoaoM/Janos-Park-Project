@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block page_title %}
+    Excluir Apartamento
+{% endblock page_title %}
+
+{% block content %}
+    <h1> Excluir Apartamento </h1>
+        <p>Confirmação do exclusão!</p>
+    <p>Tem certeza que desseja excluir o registro do apartamento?</p>
+    <p><strong>Bloco:</strong> "{{apartamento.bloco}}"</p>
+    <p><strong>Andar:</strong> "{{apartamento.andar}}"</p>
+    <p><strong>Numero:</strong> "{{apartamento.numero_apto}}"</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Excluir</button>
+        <a href="{% url 'apartamentos_lista' %}" class="btn btn-primary">Cancelar</a>
+    </form>
+
+{% endblock content %}

@@ -2,7 +2,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, View
 from django.urls import reverse_lazy  # usado para acessar as rotas 'path' pelos nomes
-from .models import Funcionario, Morador  # importação da class 'Cadastro' do arquivo models
+from .models import Funcionario, Morador, Apartamento  # importação das classes do arquivo models
 
 
 # Essa é uma FBV: Function Base the View
@@ -59,23 +59,34 @@ class FuncionarioDetalhesView(View):
 
 
 
+##### VIEWS DE APARTAMENTO
 
 
+class ApartamentoListView(ListView):
+    model = Apartamento  # Procura um template que tem o mesmo nome da model 'Apartamento' acrescido de '_list'
 
 
+class ApartamentoCreateView(CreateView):
+    model = Apartamento
+    fields = ["bloco", "andar", "numero_apto", "telefone_apto"]
+    # campos que o usuário vai poder inserir
+    success_url = reverse_lazy("apartamentos_lista")
+    # redireciona em caso de sucesso da solicitação
 
 
+class ApartamentoUptadeView(UpdateView):
+    model = Apartamento
+    fields = ["bloco", "andar", "numero_apto", "telefone_apto"]
+    # campos que o usuário vai poder editar
+    success_url = reverse_lazy("apartamentos_lista")
 
 
-
-
-
-
+class ApartamentoDeleteView(DeleteView):
+    model = Apartamento
+    success_url = reverse_lazy("apartamentos_lista")
 
 
 ##### VIEWS DE MORADOR
-
-
 
 class MoradorListView(ListView):
     model = Morador  # Procura um template que tem o mesmo nome da model 'Morador' acrescido de '_list'
