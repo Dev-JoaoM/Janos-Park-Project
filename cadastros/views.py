@@ -23,7 +23,7 @@ class FuncionarioListView(ListView):
 
 class FuncionarioCreateView(CreateView):
     model = Funcionario
-    fields = ["nome", "dt_nasto", "doc_rg", "doc_cpf", "funcao", "dt_admissao", "login", "senha"]
+    fields = ["nome", "dt_nasto", "doc_rg", "doc_cpf","telefone_apto", "email", "funcao", "dt_admissao", "login", "senha"]
     # campos que o usuário vai poder inserir
     success_url = reverse_lazy("funcionarios_lista")
     # redireciona em caso de sucesso da solicitação
