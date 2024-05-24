@@ -50,30 +50,23 @@ class Funcionario(models.Model):
 
 
 class Apartamento(models.Model):
-    bloco = models.CharField(
-        verbose_name="Bloco", max_length=5, null=False, blank=False
-    )
-    andar = models.CharField(
-        verbose_name="Andar", max_length=5, null=False, blank=False
-    )
-    numero_apto = models.IntegerField(
-        verbose_name="Numero do Apartamento", null=False, blank=False
-    )
-    telefone_apto = models.CharField(
-        verbose_name="Telefone", max_length=8, null=False, blank=False
-    )
+    bloco = models.CharField(verbose_name="Bloco", max_length=5, null=False, blank=False)
+    andar = models.CharField(verbose_name="Andar", max_length=5, null=False, blank=False)
+    numero_apto = models.IntegerField(verbose_name="Numero do Apartamento", null=False, blank=False)
+    telefone_apto = models.CharField(verbose_name="Telefone", max_length=8, null=False, blank=False)
+
+    def __str__(self):
+        return f"Apartamento n° {self.numero_apto}, {self.andar}º andar, bloco {self.bloco}"
 
 
 class Morador(models.Model):
     apartamento = models.ForeignKey(Apartamento, on_delete=models.CASCADE)
     nome = models.CharField(verbose_name="Nome", max_length=50, null=False, blank=False)
-    dt_nasto = models.DateField(
-        verbose_name="Data de Nascimento", null=False, blank=False
-    )
+    dt_nasto = models.DateField(verbose_name="Data de Nascimento", null=False, blank=False)
     doc_rg = models.CharField(verbose_name="RG", max_length=9, null=False, blank=False)
-    doc_cpf = models.CharField(
-        verbose_name="CPF", max_length=11, null=False, blank=False
-    )
+    doc_cpf = models.CharField(verbose_name="CPF", max_length=11, null=False, blank=False)
+    def __str__(self):
+        return f"Morador {self.nome}, apartamento: {self.apartamento}"
 
 
 class Visitante(models.Model):

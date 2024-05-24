@@ -5,9 +5,10 @@
 
 {% block content %}
     <h1> Excluir Morador </h1>
-        <p>Confirmação do exclusão!</p>
+        <h4>Confirmação do exclusão!</h4>
+
     <p>Tem certeza que desseja excluir o registro do morador(a) <strong>"{{morador.nome}}"</strong>?</p>
-    <p>Que mora no apartamento <strong>"{{morador.apartamento}}"</strong>.</p>
+    <p>Que mora no <strong>{{morador.apartamento}}</strong>.</p>
 
     <form method="POST">
         {% csrf_token %}
