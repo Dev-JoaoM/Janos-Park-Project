@@ -76,8 +76,9 @@ class Visitante(models.Model):
     doc_rg = models.CharField(verbose_name="RG", max_length=9, null=False, blank=False)
     doc_cpf = models.CharField(verbose_name="CPF", max_length=11, null=False, blank=False)
     telefone = models.CharField(verbose_name="Telefone", max_length=8, null=False, blank=False)
+
     def __str__(self):
-        return (f"Visitante {self.nome}, telefone: {self.telefone}. \nEstá visitando {self.morador}")
+        return (f"Visitante {self.nome}, telefone: {self.telefone}. Está visitando {self.morador}")
 
 
 class RegistroVisitante(models.Model):
@@ -86,10 +87,13 @@ class RegistroVisitante(models.Model):
     data_entrada = models.DateTimeField(auto_now_add=True, null=False, blank=False)
     data_limite = models.DateTimeField(auto_now_add=True, null=False, blank=False)
     data_saida = models.DateTimeField(null=True)
-    autorizacao = models.BooleanField(
-        verbose_name="Autorização do Morador", null=False, blank=False
-    )
+    autorizacao = models.BooleanField(verbose_name="Autorização do Morador", null=False, blank=False)
     funcionario = models.ForeignKey(Funcionario, on_delete=models.DO_NOTHING)  # rever esse parametro
+    # TODO: pegar o funcionário que fez o registro de acordo com o login
+    # TODO: inserir a data limite por funcao
+    # TODO: inserir a data de entrada atual automaticamente
+    # TODO: quando inserir o visitante retornar o carro dele se estiver de carro
+    # TODO: não é obrigatório o visitante entrar de carro
 
 
 class RegistroMorador(models.Model):
@@ -97,6 +101,11 @@ class RegistroMorador(models.Model):
     data_entrada = models.DateTimeField(auto_now_add=True, null=False, blank=False)
     data_saida = models.DateTimeField(auto_now_add=True, null=False, blank=False)
     funcionario = models.ForeignKey(Funcionario, on_delete=models.DO_NOTHING)  # rever esse parametro
+
+    # TODO: pegar o funcionário que fez o registro de acordo com o login
+    # TODO: inserir a data de entrada atual automaticamente
+    # TODO: quando morador o visitante retornar o carro dele se estiver de carro
+    # TODO: não é obrigatório o morador entrar de carro
 
 
 class QntVagasVisita(models.Model):
@@ -107,27 +116,26 @@ class QntVagasVisita(models.Model):
 
 
 class Carro(models.Model):
-    modelo = models.CharField(
-        verbose_name="Modelo", max_length=10, null=False, blank=False
-    )
-    placa = models.CharField(
-        verbose_name="Placa", max_length=8, null=False, blank=False
-    )
+    modelo = models.CharField(verbose_name="Modelo", max_length=10, null=False, blank=False)
+    placa = models.CharField(verbose_name="Placa", max_length=8, null=False, blank=False)
     cor = models.CharField(verbose_name="Cor", max_length=10, null=False, blank=False)
     apartamento = models.ForeignKey(Apartamento, on_delete=models.CASCADE)
     visitante = models.ForeignKey(Visitante, on_delete=models.CASCADE)
     # não rá receber duas chaves estrangeiras ao mesmo tempo
+    # TODO: difenciar o carro de morador e de visitante
+
+    def __str__(self):
+        return f"Placa {self.placa}, {self.modelo},{self.cor}, visitante {self.visitante}, apartamento{self.apartamento}"
 
 
 class Moto(models.Model):
     apartamento = models.ForeignKey(Apartamento, on_delete=models.CASCADE)
-    modelo = models.CharField(
-        verbose_name="Modelo", max_length=10, null=False, blank=False
-    )
-    placa = models.CharField(
-        verbose_name="Placa", max_length=8, null=False, blank=False
-    )
+    modelo = models.CharField(verbose_name="Modelo", max_length=10, null=False, blank=False)
+    placa = models.CharField(verbose_name="Placa", max_length=8, null=False, blank=False)
     cor = models.CharField(verbose_name="Cor", max_length=10, null=False, blank=False)
+
+    def __str__(self):
+        return f"Placa {self.placa}, {self.modelo},{self.cor}, visitante {self.apartamento}"
 
 
 # As classes representam as tabelas do BD e os atributos das classes representam as colunas da tabela

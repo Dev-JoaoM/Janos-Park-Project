@@ -38,10 +38,18 @@ url_visitantes = [
     path("visitantes-exclucao/<int:pk>", VisitanteDeleteView.as_view(), name="visitantes_exclusao",)
 ]
 
+url_carros = [
+    path("carros-lista/", CarroListView.as_view(), name="carros_lista"),
+    path("carros-cadastro/", CarroCreateView.as_view(), name="carros_cadastro",),
+    path("carros-edicao/<int:pk>", CarroUptadeView.as_view(), name="carros_edicao",),
+    path("carros-exclucao/<int:pk>", CarroDeleteView.as_view(), name="carros_exclusao",)
+]
+
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", home, name="home"),
 
     # configura o final do caminho por uma variavel que contém o numero do id ou da pk
     # path(caminho_do_link,nome da view --> template.html)
-] + url_funcionarios + url_apartamentos + url_moradores + url_visitantes
+] + url_funcionarios + url_apartamentos + url_moradores + url_visitantes + url_carros

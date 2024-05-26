@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block page_title %}
+    Lista de Carros
+{% endblock page_title %}
+
+{% block content %}
+    <h1> Lista de Carros </h1>
+
+    {% if carro_list %}
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Placa</th>
+              <th scope="col">Modelo</th>
+              <th scope="col">Cor</th>
+              <th scope="col">Visitante</th>
+              <th scope="col">Apartamento</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for carro in carro_list %}
+                <tr>
+                    <th scope="row">{{ carro.pk }}</th>
+                    <td>{{carro.placa}}</td>
+                    <td>{{carro.modelo}}</td>
+                    <td>{{carro.cor}}</td>
+                    <td>{{carro.visitante}}</td>
+                    <td>{{carro.apartamento}}</td>
+                    <td>
+
+                        <a href="{% url 'carros_edicao' pk=carro.pk %}"
+                           class="btn btn-secondary btn-sm ">Editar</a>
+                        <a href="{% url 'carros_exclusao' pk=carro.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                    </td>
+                </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    {% else %}
+        <p>Não há carros cadastrados</p>
+    {% endif %}
+
+    <a href="{% url 'carros_cadastro' %} " class="btn btn-primary btn-sm">Novo Cadastro</a>
+{% endblock content %}
