@@ -2,36 +2,35 @@
 {% load crispy_forms_tags %}
 
 {% block page_title %}
-    {% if cadastro.pk %}
+    {% if moto.pk %}
         Edição de Cadastro
     {% else %}
-        Cadastro de Funcionários(as)
+        Cadastro de Motos
     {% endif %}
 {% endblock page_title %}
 
 {% block content %}
-    {% if cadastro.pk %}
+    {% if moto.pk %}
 		<h1> Editar Cadastro </h1>
 
 	{% else %}
-        <h1> Cadastro de Funcionários </h1>
-                <p>Cadastro dos funcionários ADM</p>
-        <h1> Novo Funcionário(a) </h1>
+        <h1> Cadastro de Motos </h1>
+                <p>Cadastro das motos 'portaria'</p>
+        <h1> Nova moto </h1>
 	{% endif %}
 
     <form method="POST">
         {% csrf_token %}
         {{ form| crispy }}
 
-        {% if cadastro.pk %}
+        {% if moto.pk %}
             <button type="submit" class="btn btn-primary" >Editar</button>
-            <a href="{% url 'lista_funcionarios' %}" class="btn btn-danger">Cancelar</a>
-
+            <a href="{% url 'motos_lista' %}" class="btn btn-danger">Cancelar</a>
 
         {% else %}
             <button type="submit" class="btn btn-primary" >Cadastrar</button>
-            <a href="{% url 'cadastro_funcionarios' %}" class="btn btn-danger">Cancelar</a>
-            <a href="{% url 'lista_funcionarios' %}" class="btn btn-secondary">Funcionários Cadastrados</a>
+            <a href="{% url 'motos_cadastro' %}" class="btn btn-danger">Cancelar</a>
+            <a href="{% url 'motos_lista' %}" class="btn btn-secondary">Motos Cadastrados</a>
 
         {% endif %}
 

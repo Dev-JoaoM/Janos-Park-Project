@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block page_title %}
+    Excluir Moto
+{% endblock page_title %}
+
+{% block content %}
+    <h1> Excluir Moto </h1>
+        <h4>Confirmação do exclusão!</h4>
+
+    <p>Tem certeza que deseja excluir o registro da moto do(a) morador(a) <strong>"{{moto.morador}}"</strong>?</p>
+    <p><strong>Placa:</strong> {{moto.placa}}</p>
+    <p><strong>Modelo:</strong> {{moto.modelo}}</p>
+    <p><strong>Cor:</strong> {{moto.cor}}</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Excluir</button>
+        <a href="{% url 'motos_lista' %}" class="btn btn-primary">Cancelar</a>
+    </form>
+
+{% endblock content %}

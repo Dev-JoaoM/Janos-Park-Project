@@ -31,10 +31,31 @@ url_moradores = [
     path("moradores-exclucao/<int:pk>", MoradorDeleteView.as_view(), name="moradores_exclusao",)
 ]
 
+url_visitantes = [
+    path("visitantes-lista/", VisitanteListView.as_view(), name="visitantes_lista"),
+    path("visitantes-cadastro/", VisitanteCreateView.as_view(), name="visitantes_cadastro",),
+    path("visitantes-edicao/<int:pk>", VisitanteUptadeView.as_view(), name="visitantes_edicao",),
+    path("visitantes-exclucao/<int:pk>", VisitanteDeleteView.as_view(), name="visitantes_exclusao",)
+]
+
+url_carros = [
+    path("carros-lista/", CarroListView.as_view(), name="carros_lista"),
+    path("carros-cadastro/", CarroCreateView.as_view(), name="carros_cadastro",),
+    path("carros-edicao/<int:pk>", CarroUptadeView.as_view(), name="carros_edicao",),
+    path("carros-exclucao/<int:pk>", CarroDeleteView.as_view(), name="carros_exclusao",)
+]
+
+url_motos = [
+    path("motos-lista/", MotoListView.as_view(), name="motos_lista"),
+    path("motos-cadastro/", MotoCreateView.as_view(), name="motos_cadastro",),
+    path("motos-edicao/<int:pk>", MotoUptadeView.as_view(), name="motos_edicao",),
+    path("motos-exclucao/<int:pk>", MotoDeleteView.as_view(), name="motos_exclusao",)
+]
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", home, name="home"),
 
     # configura o final do caminho por uma variavel que contém o numero do id ou da pk
     # path(caminho_do_link,nome da view --> template.html)
-] + url_funcionarios + url_apartamentos + url_moradores
+] + url_funcionarios + url_apartamentos + url_moradores + url_visitantes + url_carros + url_motos

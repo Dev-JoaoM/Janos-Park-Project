@@ -2,7 +2,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, View
 from django.urls import reverse_lazy  # usado para acessar as rotas 'path' pelos nomes
-from .models import Funcionario, Morador, Apartamento  # importação das classes do arquivo models
+from .models import Funcionario, Morador, Apartamento, Visitante, Carro, Moto  # importação das classes do arquivo models
 
 
 # Essa é uma FBV: Function Base the View
@@ -110,4 +110,80 @@ class MoradorUptadeView(UpdateView):
 class MoradorDeleteView(DeleteView):
     model = Morador
     success_url = reverse_lazy("moradores_lista")
+
+##### VIEWS DE VISITANTE
+
+class VisitanteListView(ListView):
+    model = Visitante
+
+
+class VisitanteCreateView(CreateView):
+    model = Visitante
+    fields = ["morador", "nome", "dt_nasto", "doc_rg", "doc_cpf", "telefone"]
+    # campos que o usuário vai poder inserir
+    success_url = reverse_lazy("visitantes_lista")
+    # redireciona em caso de sucesso da solicitação
+
+
+class VisitanteUptadeView(UpdateView):
+    model = Visitante
+    fields = ["morador", "nome", "dt_nasto", "doc_rg", "doc_cpf", "telefone"]
+    # campos que o usuário vai poder editar
+    success_url = reverse_lazy("visitantes_lista")
+
+
+class VisitanteDeleteView(DeleteView):
+    model = Visitante
+    success_url = reverse_lazy("visitantes_lista")
+
+
+##### VIEWS DE CARRO
+class CarroListView(ListView):
+    model = Carro
+
+
+class CarroCreateView(CreateView):
+    model = Carro
+    fields = ["placa", "modelo", "cor", "visitante", "apartamento"]
+    # campos que o usuário vai poder inserir
+    success_url = reverse_lazy("carros_lista")
+    # redireciona em caso de sucesso da solicitação
+
+
+class CarroUptadeView(UpdateView):
+    model = Carro
+    fields = ["placa", "modelo", "cor", "visitante", "apartamento"]
+    # campos que o usuário vai poder editar
+    success_url = reverse_lazy("carros_lista")
+
+
+class CarroDeleteView(DeleteView):
+    model = Carro
+    success_url = reverse_lazy("carros_lista")
+
+
+##### VIEWS DE MOTO
+
+
+class MotoListView(ListView):
+    model = Moto
+
+
+class MotoCreateView(CreateView):
+    model = Moto
+    fields = ["placa", "modelo", "cor", "morador"]
+    success_url = reverse_lazy("motos_lista")
+
+
+class MotoUptadeView(UpdateView):
+    model = Moto
+    fields = ["placa", "modelo", "cor", "morador"]
+    success_url = reverse_lazy("motos_lista")
+
+
+class MotoDeleteView(DeleteView):
+    model = Moto
+    success_url = reverse_lazy("motos_lista")
+
+
 

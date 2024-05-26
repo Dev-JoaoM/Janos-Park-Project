@@ -15,8 +15,8 @@
 [![Pycharm](https://img.shields.io/badge/PyCharm-gray.svg?&style=for-the-badge&logo=PyCharm&logoColor=green)](https://www.jetbrains.com/pt-br/pycharm/)
 ![SQLite](https://img.shields.io/badge/SQLite-fff?style=for-the-badge&logo=sqlite&logoColor=07405E)
 
-![Python Version](https://img.shields.io/badge/Python-v3.11.5-blue?logo=python)
-![Pip Version](https://img.shields.io/badge/Pip_Install-v23.2.1-yellow?)
+![Python Version](https://img.shields.io/badge/Python-v3.12.2-blue?logo=python)
+![Pip Version](https://img.shields.io/badge/Pip_Install-v24.0-yellow?)
 ![Django Version](https://img.shields.io/badge/Django-v5.0.6-green?logo=django&logoColor=green)
 ![Bootstrap Version](https://img.shields.io/badge/Bootstrap_5-v2.1-purple?logo=bootstrap&logoColor=purple)
 

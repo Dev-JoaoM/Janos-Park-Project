@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block page_title %}
+    Excluir Visitante
+{% endblock page_title %}
+
+{% block content %}
+    <h1> Excluir Visitante </h1>
+        <h4>Confirmação do exclusão!</h4>
+
+    <p>Tem certeza que desseja excluir o registro do visitante<strong>"{{visitante.nome}}"</strong>?</p>
+    <p>Data de Nascimento: {{visitante.dt_nasto}}</p>
+    <p>Portador do RG: {{visitante.doc_rg}}</p>
+    <p>Inscrito no CPF: {{visitante.doc_cpf}}</p>
+    <p>Telefone: {{visitante.telefone}}</p>
+
+    <p>Que visita <strong>{{visitante.morador}}</strong>.</p>
+
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Excluir</button>
+            <a href="{% url 'visitantes_lista' %}" class="btn btn-primary">Cancelar</a>
+        </form>
+
+{% endblock content %}

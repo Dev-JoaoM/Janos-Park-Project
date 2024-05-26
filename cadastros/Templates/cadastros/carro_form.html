@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}
+    {% if carro.pk %}
+        Edição de Cadastro
+    {% else %}
+        Cadastro de Carros
+    {% endif %}
+{% endblock page_title %}
+
+{% block content %}
+    {% if carro.pk %}
+		<h1> Editar Cadastro </h1>
+
+	{% else %}
+        <h1> Cadastro de Carros </h1>
+                <p>Cadastro dos carros 'portaria'</p>
+        <h1> Novo Carro </h1>
+	{% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form| crispy }}
+
+        {% if carro.pk %}
+            <button type="submit" class="btn btn-primary" >Editar</button>
+            <a href="{% url 'carros_lista' %}" class="btn btn-danger">Cancelar</a>
+
+        {% else %}
+            <button type="submit" class="btn btn-primary" >Cadastrar</button>
+            <a href="{% url 'carros_cadastro' %}" class="btn btn-danger">Cancelar</a>
+            <a href="{% url 'carros_lista' %}" class="btn btn-secondary">Carros Cadastrados</a>
+
+        {% endif %}
+
+    </form>
+{% endblock content %}
