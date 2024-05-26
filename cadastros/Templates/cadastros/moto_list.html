@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block page_title %}
+    Lista de Motos
+{% endblock page_title %}
+
+{% block content %}
+    <h1> Lista de Motos </h1>
+
+    {% if moto_list %}
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Placa</th>
+              <th scope="col">Modelo</th>
+              <th scope="col">Cor</th>
+              <th scope="col">Morador</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {% for moto in moto_list %}
+                <tr>
+                    <th scope="row">{{ moto.pk }}</th>
+                    <td>{{moto.placa}}</td>
+                    <td>{{moto.modelo}}</td>
+                    <td>{{moto.cor}}</td>
+                    <td>{{moto.morador}}</td>
+                    <td>
+
+                        <a href="{% url 'motos_edicao' pk=moto.pk %}"
+                           class="btn btn-secondary btn-sm ">Editar</a>
+                        <a href="{% url 'motos_exclusao' pk=moto.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                    </td>
+                </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    {% else %}
+        <p>Não há motos cadastrados</p>
+    {% endif %}
+
+    <a href="{% url 'motos_cadastro' %} " class="btn btn-primary btn-sm">Novo Cadastro</a>
+{% endblock content %}

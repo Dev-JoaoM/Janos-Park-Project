@@ -2,7 +2,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, View
 from django.urls import reverse_lazy  # usado para acessar as rotas 'path' pelos nomes
-from .models import Funcionario, Morador, Apartamento, Visitante, Carro  # importação das classes do arquivo models
+from .models import Funcionario, Morador, Apartamento, Visitante, Carro, Moto  # importação das classes do arquivo models
 
 
 # Essa é uma FBV: Function Base the View
@@ -160,6 +160,30 @@ class CarroUptadeView(UpdateView):
 class CarroDeleteView(DeleteView):
     model = Carro
     success_url = reverse_lazy("carros_lista")
+
+
+##### VIEWS DE MOTO
+
+
+class MotoListView(ListView):
+    model = Moto
+
+
+class MotoCreateView(CreateView):
+    model = Moto
+    fields = ["placa", "modelo", "cor", "morador"]
+    success_url = reverse_lazy("motos_lista")
+
+
+class MotoUptadeView(UpdateView):
+    model = Moto
+    fields = ["placa", "modelo", "cor", "morador"]
+    success_url = reverse_lazy("motos_lista")
+
+
+class MotoDeleteView(DeleteView):
+    model = Moto
+    success_url = reverse_lazy("motos_lista")
 
 
 

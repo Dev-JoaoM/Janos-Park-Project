@@ -45,6 +45,12 @@ url_carros = [
     path("carros-exclucao/<int:pk>", CarroDeleteView.as_view(), name="carros_exclusao",)
 ]
 
+url_motos = [
+    path("motos-lista/", MotoListView.as_view(), name="motos_lista"),
+    path("motos-cadastro/", MotoCreateView.as_view(), name="motos_cadastro",),
+    path("motos-edicao/<int:pk>", MotoUptadeView.as_view(), name="motos_edicao",),
+    path("motos-exclucao/<int:pk>", MotoDeleteView.as_view(), name="motos_exclusao",)
+]
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -52,4 +58,4 @@ urlpatterns = [
 
     # configura o final do caminho por uma variavel que contém o numero do id ou da pk
     # path(caminho_do_link,nome da view --> template.html)
-] + url_funcionarios + url_apartamentos + url_moradores + url_visitantes + url_carros
+] + url_funcionarios + url_apartamentos + url_moradores + url_visitantes + url_carros + url_motos

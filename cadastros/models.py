@@ -129,7 +129,7 @@ class Carro(models.Model):
 
 
 class Moto(models.Model):
-    apartamento = models.ForeignKey(Apartamento, on_delete=models.CASCADE)
+    morador = models.ForeignKey(Morador, on_delete=models.CASCADE)
     modelo = models.CharField(verbose_name="Modelo", max_length=10, null=False, blank=False)
     placa = models.CharField(verbose_name="Placa", max_length=8, null=False, blank=False)
     cor = models.CharField(verbose_name="Cor", max_length=10, null=False, blank=False)
