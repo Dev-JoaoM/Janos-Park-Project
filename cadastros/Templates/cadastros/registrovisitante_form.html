@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}
+    {% if registrovisitante.pk %}
+        Edição de Cadastro
+    {% else %}
+        Cadastro de Registros de Visitantes
+    {% endif %}
+{% endblock page_title %}
+
+{% block content %}
+    {% if registrovisitante.pk %}
+		<h1> Editar Cadastro </h1>
+
+	{% else %}
+        <h1> Cadastro de Registro de Visitantes </h1>
+                <p>Cadastro dos registros de visitantes 'portaria'</p>
+        <h1> Novo Registro de Visitante </h1>
+	{% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form| crispy }}
+
+        {% if registrovisitante.pk %}
+            <button type="submit" class="btn btn-primary" >Editar</button>
+            <a href="{% url 'registro_visitantes_lista' %}" class="btn btn-danger">Cancelar</a>
+
+        {% else %}
+            <button type="submit" class="btn btn-primary" >Cadastrar</button>
+            <a href="{% url 'registro_visitantes_cadastro' %}" class="btn btn-danger">Cancelar</a>
+            <a href="{% url 'registro_visitantes_lista' %}" class="btn btn-secondary">Registro de Visitantes Cadastrados</a>
+
+        {% endif %}
+
+    </form>
+{% endblock content %}

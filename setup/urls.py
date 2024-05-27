@@ -52,10 +52,19 @@ url_motos = [
     path("motos-exclucao/<int:pk>", MotoDeleteView.as_view(), name="motos_exclusao",)
 ]
 
+
+url_reg_visitante = [
+    path("registro_visitantes-lista/", RegistroVisitanteListView.as_view(), name="registro_visitantes_lista"),
+    path("registro_visitantes-cadastro/", RegistroVisitanteCreateView.as_view(), name="registro_visitantes_cadastro",),
+    path("registro_visitantes-edicao/<int:pk>", RegistroVisitanteUptadeView.as_view(), name="registro_visitantes_edicao",),
+    path("registro_visitantes-exclucao/<int:pk>", RegistroVisitanteDeleteView.as_view(), name="registro_visitantes_exclusao",)
+]
+
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", home, name="home"),
 
     # configura o final do caminho por uma variavel que contém o numero do id ou da pk
     # path(caminho_do_link,nome da view --> template.html)
-] + url_funcionarios + url_apartamentos + url_moradores + url_visitantes + url_carros + url_motos
+] + url_funcionarios + url_apartamentos + url_moradores + url_visitantes + url_carros + url_motos + url_reg_visitante

@@ -26,6 +26,7 @@ class Cargo(models.Model):
     carga_horaria_semanal = models.IntegerField(verbose_name="Carga Horária Semanal", null=False, blank=False)
     descricao_atividades = models.CharField(verbose_name="Descrição das atividades", max_length=150, null=False, blank=False)
 
+
 class Funcionario(models.Model):
     nome = models.CharField(verbose_name="Nome", max_length=50, null=False, blank=False)
     dt_nasto = models.DateField(verbose_name="Data de Nascimento", null=False, blank=False)
@@ -40,6 +41,7 @@ class Funcionario(models.Model):
     login = models.CharField(verbose_name="Login", max_length=10, null=False, blank=False)
     senha = models.CharField(verbose_name="Senha", max_length=6, null=False, blank=False)
     # TODO: inserir confirmação e validação de senha
+
     class Meta:
         ordering = ["nome"]
 
@@ -47,6 +49,9 @@ class Funcionario(models.Model):
         if not self.dt_demissao:
             self.dt_demissao = date.today()
             self.save()
+
+    def __str__(self):
+        return f"{self.funcao} noturno/diurno, {self.nome}"
 
 
 class Apartamento(models.Model):

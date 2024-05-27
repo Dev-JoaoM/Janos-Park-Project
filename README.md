@@ -32,6 +32,8 @@
 
 ## 📢 Sobre o [Projeto](https://github.com/Dev-JoaoM/Janos-Park-Project/blob/master/_referencia/Sobre%20o%20Projeto.md)
 
+## 🖥  Telas do [Projeto](https://www.figma.com/design/bTCQK2mIOF4Ni3xlhs90jt/Janos-Front?node-id=0-1&t=MJKLGJXmvthPpsEV-0)
+
 ## 📝 Anotações do [Projeto](https://github.com/Dev-JoaoM/Janos-Park-Project/blob/master/_referencia/janos_notes.md)
 
 ## 📜 Versionamento de código com [Git e GitHub](https://github.com/Dev-JoaoM/Versionamento-com-Git-e-GitHub/tree/master)
