@@ -1,0 +1,162 @@
+
+/* Aplica sombra ao div dentro do header */
+.header-content {
+  background-color: #ffffff; /* Cor de fundo do div */
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Propriedade de sombra */
+  border-radius: 5px; /* Bordas arredondadas, opcional */
+}
+
+/* Estilos gerais para o header */
+header {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 90px;
+  margin-bottom: 25px;
+  background-color: #f8f9fa; /* Cor de fundo do header */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Propriedade de sombra */
+}
+
+/* Estilos para a seção à esquerda do header */
+.header-left {
+  flex: 1;
+}
+
+/* Estilos para a seção central do header */
+.header-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+#logo {
+  width: 200px;
+}
+
+.header-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  margin-left: 30px;
+  font-size: 30px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 22px;
+}
+
+nav ul li a:hover {
+  color: #007bff;
+}
+
+header p {
+  font-size: 23px;
+  font-weight: bold;
+}
+
+header a {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+/*Fim header*/
+
+
+/* Estilos gerais para o footer */
+footer {
+  padding: 75px 250px;
+  background-color: #ffffff; /* Cor de fundo do footer */
+  text-align: center;
+}
+
+footer hr {
+  border: 0;
+  height: 2px;
+  background-color: #ccc;
+  margin: 0; /* Remove margens extras */
+}
+
+/* Estilos para o conteúdo do footer */
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 20px auto; /* Espaçamento vertical e centralização horizontal */
+  padding: 0 20px; /* Espaçamento horizontal interno */
+  font-size: 20px;
+}
+
+/* Estilos para a seção à esquerda do footer */
+.footer-left {
+  flex: 1;
+  text-align: left;
+}
+
+/* Estilos para a seção à direita do footer */
+.footer-right {
+  flex: 1;
+  text-align: right;
+}
+
+
+
+
+
+
+
+/* Footer
+
+footer{
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  height: 100%;
+  margin-top: 15px;
+  padding: 25px 35px;
+  /* padding-bottom: 0px; 
+  bottom: 10px;
+  width: 100%;
+}
+
+footer hr {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+footer div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 980px;
+}
+
+footer p {
+  font-size: 20px;
+  /* text-transform: uppercase; 
+  letter-spacing: 0.1em;
+  line-height: 19.2px;
+}
+
+footer hr {
+    border-color: rgba (255, 255, 255, 0.1);
+    margin-block-start: 1px;
+    padding: 0 20px;
+}*/
