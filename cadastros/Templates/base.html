@@ -24,8 +24,8 @@
       <nav>
           <ul class="list_menu">
               <li><a href="{%url 'home'%}">Home</a></li>
-              <li><a href="#about">Morador</a></li>
-              <li><a href="#contact">Visitante</a></li>
+              <li><a href="{% url 'moradores_lista' %}">Morador</a></li>
+              <li><a href="{% url 'visitantes_lista' %}">Visitante</a></li>
               <li><a href="#contact">Admin</a></li>
               <li><a href=""></a></li>
               <button type="button" class="btn btn-dark">Sair</button>
