@@ -55,7 +55,8 @@ url_motos = [
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", home, name="home"),
-
+    path("index/", index, name="index"),
+    path("login/", login, name="login")
     # configura o final do caminho por uma variavel que contém o numero do id ou da pk
     # path(caminho_do_link,nome da view --> template.html)
 ] + url_funcionarios + url_apartamentos + url_moradores + url_visitantes + url_carros + url_motos
