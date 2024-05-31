@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block page_title %}
+{% endblock page_title %}
+
+{% block content %}
+    <head>
+        <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+    </head>
+
+    <div class="text_Inicial">
+    <h1> Bem vindo!</h1>
+        <h4>Escolher acesso Morador ou Visitante</h4>
+    </div>
+    <div class="card-container">
+        <div class="card">
+            <h3>Controle Moradores</h3>
+            <img src="{% static 'imagens/2470642.png' %}" alt="Morador">
+            <p>Cadastrar e gerenciar acesso de moradores</p>
+            <a href="{% url 'moradores_lista' %}"><button>Acessar</button></a>
+        </div>
+        <div class="card">
+            <h3>Controle de Vistantes</h3>
+            <img src="{% static 'imagens/visitante.png' %}" alt="Visitante">
+             <p>Cadastrar e gerenciar acesso de visitantes</p>
+             <a href="{% url 'visitantes_lista' %}"><button>Acessar</button></a>
+        </div>
+    </div>
+{% endblock content %}

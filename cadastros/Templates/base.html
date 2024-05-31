@@ -23,12 +23,12 @@
   <div class="header-right">
       <nav>
           <ul class="list_menu">
-              <li><a href="{%url 'home'%}">Home</a></li>
+              <li><a href="{%url 'index'%}">Home</a></li>
               <li><a href="{% url 'moradores_lista' %}">Morador</a></li>
               <li><a href="{% url 'visitantes_lista' %}">Visitante</a></li>
-              <li><a href="#contact">Admin</a></li>
+              <li><a href="{%url 'home'%}">Admin</a></li>
               <li><a href=""></a></li>
-              <button type="button" class="btn btn-dark">Sair</button>
+              <a href="{%url 'login'%}"><button type="button" class="btn btn-dark">Sair</button></a>
           </ul>
       </nav>
   </div>
@@ -45,10 +45,10 @@
     <hr>
     <div class="footer-content">
         <div class="footer-left">
-          <p>Desenvolvido por <a href="https://www.janossystem.com.br" target="_blank">Janos System</a> &copy; 2024</p>
+          <p>Desenvolvido por <a href="#" target="_blank">Janos System</a> &copy; 2024</p>
         </div>
         <div class="footer-right">
-          <p id="copyright">Janos System © 2024</p>
+          <p id="copyright">Condomínio Parque Santa Lúcia</p>
         </div>
     </div>
   </footer>
