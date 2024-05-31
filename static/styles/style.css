@@ -1,59 +1,116 @@
-/* Gerais */
-body {
-  font-family: 'Roboto', sans-serif;
+
+/* Aplica sombra ao div dentro do header */
+.header-content {
+  background-color: #ffffff; /* Cor de fundo do div */
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Propriedade de sombra */
+  border-radius: 5px; /* Bordas arredondadas, opcional */
 }
 
-.row {
-  margin: 0;
+/* Estilos gerais para o header */
+header {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 90px;
+  margin-bottom: 25px;
+  background-color: #f8f9fa; /* Cor de fundo do header */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Propriedade de sombra */
 }
 
-.container {
-  padding: 70px 0;
+/* Estilos para a seção à esquerda do header */
+.header-left {
+  flex: 1;
 }
 
-p, li {
-  color: #444;
-  font-size: 14px;
-}
-
-/* Barra de navegação */
-header, .navbar {
-  background-color: gray;
-  padding-top: 100px;
-}
-
-#nav-container {
-  padding-top: 0;
-  padding-bottom: 0;
+/* Estilos para a seção central do header */
+.header-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
 #logo {
-  width: 75px;
+  width: 2000px;
 }
 
-.navbar-brand {
+.header-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
   padding: 0;
-  color: #FFF;
 }
 
-.navbar-brand:hover {
-  color: #FFF;
+nav ul li {
+  margin-left: 30px;
+  font-size: 30px;
 }
 
-#navbar-links a {
-  color: #FFF;
-  font-size: 25px;
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 22px;
 }
 
-.navbar-expand-lg .navbar-nav .nav-link {
-  padding: 1rem .8rem;
+nav ul li a:hover {
+  color: #007bff;
 }
 
-.nav-item.active {
-  border-bottom: 3px solid #FFF;
+header p {
+  font-size: 23px;
+  font-weight: bold;
 }
 
-nav-item nav-link{
-    font-size: 20px;
+header a {
+  font-size: 30px;
+  font-weight: bold;
 }
-/* Fim Barra de navegação */
+
+/*Fim header*/
+
+
+/* Estilos gerais para o footer */
+footer {
+  padding: 75px 250px;
+  background-color: #ffffff; /* Cor de fundo do footer */
+  text-align: center;
+}
+
+footer hr {
+  border: 0;
+  height: 2px;
+  background-color: #ccc;
+  margin: 0; /* Remove margens extras */
+}
+
+/* Estilos para o conteúdo do footer */
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 20px auto; /* Espaçamento vertical e centralização horizontal */
+  padding: 0 20px; /* Espaçamento horizontal interno */
+  font-size: 20px;
+}
+
+/* Estilos para a seção à esquerda do footer */
+.footer-left {
+  flex: 1;
+  text-align: left;
+}
+
+/* Estilos para a seção à direita do footer */
+.footer-right {
+  flex: 1;
+  text-align: right;
+}
+
+/* Estilos para o conteúdo do footer */
