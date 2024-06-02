@@ -2,7 +2,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, View
 from django.urls import reverse_lazy  # usado para acessar as rotas 'path' pelos nomes
-from .models import Funcionario, Morador, Apartamento, Visitante, Carro, Moto, RegistroVisitante  # importação das classes do arquivo models
+from .models import Funcionario, Morador, Apartamento, Visitante, Carro, Moto, RegistroVisitante, RegistroMorador  # importação das classes do arquivo models
 
 
 # Essa é uma FBV: Function Base the View
@@ -10,7 +10,7 @@ def home(request):  # recebe uma solicitação
     # cadastros = Cadastro.objects.all()  # Busca as informações no banco
     # nome = ["cleitin", "maria", "joana", "silva"]
     # return render(request, "cadastros/home.html", {"funcionarios": funcionarios, "nome": nome})
-    return render(request, "cadastros/home.html") #, {"cadastros": cadastros})
+    return render(request, "home.html") #, {"cadastros": cadastros})
     # renderiza uma template.html com as informações passadas, quando se tem  uma request
 
 def index(request):
@@ -29,7 +29,7 @@ class FuncionarioListView(ListView):
 
 class FuncionarioCreateView(CreateView):
     model = Funcionario
-    fields = ["nome", "dt_nasto", "doc_rg", "doc_cpf", "telefone_apto", "email", "funcao", "dt_admissao", "login", "senha"]
+    fields = ["nome", "dt_nasto", "doc_rg", "doc_cpf", "telefone_apto", "email", "funcao", "dt_admissao", "login", "senha", "confirm_senha"]
     # campos que o usuário vai poder inserir
     success_url = reverse_lazy("funcionarios_lista")
     # redireciona em caso de sucesso da solicitação
@@ -37,7 +37,7 @@ class FuncionarioCreateView(CreateView):
 
 class FuncionarioUptadeView(UpdateView):
     model = Funcionario
-    fields = ["nome", "dt_nasto", "doc_rg", "doc_cpf", "telefone_apto", "email", "funcao", "dt_admissao", "login", "senha"]
+    fields = ["nome", "dt_nasto", "doc_rg", "doc_cpf", "telefone_apto", "email", "funcao", "dt_admissao", "login", "senha", "confirm_senha"]
     # campos que o usuário vai poder editar
     success_url = reverse_lazy("funcionarios_lista")
 
@@ -149,7 +149,7 @@ class CarroListView(ListView):
 
 class CarroCreateView(CreateView):
     model = Carro
-    fields = ["placa", "modelo", "cor", "visitante", "apartamento"]
+    fields = ["placa", "modelo", "cor", "morador"]
     # campos que o usuário vai poder inserir
     success_url = reverse_lazy("carros_lista")
     # redireciona em caso de sucesso da solicitação
@@ -157,7 +157,7 @@ class CarroCreateView(CreateView):
 
 class CarroUptadeView(UpdateView):
     model = Carro
-    fields = ["placa", "modelo", "cor", "visitante", "apartamento"]
+    fields = ["placa", "modelo", "cor", "morador"]
     # campos que o usuário vai poder editar
     success_url = reverse_lazy("carros_lista")
 
@@ -205,10 +205,35 @@ class RegistroVisitanteCreateView(CreateView):
 
 class RegistroVisitanteUptadeView(UpdateView):
     model = RegistroVisitante
-    fields = ["visitante", "morador", "funcionario"]
+    fields = ["visitante", "morador", "funcionario", "data_saida"]
     success_url = reverse_lazy("registro_visitantes_lista")
 
 
 class RegistroVisitanteDeleteView(DeleteView):
     model = RegistroVisitante
     success_url = reverse_lazy("registro_visitantes_lista")
+
+
+
+##### VIEWS DE REGISTRO MORADORES
+
+
+class RegistroMoradorListView(ListView):
+    model = RegistroMorador
+
+
+class RegistroMoradorCreateView(CreateView):
+    model = RegistroMorador
+    fields = ["morador", "funcionario"]
+    success_url = reverse_lazy("registro_moradores_lista")
+
+
+class RegistroMoradorUptadeView(UpdateView):
+    model = RegistroMorador
+    fields = ["morador", "funcionario"]
+    success_url = reverse_lazy("registro_moradores_lista")
+
+
+class RegistroMoradorDeleteView(DeleteView):
+    model = RegistroMorador
+    success_url = reverse_lazy("registro_moradores_lista")

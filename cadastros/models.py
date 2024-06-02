@@ -40,7 +40,8 @@ class Funcionario(models.Model):
     motivo_demissao = models.CharField(verbose_name="Motivo da Demissão", max_length=200, null=False, blank=False)
     login = models.CharField(verbose_name="Login", max_length=10, null=False, blank=False)
     senha = models.CharField(verbose_name="Senha", max_length=6, null=False, blank=False)
-    # TODO: inserir confirmação e validação de senha
+    confirm_senha = models.CharField(verbose_name="Confirme a senha", max_length=6, null=False, blank=False, default="senha_confirm")
+    # TODO: validação de senha
 
     class Meta:
         ordering = ["nome"]
@@ -50,8 +51,8 @@ class Funcionario(models.Model):
             self.dt_demissao = date.today()
             self.save()
 
-    def __str__(self):
-        return f"{self.funcao} noturno/diurno, {self.nome}"
+    def __str__(self):  # -> str:
+        return f"{self.nome}"
 
 
 class Apartamento(models.Model):
@@ -70,8 +71,9 @@ class Morador(models.Model):
     dt_nasto = models.DateField(verbose_name="Data de Nascimento", null=False, blank=False)
     doc_rg = models.CharField(verbose_name="RG", max_length=9, null=False, blank=False)
     doc_cpf = models.CharField(verbose_name="CPF", max_length=11, null=False, blank=False)
+
     def __str__(self):
-        return f"Morador {self.nome}, {self.apartamento}"
+        return f"{self.nome}"
 
 
 class Visitante(models.Model):
@@ -90,7 +92,7 @@ class RegistroVisitante(models.Model):
     morador = models.ForeignKey(Morador, on_delete=models.DO_NOTHING)  # rever esse parametro
     visitante = models.ForeignKey(Visitante, on_delete=models.DO_NOTHING)  # rever esse parametro
     data_entrada = models.DateTimeField(auto_now_add=True, null=False, blank=False)
-    data_limite = models.DateTimeField(auto_now_add=True, null=False, blank=False)
+    data_limite = models.DateTimeField(auto_now_add=False, null=False, blank=False)
     data_saida = models.DateTimeField(null=True)
     autorizacao = models.BooleanField(verbose_name="Autorização do Morador", null=False, blank=False)
     funcionario = models.ForeignKey(Funcionario, on_delete=models.DO_NOTHING)  # rever esse parametro
@@ -104,7 +106,7 @@ class RegistroVisitante(models.Model):
 class RegistroMorador(models.Model):
     morador = models.ForeignKey(Morador, on_delete=models.DO_NOTHING)  # rever esse parametro
     data_entrada = models.DateTimeField(auto_now_add=True, null=False, blank=False)
-    data_saida = models.DateTimeField(auto_now_add=True, null=False, blank=False)
+    data_saida = models.DateTimeField(null=True, blank=True)
     funcionario = models.ForeignKey(Funcionario, on_delete=models.DO_NOTHING)  # rever esse parametro
 
     # TODO: pegar o funcionário que fez o registro de acordo com o login
@@ -124,13 +126,24 @@ class Carro(models.Model):
     modelo = models.CharField(verbose_name="Modelo", max_length=10, null=False, blank=False)
     placa = models.CharField(verbose_name="Placa", max_length=8, null=False, blank=False)
     cor = models.CharField(verbose_name="Cor", max_length=10, null=False, blank=False)
-    apartamento = models.ForeignKey(Apartamento, on_delete=models.CASCADE)
-    visitante = models.ForeignKey(Visitante, on_delete=models.CASCADE)
+    morador = models.ForeignKey(Morador, on_delete=models.CASCADE, default="1")
     # não rá receber duas chaves estrangeiras ao mesmo tempo
-    # TODO: difenciar o carro de morador e de visitante
+    # TODO: diferenciar o carro de morador e de visitante
 
     def __str__(self):
-        return f"Placa {self.placa}, {self.modelo},{self.cor}, visitante {self.visitante}, apartamento{self.apartamento}"
+        return f"Placa {self.placa}, {self.modelo},{self.cor}"
+
+
+class CarroVisitante(models.Model):
+    modelo = models.CharField(verbose_name="Modelo", max_length=10, null=False, blank=False)
+    placa = models.CharField(verbose_name="Placa", max_length=8, null=False, blank=False)
+    cor = models.CharField(verbose_name="Cor", max_length=10, null=False, blank=False)
+    visitante = models.ForeignKey(Visitante, on_delete=models.CASCADE)
+    # não rá receber duas chaves estrangeiras ao mesmo tempo
+    # TODO: diferenciar o carro de morador e de visitante
+
+    def __str__(self):
+        return f"Placa {self.placa}, {self.modelo},{self.cor}"
 
 
 class Moto(models.Model):
