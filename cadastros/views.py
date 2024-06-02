@@ -13,6 +13,11 @@ def home(request):  # recebe uma solicitação
     return render(request, "cadastros/home.html") #, {"cadastros": cadastros})
     # renderiza uma template.html com as informações passadas, quando se tem  uma request
 
+def index(request):
+    return render(request, "index.html")
+
+def login(request):
+    return render(request, "login.html")
 
 # Essas são CBV: Class Base the View
 # São mais recomendadas para se utilizar por poder reutilizar a classe pela herança (POO)
@@ -110,7 +115,7 @@ class MoradorUptadeView(UpdateView):
 class MoradorDeleteView(DeleteView):
     model = Morador
     success_url = reverse_lazy("moradores_lista")
-
+    
 ##### VIEWS DE VISITANTE
 
 class VisitanteListView(ListView):
