@@ -2,3 +2,5 @@
 .git
 .venv
 _referencia/Sistema de Referencia/
+cadastros/__pycache__/
+setup/__pycache__/

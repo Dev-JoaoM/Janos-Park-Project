@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block page_title %}
+    Lista de Registro de Visitantes
+{% endblock page_title %}
+
+{% block content %}
+    <h1> Lista de Registro de Visitantes </h1>
+
+    {% if registrovisitante_list %}
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Visitante</th>
+              <th scope="col">Data de Entrada</th>
+              <th scope="col">Data Limite de saída</th>
+              <th scope="col">Data Saída</th>
+              <th scope="col">Morador</th>
+              <th scope="col">Autorização</th>
+              <th scope="col">Funcionário</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {% for registrovisitante in registrovisitante_list %}
+                <tr>
+                    <th scope="row">{{ registrovisitante.pk }}</th>
+                    <td>{{registrovisitante.visitante}}</td>
+                    <td>{{registrovisitante.data_entrada}}</td>
+                    <td>{{registrovisitante.data_limite}}</td>
+                    <td>{{registrovisitante.data_saida}}</td>
+                    <td>{{registrovisitante.morador}}</td>
+                    <td>{{registrovisitante.autorizacao}}</td>
+                    <td>{{registrovisitante.funcionario}}</td>
+                    <td>
+
+                        <a href="{% url 'registro_visitantes_edicao' pk=registrovisitante.pk %}"
+                           class="btn btn-secondary btn-sm">Editar</a>
+                        <a href="{% url 'registro_visitantes_exclusao' pk=registrovisitante.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                    </td>
+                </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    {% else %}
+        <p>Não há registro_visitantes cadastrados</p>
+    {% endif %}
+
+    <a href="{% url 'registro_visitantes_cadastro' %} " class="btn btn-primary btn-sm">Novo Cadastro</a>
+{% endblock content %}

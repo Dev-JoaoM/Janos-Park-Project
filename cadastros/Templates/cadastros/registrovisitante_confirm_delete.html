@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block page_title %}
+    Excluir Registro de Visitante
+{% endblock page_title %}
+
+{% block content %}
+    <h1> Excluir Registro de Visitante </h1>
+        <h4>Confirmação do exclusão!</h4>
+
+    <p>Tem certeza que desseja excluir o registro do visitante<strong>"{{registrovisitante.visitante}}"</strong>?</p>
+    <p>Data de entrada: {{registrovisitante.data_entrada}}</p>
+    <p>Data de Limite de permanência: {{registrovisitante.data_limite}}</p>
+    <p>Data de Saída: {{registrovisitante.data_saida}}</p>
+    <p>Autorização: {{registrovisitante.autorizacao}}</p>
+    <p>Funcionário: {{registrovisitante.funcionario}}</p>
+
+    <p>Que visita <strong>{{registrovisitante.morador}}</strong>.</p>
+
+
+
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Excluir</button>
+            <a href="{% url 'visitantes_lista' %}" class="btn btn-primary">Cancelar</a>
+        </form>
+
+{% endblock content %}
