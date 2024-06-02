@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block page_title %}
+    Lista de Registro de Moradores
+{% endblock page_title %}
+
+{% block content %}
+    <h1> Lista de Registro de Moradores </h1>
+
+    {% if registromorador_list %}
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Morador</th>
+              <th scope="col">Data de Entrada</th>
+              <th scope="col">Data Saída</th>
+              <th scope="col">Porteiro</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {% for registromorador in registromorador_list %}
+                <tr>
+                    <th scope="row">{{ registromorador.pk }}</th>
+                    <td>{{registromorador.morador}}</td>
+                    <td>{{registromorador.data_entrada}}</td>
+                    <td>{{registromorador.data_saida}}</td>
+                    <td>{{registromorador.funcionario}}</td>
+                    <td>
+
+                        <a href="{% url 'registro_moradores_edicao' pk=registromorador.pk %}"
+                           class="btn btn-secondary btn-sm">Editar</a>
+                        <a href="{% url 'registro_moradores_exclusao' pk=registromorador.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                    </td>
+                </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    {% else %}
+        <p>Não há registro_moradores cadastrados</p>
+    {% endif %}
+
+    <a href="{% url 'registro_moradores_cadastro' %} " class="btn btn-primary btn-sm">Novo Cadastro</a>
+{% endblock content %}

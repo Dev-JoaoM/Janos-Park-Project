@@ -60,12 +60,19 @@ url_reg_visitante = [
     path("registro_visitantes-exclucao/<int:pk>", RegistroVisitanteDeleteView.as_view(), name="registro_visitantes_exclusao",)
 ]
 
+url_reg_morador = [
+    path("registro_moradores-lista/", RegistroMoradorListView.as_view(), name="registro_moradores_lista"),
+    path("registro_moradores-cadastro/", RegistroMoradorCreateView.as_view(), name="registro_moradores_cadastro",),
+    path("registro_moradores-edicao/<int:pk>", RegistroMoradorUptadeView.as_view(), name="registro_moradores_edicao",),
+    path("registro_moradores-exclucao/<int:pk>", RegistroMoradorDeleteView.as_view(), name="registro_moradores_exclusao",)
+]
+
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path("admin/", admin.site.urls, name="login_admin"),
     path("", home, name="home"),
     path("index/", index, name="index"),
     path("login/", login, name="login")
     # configura o final do caminho por uma variavel que contém o numero do id ou da pk
-    # path(caminho_do_link,nome da view --> template.html)
-] + url_funcionarios + url_apartamentos + url_moradores + url_visitantes + url_carros + url_motos + url_reg_visitante
+    # path(caminho_do_link,nome do arq da view --> template.html, name="nome para referenciar essa rota no codigp)
+] + url_funcionarios + url_apartamentos + url_moradores + url_visitantes + url_carros + url_motos + url_reg_visitante + url_reg_morador

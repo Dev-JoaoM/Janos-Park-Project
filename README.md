@@ -30,7 +30,7 @@
 -->
 
 
-## 📢 Sobre o [Projeto](https://github.com/Dev-JoaoM/Janos-Park-Project/blob/master/_referencia/Sobre%20o%20Projeto.md)
+## 📢 Sobre o [Projeto](https://github.com/Dev-JoaoM/Janos-Park-Project/blob/master/Sobre%20o%20Projeto.md)
 
 ## 🖥  Telas do [Projeto](https://www.figma.com/design/bTCQK2mIOF4Ni3xlhs90jt/Janos-Front?node-id=0-1&t=MJKLGJXmvthPpsEV-0)
 
@@ -41,44 +41,44 @@
 ##  💻Instalação do Projeto (Windows)
 
 #### 1. Clone o repositório
-   ```
+   ```python
     git clone https://github.com/Dev-JoaoM/Janos-Park-Project.git
    ```
 
 #### 2. Abra essa pasta no Pycharm 
 
 #### 3. Abra o terminal e crie o Ambiente virtual
-   ```
+   ```python
     py -m venv .venv
    ```
 
 ##### 3.1 Se não deixar criar o ambiente virtual, abra o cmd do windows como admin e execute
-   ```
+   ```python
    Set-ExecutionPolicy Unrestricted
    ```
 **Obs:** Tente criar o ambiente virtual novamente.
 
 #### 4. Ative o ambiente virtual
-   ```	
+   ```python
    .venv\Scripts\Activate
    ```
 
 #### 5. Instale os requerimentos (Bibliotecas usadas)
-```
+```python
 pip install -r requirements.txt
 ```
 
 #### 6. Execute as migrações (Criação do arquivo do BD)
-  ```
+  ```python
   python manage.py migrate
   ```
 
 #### 7. Inicie o servidor
-  ```
+  ```python
   python manage.py runserver
   ```
 #### 8. Acesse o endereço no seu navegador
-```
+```python
 http://127.0.0.1:8000/
 ```
 
