@@ -237,3 +237,7 @@ class RegistroMoradorUptadeView(UpdateView):
 class RegistroMoradorDeleteView(DeleteView):
     model = RegistroMorador
     success_url = reverse_lazy("registro_moradores_lista")
+
+def home_admin(request):
+    return render(request, 'home_admin.html')
+
