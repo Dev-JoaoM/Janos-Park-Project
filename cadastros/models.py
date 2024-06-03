@@ -85,7 +85,7 @@ class Visitante(models.Model):
     telefone = models.CharField(verbose_name="Telefone", max_length=8, null=False, blank=False)
 
     def __str__(self):
-        return (f"Visitante {self.nome}, telefone: {self.telefone}. Está visitando {self.morador}")
+        return (f"Visitante {self.nome}, telefone: {self.telefone}")
 
 
 class RegistroVisitante(models.Model):
