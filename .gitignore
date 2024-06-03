@@ -1,6 +1,12 @@
-# Pastas Ignoradas
+# Pasta do git e do ambiente virtual
 .git
 .venv
 _referencia/Sistema de Referencia/
+
+#Pastas de cache
 cadastros/__pycache__/
 setup/__pycache__/
+cadastros/migrations/__pycache__/
+
+#Arquivo do BD
+db.sqlite3

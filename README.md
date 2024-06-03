@@ -68,16 +68,21 @@
 pip install -r requirements.txt
 ```
 
-#### 6. Execute as migrações (Criação do arquivo do BD)
+#### 6. Crie as migrações
+  ```python
+  python manage.py makemigrations
+  ```
+
+#### 7. Execute as migrações (Criação do arquivo do BD)
   ```python
   python manage.py migrate
   ```
 
-#### 7. Inicie o servidor
+#### 8. Inicie o servidor
   ```python
   python manage.py runserver
   ```
-#### 8. Acesse o endereço no seu navegador
+#### 9. Acesse o endereço no seu navegador
 ```python
 http://127.0.0.1:8000/
 ```
