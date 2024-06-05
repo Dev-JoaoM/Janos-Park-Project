@@ -73,6 +73,7 @@ urlpatterns = [
     path("", home, name="home"),
     path("index/", index, name="index"),
     path('home_admin/', home_admin, name='home_admin'),
+    path('veiculos_admin/', veiculos_admin, name='veiculos_admin'),
     path("login/", login, name="login")
     # configura o final do caminho por uma variavel que contém o numero do id ou da pk
     # path(caminho_do_link,nome do arq da view --> template.html, name="nome para referenciar essa rota no codigp)

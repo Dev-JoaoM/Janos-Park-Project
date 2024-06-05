@@ -241,3 +241,5 @@ class RegistroMoradorDeleteView(DeleteView):
 def home_admin(request):
     return render(request, 'home_admin.html')
 
+def veiculos_admin(request):
+    return render(request, 'veiculosadm.html')
