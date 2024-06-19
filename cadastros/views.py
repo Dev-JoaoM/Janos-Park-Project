@@ -199,13 +199,15 @@ class RegistroVisitanteListView(ListView):
 
 class RegistroVisitanteCreateView(CreateView):
     model = RegistroVisitante
-    fields = ["visitante", "morador", "autorizacao", "data_limite", "funcionario"]
+    fields = ["visitante", "morador", "autorizacao","data_limite", "funcionario"]
+    readonly_fields = ["data_entrada"]
     success_url = reverse_lazy("registro_visitantes_lista")
 
 
 class RegistroVisitanteUptadeView(UpdateView):
     model = RegistroVisitante
     fields = ["visitante", "morador", "funcionario", "data_limite", "data_saida"]
+    readonly_fields = ["data_entrada"]
     success_url = reverse_lazy("registro_visitantes_lista")
 
 
@@ -225,12 +227,14 @@ class RegistroMoradorListView(ListView):
 class RegistroMoradorCreateView(CreateView):
     model = RegistroMorador
     fields = ["morador", "funcionario"]
+    readonly_fields = ["data_entrada"]
     success_url = reverse_lazy("registro_moradores_lista")
 
 
 class RegistroMoradorUptadeView(UpdateView):
     model = RegistroMorador
     fields = ["morador", "funcionario"]
+    readonly_fields = ["data_entrada"]
     success_url = reverse_lazy("registro_moradores_lista")
 
 

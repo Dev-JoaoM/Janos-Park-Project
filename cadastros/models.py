@@ -41,9 +41,11 @@ class Funcionario(models.Model):
     login = models.CharField(verbose_name="Login", max_length=10, null=False, blank=False)
     senha = models.CharField(verbose_name="Senha", max_length=6, null=False, blank=False)
     confirm_senha = models.CharField(verbose_name="Confirme a senha", max_length=6, null=False, blank=False, default="senha_confirm")
+    criado_por = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=False, blank=False)
     # TODO: validação de senha
 
     class Meta:
+        verbose_name_plural = "funcionarios"
         ordering = ["nome"]
 
     def demitir_funcionario(self):
