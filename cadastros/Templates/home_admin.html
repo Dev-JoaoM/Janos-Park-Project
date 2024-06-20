@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block page_title %}
+    Home Admin
 {% endblock page_title %}
 
 {% block content %}
@@ -13,17 +14,16 @@
 
     <div style="text-align: center; padding: 20px;">
         <h1>Controle Administrativo</h1>
-        <h2>Seja bem vindo, Admin!</h2>
-        <p>Escolher acesso: Funcionário, Apartamento e Morador</p>
+        <h2>Seja bem vindo, <strong>"Nome_Admin!"</strong> </h2>
     </div>
        
     <div class="card-container" style="text-align: center">
             <div class="card">
-                <h1>Funcionário</h1>
-                <img src="{% static '/imagens/funcionario.png' %}" alt="Funcionário">
-                <p>Cadastrar e gerenciar acesso de Funcionários</p>
-                <a href="{% url 'funcionarios_cadastro' %}"><button>Cadastrar Funcionário</button></a><br>
-                <a href="{% url 'funcionarios_lista' %}"><button>Listar Funcionários</button></a>
+                <h1>Porteiro(a)</h1>
+                <img src="{% static '/imagens/funcionario.png' %}" alt="Porteiro(a)">
+                <p>Cadastrar e gerenciar acesso dos Porteiros(as)</p>
+                <a href="{% url 'funcionarios_cadastro' %}"><button>Cadastrar Porteiro(a)</button></a><br>
+                <a href="{% url 'funcionarios_lista' %}"><button>Listar Porteiros(as)</button></a>
             </div>
             <div class="card">
                 <h1>Apartamento</h1>

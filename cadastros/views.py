@@ -14,8 +14,8 @@ def home(request):  # recebe uma solicitação
     # renderiza um template.html com as informações passadas, quando se tem  uma request
 
 
-def index(request):
-    return render(request, "index.html")  #index = home_admin
+def home_portaria(request): # TODO: mandar o nome do usuario logado
+    return render(request, "home_portaria.html") 
 
 
 def login(request):

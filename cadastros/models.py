@@ -39,8 +39,8 @@ class Funcionario(models.Model):
     dt_demissao = models.DateField(verbose_name="Data de Demissão", null=True)
     motivo_demissao = models.CharField(verbose_name="Motivo da Demissão", max_length=200, null=False, blank=False)
     login = models.CharField(verbose_name="Login", max_length=10, null=False, blank=False)
-    senha = models.CharField(verbose_name="Senha", max_length=6, null=False, blank=False)
-    confirm_senha = models.CharField(verbose_name="Confirme a senha", max_length=6, null=False, blank=False, default="senha_confirm")
+    senha = models.CharField(verbose_name="Senha", max_length=20, null=False, blank=False)
+    confirm_senha = models.CharField(verbose_name="Confirme a senha", max_length=20, null=False, blank=False, default="senha_confirm")
     # status = models.BooleanField(verbose_name="Status", null=False, blank=False, default=True)
 
     # TODO: validação de senha

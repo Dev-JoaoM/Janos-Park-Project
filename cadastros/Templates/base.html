@@ -16,17 +16,19 @@
 <header>
   <div class="header-left">
       <p>Condôminio Parque Santa Lúcia</p>
-  </div>
+
+    </div>
   <div class="header-center">
-    <img id="logo" src="{% static 'imagens/Logo_editado_2.png' %}" alt="Jano Systems">
+    <a><img id="logo" src="{% static 'imagens/Logo_editado_2.png' %}" alt="Jano Systems"></a>
   </div>
   <div class="header-right">
       <nav>
           <ul class="list_menu">
-              <li><a href="{%url 'index'%}">Home</a></li>
+              <li><a href="{%url 'index'%}">Portaria</a></li>
               <li><a href="{% url 'moradores_lista' %}">Morador</a></li>
               <li><a href="{% url 'visitantes_lista' %}">Visitante</a></li>
-              <li><a href="{%url 'home'%}">Admin</a></li>
+              <li><a href="{%url 'home_admin'%}">Admin</a></li>
+              <li><a href="{%url 'veiculos_admin'%}">Veículos</a></li>
               <li><a href=""></a></li>
               <a href="{%url 'login'%}"><button type="button" class="btn btn-dark">Sair</button></a>
           </ul>
@@ -45,10 +47,12 @@
     <hr>
     <div class="footer-content">
         <div class="footer-left">
-          <p>Desenvolvido por <a href="#" target="_blank"><strong>Janos System&copy;</strong></a> 2024</p>
+          <p>Desenvolvido por <a href= "https://github.com/Dev-JoaoM/Janos-Park-Project" target="_blank"><strong>Janos System&copy;</strong></a> 2024.</p>
         </div>
         <div class="footer-right">
-          <p id="copyright">Condôminio Parque Santa Lúcia</p>
+          
+          <p id="copyright"><a color=ffff href= "{%url 'home'%}" target="_blank"><strong>Contato/Sobre Nós</strong></a></p>
+          
         </div>
     </div>
   </footer>
