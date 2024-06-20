@@ -3,21 +3,36 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, View
 from django.urls import reverse_lazy  # usado para acessar as rotas 'path' pelos nomes
 from .models import Funcionario, Morador, Apartamento, Visitante, Carro, Moto, RegistroVisitante, RegistroMorador  # importação das classes do arquivo models
+from django.contrib.auth import authenticate
+from django.contrib.auth import login as login_django
+from django.http.response import HttpResponse
 
 
 # Essa é uma FBV: Function Base the View
 def home(request):  # recebe uma solicitação
-    # cadastros = Cadastro.objects.all()  # Busca as informações no banco
-    # nome = ["cleitin", "maria", "joana", "silva"]
-    # return render(request, "cadastros/home.html", {"funcionarios": funcionarios, "nome": nome})
-    return render(request, "home.html") #, {"cadastros": cadastros})
-    # renderiza uma template.html com as informações passadas, quando se tem  uma request
+    return render(request, "home.html")
+    # renderiza um template.html com as informações passadas, quando se tem  uma request
+
 
 def index(request):
-    return render(request, "index.html")
+    return render(request, "index.html")  #index = home_admin
+
 
 def login(request):
-    return render(request, "login.html")
+    if request.method == "GET":
+        return render(request, "login.html")
+    else:
+        nome = request.POST.get("nome")
+        senha = request.POST.get("senha")
+        usuario = authenticate(username=nome, password=senha)
+
+        if usuario:
+            login_django(request, usuario)
+            return render(request, "index.html")
+        else:
+            return HttpResponse("Dados inválidos! Tente novamente. Se persistir o erro entre em contato com os admin.")
+
+
 
 # Essas são CBV: Class Base the View
 # São mais recomendadas para se utilizar por poder reutilizar a classe pela herança (POO)

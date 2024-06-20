@@ -89,5 +89,5 @@ http://127.0.0.1:8000/
 
 # Autores do Projeto
 
-| [<img loading="lazy" src="https://avatars.githubusercontent.com/u/140906032?v=4" width=115><br><sub>João Marcos</sub>](https://github.com/Dev-JoaoM) |  [<img loading="lazy" src="https://avatars.githubusercontent.com/u/91342788?v=4" width=115><br><sub>Pedro Henrique</sub>](https://github.com/pedrohriquefs) | [<img loading="lazy" src="https://avatars.githubusercontent.com/u/99366619?v=4" width=115><br><sub>Tiago Batixta</sub>](https://github.com/TiagoBatixta) |
-| :---: | :---: | :---: |
+| [<img loading="lazy" src="https://avatars.githubusercontent.com/u/140906032?v=4" width=115><br><sub>João Marcos</sub>](https://github.com/Dev-JoaoM) |  [<img loading="lazy" src="https://avatars.githubusercontent.com/u/91342788?v=4" width=115><br><sub>Pedro Henrique</sub>](https://github.com/pedrohriquefs) | [<img loading="lazy" src="https://avatars.githubusercontent.com/u/99366619?v=4" width=115><br><sub>Tiago Batixta</sub>](https://github.com/TiagoBatixta) | [<img loading="lazy" src="https://avatars.githubusercontent.com/u/161094150?v=4" width=115><br><sub>Larissa Zanardo</sub>](https://github.com/LarissaZanardo) |
+| :---: | :---: | :---: |:---: |
