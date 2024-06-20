@@ -34,10 +34,9 @@ def login(request):
 
 
 
-# Essas são CBV: Class Base the View
-# São mais recomendadas para se utilizar por poder reutilizar a classe pela herança (POO)
+# TODO: fazer funções de criação de obj do tipo user. User.objects.create_user(username, password) -> user.save
 
-            ##### VIEWS DE MORADOR
+            ##### VIEWS DE FUNCIONÁRIOS
 class FuncionarioListView(ListView):
     model = Funcionario  # Procura um template que tem o mesmo nome da model 'funcionario' acrescido de '_list'
 
@@ -77,6 +76,10 @@ class FuncionarioDetalhesView(View):
     #success_url = reverse_lazy("funcionarios-lista/")
     # TODO: faze o detalhamento do cadastro
 
+
+
+# Essas são CBV: Class Base the View
+# São mais recomendadas para se utilizar por poder reutilizar a classe pela herança (POO)
 
 
 ##### VIEWS DE APARTAMENTO
