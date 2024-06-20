@@ -3,4 +3,5 @@
 .venv
 _referencia/Sistema de Referencia/
 cadastros/__pycache__/
+cadastros/migrations/__pycache__/
 setup/__pycache__/
