@@ -1,0 +1,222 @@
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Aplica sombra ao div dentro do header */
+.header-content {
+    background-color: #ffffff; /* Cor de fundo do div */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Propriedade de sombra */
+    border-radius: 5px; /* Bordas arredondadas, opcional */
+}
+
+/* Estilos gerais para o header */
+header {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 90px;
+    margin-bottom: 25px;
+    background-color: #f8f9fa; /* Cor de fundo do header */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Propriedade de sombra */
+}
+
+/* Estilos para a seção à esquerda do header */
+.header-left {
+    flex: 1;
+}
+
+/* Estilos para a seção central do header */
+.header-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+#logo {
+    width: 200px;
+}
+
+.header-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-left: 60px;
+    font-size: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 22px;
+}
+
+nav ul li a:hover {
+    color: #04182e;
+}
+
+header p {
+    font-size: 23px;
+    font-weight: bold;
+}
+
+header a {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.navbar {
+    margin-bottom: 30px;
+}
+
+main.container {
+    text-align: center;
+}
+
+.txtadm {
+    padding-top: 15px;
+    padding-bottom: 3%;
+    font-weight: bold;
+    text-align: center;
+}
+
+.txtadm2, .acesso {
+    text-align: center;
+}
+
+.txtadm2 {
+    font-size: 220%;
+}
+
+.acesso {
+    padding-bottom: 30px;
+    font-size: 100%;
+}
+
+p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+.card-container {
+    justify-content: center;
+    display: flex;
+    gap: 75px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    align-items: center;
+    width: 500px;
+    margin: 0 auto; /* Centraliza o card horizontalmente */
+}
+
+.card img {
+    border-radius: 8px;
+    height: 200px;
+}
+
+.moradorimg {
+    width: 200px;
+}
+
+.imgsadm {
+    padding-bottom: 10px;
+}
+
+.card h3 {
+    text-align: center;
+    font-size: 60px;
+    margin: 15px 0 10px;
+}
+
+.card p {
+    font-size: 20px;
+    padding-top: 12px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.btn-dark {
+    background-color: #222222;
+    color: #FFFFFF;
+    border: none;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    height: 40px;
+    width: 59px;
+}
+
+.btn-spacing {
+    margin-bottom: 15px;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #222222;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 15px;
+    cursor: pointer;
+    font-size: 23px;
+    font-weight: bold;
+    height: 50px;
+    width: 350px;
+}
+
+.btn-primary {
+    background-color: #000000 !important;
+    color: #fff !important;
+}
+
+.btn-primary:hover {
+    background-color: #161616 !important;
+}
+
+.btn-secondary {
+    background-color: #000000 !important;
+    color: #fff !important;
+}
+
+.btn-secondary:hover {
+    background-color: #161616 !important;
+}
+
+
+.card a {
+    font-size: 23px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #000000;
+}
+
+.devs {
+    padding-top: 120px;
+    text-align: center;
+    padding-bottom: 120px;
+}
