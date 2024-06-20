@@ -1,65 +1,40 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 {% load static %}
-<html lang="pt-br">
+{% block page_title %}
+{% endblock page_title %}
+
+{% block content %}
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Controle de Veiculos</title>
-    <link rel="stylesheet" href="{% static 'styles/veiculosadm.css' %}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <title>Controle de Veiculos</title>
+  <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
-<body>
 
-<header>
-<div class="header-left">
-  <p>Janos Manage</p>
-</div>
-<div class="header-center">
-<img id="logo" src="/static/imagens/Logo_editado_2.png" alt="Jano Systems">
-</div>
-<div class="header-right">
-  <nav>
-      <ul class="list_menu">
-          <li><a href="{%url 'home_admin'%}">ADMIN</a></li>
-          <li><a href=""></a></li>
-          <a href="{%url 'login'%}"><button type="button" class="btn-dark">Sair</button></a>
-      </ul>
-  </nav>
-</div>
-</header>
-
-<h1 class="txtadm">Controle de Veiculos</h1>
-<p class="acesso">Controles de: Carros de Moradores, Carro de Visitantes e Moto</p>
-
-<main class="container">
-    <div class="card-container" >
+  <div style="text-align: center; padding: 20px;">
+    <h1 class="txtadm">Controle de Veiculos</h1>
+    <p class="acesso">Controles de: Carros de Moradores, Carro de Visitantes e Moto</p>
+  </div>
+  <div class="card-container" style="text-align: center">
     <div class="card">
-    <div class="imgsadm">
-    <h1>Carros de Moradores</h1>
-    <img src="{% static 'imagens/carrom.png' %}" alt="Carros de Moradores"></div>
-    <a href="{% url 'funcionarios_cadastro' %}" class="btn btn-primary btn-spacing">Cadastrar Carros de Moradores</a>
-    <a href="{% url 'carros_lista' %}" class="btn btn-secondary btn-spacing">Listar Carros de Moradores</a>
-    <p>Cadastrar e gerenciar acesso de Carros de Moradores</p>
+        <h1>Carros de Moradores</h1>
+        <img src="{% static '/imagens/carrom.png' %}" alt="Carros de Moradores">
+        <p>Cadastrar e gerenciar acesso de Carros de Moradores</p>
+        <a href="{% url 'funcionarios_cadastro' %}"><button>Cadastrar Carros</button></a><br>
+        <a href="{% url 'funcionarios_lista' %}"><button>Listar Carros de Moradores</button></a>
     </div>
-    <div class="card">
-    <div class="imgsadm">
-    <h1>Carros de Visitante</h1>
-    <img src="{% static 'imagens/carrov.png' %}" alt="Carros de Visitantes"></div>
-    <a href="{% url 'apartamentos_cadastro' %}" class="btn btn-primary btn-spacing">Cadastrar Carros de Visitantes</a>
-    <a href="{% url 'visitantes_lista' %}" class="btn btn-secondary btn-spacing">Listar Carros de Visitantes</a>
-    <p>Cadastrar e gerenciar acesso de Carros de Visitantes</p>
-    </div>
-    <div class="card">
-    <h1>Motos</h1>
-    <div class="imgsadm">
-    <img src="{% static 'imagens/moto.png' %}" class="moradorimg" alt="Moto"></div>
-    <a href="{% url 'moradores_cadastro' %}" class="btn btn-primary btn-spacing">Cadastrar Moto</a>
-    <a href="{% url 'motos_lista' %}" class="btn btn-secondary btn-spacing">Listar Moto</a>
-    <p>Cadastrar e gerenciar acesso de Motos</p>
-    </div>
-    </div>
-</main>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
-</html>
+      <div class="card">
+          <h1>Carros de Visitante</h1>
+          <img src="{% static '/imagens/carrov.png' %}" alt="Carros de Visitantes">
+          <p>Cadastrar e gerenciar acesso de Carros de Moradores</p>
+          <a href="{% url 'funcionarios_cadastro' %}"><button>Cadastrar Carro</button></a><br>
+          <a href="{% url 'funcionarios_lista' %}"><button>Listar Carros de Visitantes</button></a>
+      </div>
+      <div class="card">
+        <h1>Controle de Motos</h1>
+        <img src="{% static '/imagens/moto.png' %}" alt="Carros de Visitantes">
+        <p>Cadastrar e gerenciar acesso de Motos</p>
+        <a href="{% url 'funcionarios_cadastro' %}"><button>Cadastrar Moto</button></a><br>
+        <a href="{% url 'funcionarios_lista' %}"><button>Listar Motos</button></a>
+      </div>
+  </div>
+{% endblock content %}
