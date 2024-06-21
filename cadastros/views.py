@@ -19,6 +19,9 @@ def index(request):
 def login(request):
     return render(request, "login.html")
 
+def recuperar_senha(request):
+    return render(request, "recuperar_senha.html")
+
 # Essas são CBV: Class Base the View
 # São mais recomendadas para se utilizar por poder reutilizar a classe pela herança (POO)
 
