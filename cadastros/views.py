@@ -6,6 +6,7 @@ from .models import Funcionario, Morador, Apartamento, Visitante, Carro, Moto, R
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as login_django
 from django.http.response import HttpResponse
+from rolepermissions.decorators import has_permission_decorator
 
 
 # Essa é uma FBV: Function Base the View

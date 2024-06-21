@@ -47,7 +47,7 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
-"rolepermissions",
+    "rolepermissions",
 ]
 
 MY_APPS = [
@@ -162,12 +162,12 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 
 # Config auth
-AUTH_USER_MODEL = 'usuarios.Users'
+AUTH_USER_MODEL = 'usuarios.Colaborador'
 
 
 # Role permissions
 
-ROLEPERMISSIONS_MODULE = 'JANOS-PARK-PROJECT.roles'
+ROLEPERMISSIONS_MODULE = 'setup.roles'
 
 # Messages
 

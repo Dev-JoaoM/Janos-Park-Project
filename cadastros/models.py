@@ -1,6 +1,6 @@
 from django.db import models
 from datetime import date
-
+from usuarios.models import Colaborador
 
 class Cadastro(models.Model):
     titulo = models.CharField(
@@ -19,13 +19,6 @@ class Cadastro(models.Model):
         if not self.data_fim_real:
             self.data_fim_real = date.today()
             self.save()
-
-
-class Cargo(models.Model):
-    nome = models.CharField(verbose_name="Nome", max_length=20, null=False, blank=False)
-    carga_horaria_semanal = models.IntegerField(verbose_name="Carga Horária Semanal", null=False, blank=False)
-    descricao_atividades = models.CharField(verbose_name="Descrição das atividades", max_length=150, null=False, blank=False)
-
 
 class Funcionario(models.Model):
     nome = models.CharField(verbose_name="Nome", max_length=50, null=False, blank=False)
@@ -63,10 +56,17 @@ class Apartamento(models.Model):
     andar = models.CharField(verbose_name="Andar", max_length=5, null=False, blank=False)
     numero_apto = models.IntegerField(verbose_name="Numero do Apartamento", null=False, blank=False)
     telefone_apto = models.CharField(verbose_name="Telefone", max_length=8, null=False, blank=False)
+    """
+        choices_status= (
+    ('A', 'Ativo(a)'), 
+    ('I', 'Inativo(a)'), 
 
+    )
+
+    status = models.CharField(max_length=1, choices=choices_status, null=False, blank=False, default="A")
+    """
     def __str__(self):
         return f"Apartamento n° {self.numero_apto}, {self.andar}º andar, bloco {self.bloco}"
-
 
 class Morador(models.Model):
     apartamento = models.ForeignKey(Apartamento, on_delete=models.CASCADE)
@@ -75,8 +75,18 @@ class Morador(models.Model):
     doc_rg = models.CharField(verbose_name="RG", max_length=9, null=False, blank=False)
     doc_cpf = models.CharField(verbose_name="CPF", max_length=11, null=False, blank=False)
 
+    """
+        choices_status= (
+    ('A', 'Ativo(a)'), 
+    ('I', 'Inativo(a)'), 
+
+    )
+
+    status = models.CharField(max_length=1, choices=choices_status, null=False, blank=False, default="A")
+    """
+
     def __str__(self):
-        return f"{self.nome}"
+            return f"{self.nome}"
 
 
 class Visitante(models.Model):
@@ -86,7 +96,16 @@ class Visitante(models.Model):
     doc_rg = models.CharField(verbose_name="RG", max_length=9, null=False, blank=False)
     doc_cpf = models.CharField(verbose_name="CPF", max_length=11, null=False, blank=False)
     telefone = models.CharField(verbose_name="Telefone", max_length=8, null=False, blank=False)
+    """
+        choices_status= (
+    ('A', 'Ativo(a)'), 
+    ('S', 'Suspenso(a)')
+    ('I', 'Inativo(a)'), 
 
+    )
+
+    status = models.CharField(max_length=1, choices=choices_status, null=False, blank=False, default="A")
+    """
     def __str__(self):
         return (f"Visitante {self.nome}, telefone: {self.telefone}")
 
@@ -98,7 +117,17 @@ class RegistroVisitante(models.Model):
     data_limite = models.DateTimeField(auto_now_add=False, null=False, blank=False)
     data_saida = models.DateTimeField(null=True)
     autorizacao = models.BooleanField(verbose_name="Autorização do Morador", null=False, blank=False)
-    funcionario = models.ForeignKey(Funcionario, on_delete=models.DO_NOTHING)  # rever esse parametro
+    funcionario = models.ForeignKey(Colaborador, on_delete=models.DO_NOTHING)  # rever esse parametro
+    """
+        choices_status= (
+    ('A', 'Ativo(a)'), 
+    ('I', 'Inativo(a)'), 
+
+    )
+
+    status = models.CharField(max_length=1, choices=choices_status, null=False, blank=False, default="A")
+    """
+
     # TODO: pegar o funcionário que fez o registro de acordo com o login
     # TODO: inserir a data limite por funcao
     # TODO: inserir a data de entrada atual automaticamente
@@ -110,7 +139,17 @@ class RegistroMorador(models.Model):
     morador = models.ForeignKey(Morador, on_delete=models.DO_NOTHING)  # rever esse parametro
     data_entrada = models.DateTimeField(auto_now_add=True, null=False, blank=False)
     data_saida = models.DateTimeField(null=True, blank=True)
-    funcionario = models.ForeignKey(Funcionario, on_delete=models.DO_NOTHING)  # rever esse parametro
+    funcionario = models.ForeignKey(Colaborador, on_delete=models.DO_NOTHING)  # rever esse parametro
+    """
+        choices_status= (
+    ('A', 'Ativo(a)'), 
+    ('I', 'Inativo(a)'), 
+
+    )
+
+    status = models.CharField(max_length=1, choices=choices_status, null=False, blank=False, default="A")
+    """
+
 
     # TODO: pegar o funcionário que fez o registro de acordo com o login
     # TODO: inserir a data de entrada atual automaticamente
@@ -130,6 +169,16 @@ class Carro(models.Model):
     placa = models.CharField(verbose_name="Placa", max_length=8, null=False, blank=False)
     cor = models.CharField(verbose_name="Cor", max_length=10, null=False, blank=False)
     morador = models.ForeignKey(Morador, on_delete=models.CASCADE, default="1")
+    """
+        choices_status= (
+    ('A', 'Ativo(a)'), 
+    ('I', 'Inativo(a)'), 
+
+    )
+
+    status = models.CharField(max_length=1, choices=choices_status, null=False, blank=False, default="A")
+    """
+
     # não rá receber duas chaves estrangeiras ao mesmo tempo
     # TODO: diferenciar o carro de morador e de visitante
 
@@ -142,6 +191,16 @@ class CarroVisitante(models.Model):
     placa = models.CharField(verbose_name="Placa", max_length=8, null=False, blank=False)
     cor = models.CharField(verbose_name="Cor", max_length=10, null=False, blank=False)
     visitante = models.ForeignKey(Visitante, on_delete=models.CASCADE)
+    """
+        choices_status= (
+    ('A', 'Ativo(a)'), 
+    ('I', 'Inativo(a)'), 
+
+    )
+
+    status = models.CharField(max_length=1, choices=choices_status, null=False, blank=False, default="A")
+    """
+
     # não rá receber duas chaves estrangeiras ao mesmo tempo
     # TODO: diferenciar o carro de morador e de visitante
 
@@ -154,6 +213,16 @@ class Moto(models.Model):
     modelo = models.CharField(verbose_name="Modelo", max_length=10, null=False, blank=False)
     placa = models.CharField(verbose_name="Placa", max_length=8, null=False, blank=False)
     cor = models.CharField(verbose_name="Cor", max_length=10, null=False, blank=False)
+    """
+        choices_status= (
+    ('A', 'Ativo(a)'), 
+    ('I', 'Inativo(a)'), 
+
+    )
+
+    status = models.CharField(max_length=1, choices=choices_status, null=False, blank=False, default="A")
+    """
+
 
     def __str__(self):
         return f"Placa {self.placa}, {self.modelo},{self.cor}, visitante {self.apartamento}"
