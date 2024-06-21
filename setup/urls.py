@@ -1,8 +1,26 @@
 from django.contrib import admin
 from django.urls import path
+from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static # TODO: verificar
+
 
 # from cadastros.views import home, CadastroListView, CadastroCreateView, CadastroUptadeView, CadastroDeleteView, CadastroCompleteView
 from cadastros.views import *
+
+urlpatterns = [
+    path("admin/", admin.site.urls, name="login_admin"),
+    path("", home, name="home"),
+    path("home_portaria/", home_portaria, name="index"),
+    path('home_admin/', home_admin, name='home_admin'),
+    path('controle_veiculos/', veiculos_admin, name='veiculos_admin'),
+    path("login/", login, name="login"),
+    path('auth/', include('usuarios.urls'))
+
+    # configura o final do caminho por uma variavel que contém o numero do id ou da pk
+    # path(caminho_do_link,nome do arq da view --> template.html, name="nome para referenciar essa rota no codigp)
+]
+
 
 
         # SEPARAÇÃO DAS URLS EM LISTAS DIFERENTES
@@ -67,14 +85,6 @@ url_reg_morador = [
     path("registro_moradores-exclucao/<int:pk>", RegistroMoradorDeleteView.as_view(), name="registro_moradores_exclusao",)
 ]
 
+url_cruds = url_funcionarios + url_apartamentos + url_moradores + url_visitantes + url_carros + url_motos + url_reg_visitante + url_reg_morador
 
-urlpatterns = [
-    path("admin/", admin.site.urls, name="login_admin"),
-    path("", home, name="home"),
-    path("home_portaria/", home_portaria, name="index"),
-    path('home_admin/', home_admin, name='home_admin'),
-    path('controle_veiculos/', veiculos_admin, name='veiculos_admin'),
-    path("login/", login, name="login")
-    # configura o final do caminho por uma variavel que contém o numero do id ou da pk
-    # path(caminho_do_link,nome do arq da view --> template.html, name="nome para referenciar essa rota no codigp)
-] + url_funcionarios + url_apartamentos + url_moradores + url_visitantes + url_carros + url_motos + url_reg_visitante + url_reg_morador
+urlpatterns += url_cruds

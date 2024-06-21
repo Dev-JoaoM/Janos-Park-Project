@@ -38,7 +38,7 @@
 
 ## 📜 Versionamento de código com [Git e GitHub](https://github.com/Dev-JoaoM/Versionamento-com-Git-e-GitHub/tree/master)
 
-##  💻Instalação do Projeto (Windows)
+## 💻 Instalação do Projeto (Windows)
 
 #### 1. Clone o repositório
    ```python
