@@ -33,7 +33,7 @@ class Funcionario(models.Model):
     motivo_demissao = models.CharField(verbose_name="Motivo da Demissão", max_length=200, null=False, blank=False)
     login = models.CharField(verbose_name="Login", max_length=10, null=False, blank=False)
     senha = models.CharField(verbose_name="Senha", max_length=20, null=False, blank=False)
-    confirm_senha = models.CharField(verbose_name="Confirme a senha", max_length=20, null=False, blank=False, default="senha_confirm")
+    confirm_senha = models.CharField(verbose_name="Confirme a senha", max_length=20, null=False, blank=False)
     # status = models.BooleanField(verbose_name="Status", null=False, blank=False, default=True)
 
     # TODO: validação de senha
@@ -90,22 +90,15 @@ class Morador(models.Model):
 
 
 class Visitante(models.Model):
-    morador = models.ForeignKey(Morador, on_delete=models.DO_NOTHING)  # rever esse parametro
     nome = models.CharField(verbose_name="Nome", max_length=50, null=False, blank=False)
     dt_nasto = models.DateField(verbose_name="Data de Nascimento", null=False, blank=False)
     doc_rg = models.CharField(verbose_name="RG", max_length=9, null=False, blank=False)
     doc_cpf = models.CharField(verbose_name="CPF", max_length=11, null=False, blank=False)
     telefone = models.CharField(verbose_name="Telefone", max_length=8, null=False, blank=False)
-    """
-        choices_status= (
-    ('A', 'Ativo(a)'), 
-    ('S', 'Suspenso(a)')
-    ('I', 'Inativo(a)'), 
 
-    )
-
+    choices_status= (('A', 'Ativo(a)'),('S', 'Suspenso(a)'),('I', 'Inativo(a)'))
     status = models.CharField(max_length=1, choices=choices_status, null=False, blank=False, default="A")
-    """
+
     def __str__(self):
         return (f"Visitante {self.nome}, telefone: {self.telefone}")
 
@@ -114,10 +107,23 @@ class RegistroVisitante(models.Model):
     morador = models.ForeignKey(Morador, on_delete=models.DO_NOTHING)  # rever esse parametro
     visitante = models.ForeignKey(Visitante, on_delete=models.DO_NOTHING)  # rever esse parametro
     data_entrada = models.DateTimeField(auto_now_add=True, null=False, blank=False)
-    data_limite = models.DateTimeField(auto_now_add=False, null=False, blank=False)
+    data_limite = models.DateTimeField(auto_now_add=False, null=False, blank=False) # TODO: TIRAR  ESSE AUTO ADD
     data_saida = models.DateTimeField(null=True)
     autorizacao = models.BooleanField(verbose_name="Autorização do Morador", null=False, blank=False)
-    funcionario = models.ForeignKey(Colaborador, on_delete=models.DO_NOTHING)  # rever esse parametro
+    funcionario = models.ForeignKey(Funcionario, on_delete=models.DO_NOTHING)  # rever esse parametro
+    # TODO: def de saida com um checkbox
+    # TODO: Se não tem autorização do morador não tem data de entrada e nem data limite de saida
+    def marcar_saida(self):
+        if not self.data_saida:
+            self.data_saida = date.today()
+            self.save()
+
+
+    def calc_data_limite(self):
+        if self.data_entrada:
+            self.data_limite = date.today() + 3
+            self.save()
+
     """
         choices_status= (
     ('A', 'Ativo(a)'), 
@@ -139,7 +145,14 @@ class RegistroMorador(models.Model):
     morador = models.ForeignKey(Morador, on_delete=models.DO_NOTHING)  # rever esse parametro
     data_entrada = models.DateTimeField(auto_now_add=True, null=False, blank=False)
     data_saida = models.DateTimeField(null=True, blank=True)
-    funcionario = models.ForeignKey(Colaborador, on_delete=models.DO_NOTHING)  # rever esse parametro
+    funcionario = models.ForeignKey(Funcionario, on_delete=models.DO_NOTHING)  # rever esse parametro
+
+    def marcar_saida(self):
+        if not self.data_saida:
+            self.data_saida = date.today()
+            self.save()
+
+    # TODO: def de saida com um checkbox
     """
         choices_status= (
     ('A', 'Ativo(a)'), 
@@ -164,11 +177,11 @@ class QntVagasVisita(models.Model):
     # Talvez não precise do 'vagas_disponiveis' por ser um campo calculado
 
 
-class Carro(models.Model):
+class Carro(models.Model): #Carros de Moradores
     modelo = models.CharField(verbose_name="Modelo", max_length=10, null=False, blank=False)
     placa = models.CharField(verbose_name="Placa", max_length=8, null=False, blank=False)
     cor = models.CharField(verbose_name="Cor", max_length=10, null=False, blank=False)
-    morador = models.ForeignKey(Morador, on_delete=models.CASCADE, default="1")
+    morador = models.ForeignKey(Morador, on_delete=models.DO_NOTHING)
     """
         choices_status= (
     ('A', 'Ativo(a)'), 

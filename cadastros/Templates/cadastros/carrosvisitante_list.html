@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block page_title %}
-    Lista de Carros
+    Lista de Carros de Visitantes
 {% endblock page_title %}
 
 {% block content %}
-    <h1> Lista de Carros </h1>
+    <h1> Lista de Carros de Visitantes</h1>
 
-    {% if carro_list %}
+    {% if carrovisitante_list %}
         <table class="table">
           <thead>
             <tr>
@@ -15,30 +15,30 @@
               <th scope="col">Placa</th>
               <th scope="col">Modelo</th>
               <th scope="col">Cor</th>
-              <th scope="col">Morador</th>
+              <th scope="col">Visitante</th>
             </tr>
           </thead>
           <tbody>
-            {% for carro in carro_list %}
+            {% for carro in carrovisitante_list %}
                 <tr>
                     <th scope="row">{{ carro.pk }}</th>
                     <td>{{carro.placa}}</td>
                     <td>{{carro.modelo}}</td>
                     <td>{{carro.cor}}</td>
-                    <td>{{carro.morador}}</td>
+                    <td>{{carro.visitante}}</td>
                     <td>
 
-                        <a href="{% url 'carros_edicao' pk=carro.pk %}"
+                        <a href="{% url 'carros_visitantes_edicao' pk=carro.pk %}"
                            class="btn btn-secondary btn-sm ">Editar</a>
-                        <a href="{% url 'carros_exclusao' pk=carro.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                        <a href="{% url 'carros_visitantes_exclusao' pk=carro.pk %}" class="btn btn-danger btn-sm">Excluir</a>
                     </td>
                 </tr>
             {% endfor %}
           </tbody>
         </table>
     {% else %}
-        <p>Não há carros de moradores cadastrados</p>
+        <p>Não há carros de visitantes cadastrados</p>
     {% endif %}
 
-    <a href="{% url 'carros_cadastro' %} " class="btn btn-primary btn-sm">Novo Cadastro</a>
+    <a href="{% url 'carros_visitantes_cadastro' %} " class="btn btn-primary btn-sm">Novo Cadastro</a>
 {% endblock content %}

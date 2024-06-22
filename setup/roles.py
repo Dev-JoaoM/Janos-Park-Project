@@ -1,4 +1,4 @@
-import imp
+#import imp
 from rolepermissions.roles import AbstractUserRole
 
 class Gerente(AbstractUserRole):

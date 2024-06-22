@@ -17,8 +17,8 @@
               <th scope="col">RG</th>
               <th scope="col">CPF</th>
               <th scope="col">Telefone</th>
-              <th scope="col">Visitando</th>
-              <th scope="col">Carro</th>
+              <!--
+              <th scope="col">Carro</th> -->
 
             </tr>
           </thead>
@@ -31,8 +31,8 @@
                     <td>{{visitante.doc_rg}}</td>
                     <td>{{visitante.doc_cpf}}</td>
                     <td>{{visitante.telefone}}</td>
-                    <td>{{visitante.morador}}</td>
-                    <td>{{visitante.carro|default:"sem carro"}}</td>
+                    <!--
+                    <td>{{visitante.carro|default:" - "}}</td> -->
                     <td>
 
                         <a href="{% url 'visitantes_edicao' pk=visitante.pk %}"
@@ -48,5 +48,5 @@
     {% endif %}
 
     <a href="{% url 'visitantes_cadastro' %} " class="btn btn-primary">Novo Visitante</a>
-    <a href="{% url 'carros_cadastro' %}" class="btn btn-primary">Novo Carro (visitante)</a>
+    <a href="{% url 'carros_visitante_cadastro' %}" class="btn btn-primary">Novo Carro</a>
 {% endblock content %}

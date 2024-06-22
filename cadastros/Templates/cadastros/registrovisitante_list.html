@@ -28,7 +28,7 @@
                     <td>{{registrovisitante.visitante}}</td>
                     <td>{{registrovisitante.data_entrada}}</td>
                     <td>{{registrovisitante.data_limite}}</td>
-                    <td>{{registrovisitante.data_saida}}</td>
+                    <td>{{registrovisitante.data_saida|default:" - "}}</td>
                     <td>{{registrovisitante.morador}}</td>
                     <td>{{registrovisitante.autorizacao}}</td>
                     <td>{{registrovisitante.funcionario}}</td>
@@ -43,7 +43,7 @@
           </tbody>
         </table>
     {% else %}
-        <p>Não há registro_visitantes cadastrados</p>
+        <p>Não há registro de visitantes cadastrados</p>
     {% endif %}
 
     <a href="{% url 'registro_visitantes_cadastro' %} " class="btn btn-primary btn-sm">Novo Cadastro</a>

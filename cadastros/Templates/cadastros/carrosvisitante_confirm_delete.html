@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block page_title %}
+    Excluir Carro de Visitante
+{% endblock page_title %}
+
+{% block content %}
+    <h1> Excluir Carro de Visitante </h1>
+        <h4>Confirmação do exclusão!</h4>
+
+    <p>Tem certeza que deseja excluir o registro do carro <strong>"{{carrovisitante.visitante}}"</strong>?</p>
+    <p><strong>Placa:</strong> {{carrovisitante.placa}}</p>
+    <p><strong>Modelo:</strong> {{carrovisitante.modelo}}</p>
+    <p><strong>Cor:</strong> {{carrovisitante.cor}}</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Excluir</button>
+        <a href="{% url 'carros_visitantes_lista' %}" class="btn btn-primary">Cancelar</a>
+    </form>
+
+{% endblock content %}

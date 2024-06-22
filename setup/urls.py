@@ -14,7 +14,7 @@ urlpatterns = [
     path('home_admin/', home_admin, name='home_admin'),
     path('controle_veiculos/', veiculos_admin, name='veiculos_admin'),
     path("login/", login, name="login"),
-    path("recuperar_senha/", recuperar_senha, name="recuperar_senha")
+    path("recuperar_senha/", recuperar_senha, name="recuperar_senha"),
     path('auth/', include('usuarios.urls'))
 
     # configura o final do caminho por uma variavel que contém o numero do id ou da pk
@@ -63,6 +63,14 @@ url_carros = [
     path("carros-exclucao/<int:pk>", CarroDeleteView.as_view(), name="carros_exclusao",)
 ]
 
+url_carros_visitantes = [
+    path("carros_visitantes-lista/", CarrosVisitanteListView.as_view(), name="carros_visitante_lista"),
+    path("carros_visitantes-cadastro/", CarrosVisitanteCreateView.as_view(), name="carros_visitante_cadastro",),
+    path("carros_visitantes-edicao/<int:pk>", CarrosVisitanteUptadeView.as_view(), name="carros_visitante_edicao",),
+    path("carros_visitantes-exclucao/<int:pk>", CarrosVisitanteDeleteView.as_view(), name="carros_visitante_exclusao",)
+]
+
+
 url_motos = [
     path("motos-lista/", MotoListView.as_view(), name="motos_lista"),
     path("motos-cadastro/", MotoCreateView.as_view(), name="motos_cadastro",),
@@ -85,7 +93,7 @@ url_reg_morador = [
     path("registro_moradores-exclucao/<int:pk>", RegistroMoradorDeleteView.as_view(), name="registro_moradores_exclusao",)
 ]
 
-url_cruds = url_funcionarios + url_apartamentos + url_moradores + url_visitantes + url_carros + url_motos + url_reg_visitante + url_reg_morador
+url_cruds = url_funcionarios + url_apartamentos + url_moradores + url_visitantes + url_carros + url_motos + url_carros_visitantes + url_reg_visitante + url_reg_morador
 
 
 urlpatterns += url_cruds

@@ -8,6 +8,7 @@
     <h1> Lista de Moradores </h1>
 
     {% if morador_list %}
+
         <table class="table">
           <thead>
             <tr>
@@ -17,6 +18,10 @@
               <th scope="col">RG</th>
               <th scope="col">CPF</th>
               <th scope="col">Apartamento</th>
+                <!--
+              <th scope="col">Carro</th>
+              <th scope="col">Moto</th>
+              -->
 
             </tr>
           </thead>
@@ -29,6 +34,11 @@
                     <td>{{morador.doc_rg}}</td>
                     <td>{{morador.doc_cpf}}</td>
                     <td>{{morador.apartamento}}</td>
+                    <!--
+                        <td>{{carro_list.morador|default:" - "}}</td>
+                        <td>{{moto.morador|default:" - "}}</td>
+                    -->
+
                     <td>
 
                         <a href="{% url 'moradores_edicao' pk=morador.pk %}"
@@ -44,4 +54,6 @@
     {% endif %}
 
     <a href="{% url 'moradores_cadastro' %} " class="btn btn-primary btn-sm">Novo Cadastro</a>
+    <a href="{% url 'carros_cadastro' %}" class="btn btn-primary btn-sm">Novo Carro</a>
+    <a href="{% url 'motos_cadastro' %}" class="btn btn-primary btn-sm">Nova Moto</a>
 {% endblock content %}
