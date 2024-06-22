@@ -3,7 +3,6 @@ import imp"""
 from django.http import HttpResponse
 from django.shortcuts import render
 from rolepermissions.decorators  import has_permission_decorator
-#from .models import Users
 from .models import Colaborador
 from django.shortcuts import redirect
 from django.urls import reverse

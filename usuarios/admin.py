@@ -23,7 +23,7 @@ class UsersAdmin(admin_auth_django.UserAdmin):
     add_form = UserCreationForm
     model = Colaborador
     fieldsets = admin_auth_django.UserAdmin.fieldsets + (
-        ('Informações Pessoais', {'fields': ("nome", "dt_nasto","doc_rg", "doc_cpf", "telefone")}),
-	('Situação', {'fields': ("dt_admissao", "dt_demissao", "status", "motivo_demissao")})
+        ('Informações Pessoais', {'fields': ("nome", "dt_nasto","doc_rg", "doc_cpf", "telefone", "cargo")}),
+	('Situação', {'fields': ("status", "dt_admissao", "dt_demissao", "motivo_demissao")})
     )
 
