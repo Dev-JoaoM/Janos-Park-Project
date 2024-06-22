@@ -100,7 +100,7 @@ class Visitante(models.Model):
     status = models.CharField(max_length=1, choices=choices_status, null=False, blank=False, default="A")
 
     def __str__(self):
-        return (f"Visitante {self.nome}, telefone: {self.telefone}")
+        return (f"{self.nome}, telefone: {self.telefone}")
 
 
 class RegistroVisitante(models.Model):
