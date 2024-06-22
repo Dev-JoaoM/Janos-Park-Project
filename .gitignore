@@ -1,6 +1,7 @@
 # Pasta do git e do ambiente virtual
 .git
 .venv
+venv
 _referencia/Sistema de Referencia/
 
 #Pastas de cache
