@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django.urls import path
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static # TODO: verificar
@@ -15,6 +14,7 @@ urlpatterns = [
     path('home_admin/', home_admin, name='home_admin'),
     path('controle_veiculos/', veiculos_admin, name='veiculos_admin'),
     path("login/", login, name="login"),
+    path("recuperar_senha/", recuperar_senha, name="recuperar_senha")
     path('auth/', include('usuarios.urls'))
 
     # configura o final do caminho por uma variavel que contém o numero do id ou da pk
@@ -87,4 +87,6 @@ url_reg_morador = [
 
 url_cruds = url_funcionarios + url_apartamentos + url_moradores + url_visitantes + url_carros + url_motos + url_reg_visitante + url_reg_morador
 
+
 urlpatterns += url_cruds
+

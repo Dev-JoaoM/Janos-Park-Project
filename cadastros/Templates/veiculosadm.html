@@ -15,26 +15,26 @@
     <h1 class="txtadm">Controle de Veículos</h1>
   </div>
   <div class="card-container" style="text-align: center">
-      <div class="card">
+    <div class="card">
         <h1>Carros de Moradores</h1>
         <img src="{% static '/imagens/carrom.png' %}" alt="Carros de Moradores">
         <p>Cadastrar e gerenciar acesso dos Carros dos Moradores</p>
-        <a href="{% url 'funcionarios_cadastro' %}"><button>Cadastrar Carro de Morador</button></a><br>
-        <a href="{% url 'funcionarios_lista' %}"><button>Listar Carros de Moradores</button></a>
-      </div>
+        <a href="{% url 'carros_cadastro' %}"><button>Cadastrar Carro de Morador</button></a><br>
+        <a href="{% url 'carros_lista' %}"><button>Listar Carros de Moradores</button></a>
+    </div>
       <div class="card">
-        <h1>Carros de Visitantes</h1>
-        <img src="{% static '/imagens/carrov.png' %}" alt="Carros de Visitantes">
-        <p>Cadastrar e gerenciar acesso dos Carros dos Visitantes</p>
-        <a href="{% url 'funcionarios_cadastro' %}"><button>Cadastrar Carro de Visitante</button></a><br>
-        <a href="{% url 'funcionarios_lista' %}"><button>Listar Carros de Visitantes</button></a>
+          <h1>Carros de Visitantes</h1>
+          <img src="{% static '/imagens/carrov.png' %}" alt="Carros de Visitantes">
+          <p>Cadastrar e gerenciar acesso dos Carros dos Visitantes</p>
+          <a href="{% url 'carros_cadastro' %}"><button>Cadastrar Carro de Visitante</button></a><br>
+          <a href="{% url 'carros_lista' %}"><button>Listar Carros de Visitantes</button></a>
       </div>
       <div class="card">
         <h1>Controle de Motos</h1>
         <img src="{% static '/imagens/moto.png' %}" alt="Motos de Moradores">
         <p>Cadastrar e gerenciar acesso das Motos</p>
-        <a href="{% url 'funcionarios_cadastro' %}"><button>Cadastrar Moto</button></a><br>
-        <a href="{% url 'funcionarios_lista' %}"><button>Listar Motos</button></a>
+        <a href="{% url 'motos_cadastro' %}"><button>Cadastrar Moto</button></a><br>
+        <a href="{% url 'motos_lista' %}"><button>Listar Motos</button></a>
       </div>
   </div>
 {% endblock content %}

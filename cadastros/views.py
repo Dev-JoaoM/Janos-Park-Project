@@ -16,7 +16,7 @@ def home(request):  # recebe uma solicitação
 
 
 def home_portaria(request): # TODO: mandar o nome do usuario logado
-    return render(request, "home_portaria.html") 
+    return render(request, "home_portaria.html")
 
 
 def login(request):
@@ -33,6 +33,11 @@ def login(request):
         else:
             return HttpResponse("Dados inválidos! Tente novamente. Se persistir o erro entre em contato com os admin.")
 
+def recuperar_senha(request):
+    return render(request, "recuperar_senha.html")
+
+# Essas são CBV: Class Base the View
+# São mais recomendadas para se utilizar por poder reutilizar a classe pela herança (POO)
 
 
 # TODO: fazer funções de criação de obj do tipo user. User.objects.create_user(username, password) -> user.save
