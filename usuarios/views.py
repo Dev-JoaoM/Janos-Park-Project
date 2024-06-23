@@ -14,36 +14,40 @@ from django.contrib import messages
 def cadastrar_porteiro(request):
     if request.method == "GET":
         porteiros = Colaborador.objects.filter(cargo="PTR")
-        return render(request, 'cadastrar_vendedor.html', {'porteiros': porteiros})
+        return render(request, 'cadastrar_porteiro.html', {'porteiros': porteiros})
     if request.method == "POST":
         nome = request.POST.get('nome')
         #sobrenome = request.POST.get('sobrenome')
         usuario = request.POST.get('usuario')
         email = request.POST.get('email')
+        dt_nasto = request.POST.get('dt_nasto')
         senha = request.POST.get('senha')
         rg = request.POST.get('doc_rg')
         cpf = request.POST.get('doc_cpf')
         telefone = request.POST.get('telefone')
-        dt_admissao =request.POST.get('dt_admissao')
-        cargo =request.POST.get('cargo')
+        #dt_admissao = request.POST.get('dt_admissao')
+        cargo = request.POST.get('cargo')
 
         #TODO: Fazer validações dos dados
         
-        user = Colaborador.objects.filter(email=email)
+        user = Colaborador.objects.filter(username=usuario)
+        user_cpf = Colaborador.objects.filter(doc_cpf=cpf)
 
-        if user.exists():
+        if user.exists() or user_cpf.exists():
             # TODO: Utilizar messages do Django
-            return HttpResponse('Email já existe')
+            return HttpResponse('Usuário ou CPF já existe')
 
         user = Colaborador.objects.create_user(username=usuario, # nome para logar 
+                                            nome=nome,
                                             email=email,
+                                            dt_nasto = dt_nasto,
                                             password=senha,
                                             first_name=nome,
                                             #last_name=sobrenome,
                                             doc_rg = rg,
                                             doc_cpf = cpf,
                                             telefone = telefone,
-                                            dt_admissao = dt_admissao,
+                                            #dt_admissao = dt_admissao,
                                             cargo="PTR")
 
         # TODO: Redirecionar com uma mensagem
@@ -53,7 +57,7 @@ def login(request):
     if request.method == "GET":
         if request.user.is_authenticated:
             return redirect(reverse('plataforma'))
-        return render(request, 'login.html')
+        return render(request, 'login2.html')
     elif request.method == "POST":
         login = request.POST.get('email')
         senha = request.POST.get('senha')
@@ -69,7 +73,7 @@ def login(request):
 
 def logout(request):
     request.session.flush()
-    return redirect(reverse('login'))
+    return redirect(reverse('login2'))
 
 @has_permission_decorator('cadastrar_porteiro')
 def excluir_usuario(request, id):

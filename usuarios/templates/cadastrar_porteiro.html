@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'baseus.html' %}
 
 
 {% block 'body' %}
@@ -9,19 +9,40 @@
                 <div class="alert {{message.tags}}">{{message}}</div>
             {% endfor%}
         {% endif %}
-        <form action="{% url 'cadastrar_vendedor' %}" method="POST">{% csrf_token %}
+        <form action="{% url 'cadastrar_porteiro' %}" method="POST">{% csrf_token %}
             <br>
-            <label>Nome:</label>
-            <input type="text" placeholder="Digite seu Nome..." name="nome" class="form-control">
-            <br>
-            <label>Sobrenome:</label>
-            <input type="text" placeholder="Digite seu Sobrenome..." name="sobrenome" class="form-control">
+            <label>Nome Completo:</label>
+            <input type="text" placeholder="Digite o nome completo ..." name="nome" class="form-control">
             <br>
             <label>E-mail</label>
-            <input type="email" placeholder="Digite seu E-mail..." name="email" class="form-control">
+            <input type="email" placeholder="Digite o E-mail..." name="email" class="form-control">
+
+            <br>
+            <label>Data de Nascimento</label>
+            <input type="date" placeholder="dd/mm/aaaa" name="dt_nasto" class="form-control">
+
+
+            <br>
+            <label>RG</label>
+            <input type="text" placeholder="000.000.000-0" name="doc_rg" class="form-control">
+            <br>
+            <label>CPF</label>
+            <input type="text" placeholder="000.000.000-00" name="doc_cpf" class="form-control">
+
+            <br>
+            <label>Telefone</label>
+            <input type="number" placeholder="(00) 00000-0000" name="telefone" class="form-control">
+
+            <br>
+            <label>Cargo</label>
+            <input type="text" placeholder="---" name="cargo" class="form-control">
+
+            <br>
+            <label>Usuário</label>
+            <input type="text" placeholder="Digite o usuário..." name="usuario" class="form-control">
             <br>
             <label>Senha</label>
-            <input type="password" placeholder="Digite sua Senha..." name="senha" class="form-control">
+            <input type="password" placeholder="Digite a Senha..." name="senha" class="form-control">
             <br>
             <input type="submit" class="btn btn-success">
         
@@ -32,28 +53,30 @@
         <table class="table table-striped table-dark">
             <thead>
                 <tr>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Sobrenome</th>
+                    <th scope="col">Nome Completo</th>
+                    <th scope="col">Usuário</th>
+                    <th scope="col">Telefone</th>
                     <th scope="col">E-mail</th>
                     <th scope="col">Último login</th>
                     <th scope="col">Excluir</th>
                 </tr>
             </thead>
             <tbody>
-                {% for vendedor in vendedores%}
+                {% for porteiro in porteiros%}
                     <tr>
-                        <th>{{vendedor.first_name}}</th>
-                        <td>{{vendedor.last_name}}</td>
-                        <td>{{vendedor.email}}</td>
-                        <td>{% if not vendedor.last_login %}
+                        <th>{{porteiro.first_name}}</th>
+                        <th>{{porteiro.username}}</th>
+                        <td>{{porteiro.telefone}}</td>
+                        <td>{{porteiro.email}}</td>
+                        <td>{% if not porteiro.last_login %}
                                 Primeiro acesso
                             {% else %}
-                                {{vendedor.last_login}}
+                                {{porteiro.last_login}}
                             {% endif %}
                         
                         
                         </td>
-                        <td><a href="{% url 'excluir_usuario' vendedor.id %}" class="btn btn-danger">EXCLUIR</a></td>
+                        <td><a href="{% url 'excluir_usuario' porteiro.id %}" class="btn btn-danger">EXCLUIR</a></td>
                     </tr>
                 {% endfor %}
                

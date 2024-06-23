@@ -54,7 +54,7 @@
    
 
 ### BD (Larissa e João)
-- [ ]  Models (Amanda)  
+- [ ]  Models --> MER
 - [ ]  Funções de registro
 - [ ]  Não deletar os usuários, moradores, visitantes e registro
    - [ ] Desativa-los e armazenar os registros em algum lugar
