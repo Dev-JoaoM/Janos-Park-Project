@@ -1,12 +1,13 @@
-## Comandos úteis no projeto
-
+	Ciclo de desenvolvimento
 model --> views --> url --> template.html
+
+## Comandos úteis no projeto
 
 - Instalar todas as bibliotecas usadas
     ```
     pip install -r requirements.txt
     ```
-- Exporta todas bibliotecas instaladas e suas respectivas versões
+- Exportar todas bibliotecas instaladas e suas respectivas versões
     ``` 
     pip freeze > requirements.txt 
     ```

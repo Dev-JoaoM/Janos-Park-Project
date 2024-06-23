@@ -1,6 +1,7 @@
 {% load static %}
-{% block page_title %}
-{% endblock page_title %}
+
+<title>Login Janos System</title>
+
 
 {% block content %}
     <head>
@@ -18,11 +19,14 @@
         <img class="main-logo" src="{% static 'imagens/Logo_Cond_2.jpeg' %}" alt="Condomínio Parque Santa Lúcia">
         <h2>Bem-vindo!</h2>
         <span class="sub_text">Entre com seu usuário e senha.</span>
-        <form class="login-form">
-            <input type="" placeholder="Usuário">
-            <input type="password" placeholder="Senha">
+        <form class="login-form" method="POST">
+            {% csrf_token %}
+            <input type="text" placeholder="Usuário..." name="nome">
+            <input type="password" placeholder="Senha..." name="senha">
+            <button type="submit" class="btn_login">Entrar</button>
         </form>
-        <a href="{%url 'index'%}"><button class="btn_login">Login</button></a>
+
+
         <div class="separator">
             <hr><span>OU</span><hr>
         </div>

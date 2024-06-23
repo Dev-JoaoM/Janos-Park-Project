@@ -15,7 +15,7 @@ header {
   align-items: center;
   padding: 100px 90px;
   margin-bottom: 25px;
-  background-color: #f8f9fa; /* Cor de fundo do header */
+  background-color: #333; /* Cor de fundo do header */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Propriedade de sombra */
 }
 

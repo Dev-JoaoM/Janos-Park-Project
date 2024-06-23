@@ -24,7 +24,7 @@
                     <th scope="row">{{ registromorador.pk }}</th>
                     <td>{{registromorador.morador}}</td>
                     <td>{{registromorador.data_entrada}}</td>
-                    <td>{{registromorador.data_saida}}</td>
+                    <td>{{registromorador.data_saida|default:" - "}}</td>
                     <td>{{registromorador.funcionario}}</td>
                     <td>
 
