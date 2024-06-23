@@ -78,11 +78,22 @@ def cadastrar_sindico(request):
 
 
 
+def redirecionar_home(cargo):
+
+    if cargo == "PTR":
+        return "index"
+    elif cargo == "ADM":
+        return "home_admin"
+    elif cargo == "SDC":
+        return "home"
+
 def login(request):
     if request.method == "GET":
         if request.user.is_authenticated:
-            return redirect(reverse('login2')) #"cadastrar_porteiro"
-        return render(request, 'login2.html')
+            cargo = request.user.cargo
+            return redirect(reverse(redirecionar_home(cargo))) #vai para a home do usuario
+        return render(request, 'login.html')
+
     elif request.method == "POST":
         login = request.POST.get('usuario')
         senha = request.POST.get('senha')
@@ -91,47 +102,29 @@ def login(request):
 
         if not user:
             #TODO: Redirecionar com mensagem de erro
-            return HttpResponse('Usuário inválido')
+            messages.add_message(request, messages.ERROR, 'Usuário ou senha incorretos.')
+            return redirect(reverse('login'))  # todo: redirecionar para pagina certa
 
         auth.login(request, user)
-        return HttpResponse('Usuário logado com sucesso')
+        cargo = user.cargo
+        username = user.username
+
+        messages.add_message(request, messages.SUCCESS, 'Login realizado com sucesso.')
+
+        return redirect(reverse(redirecionar_home(cargo)))
+
+
+def recuperar_senha(request):
+    return render(request, "recuperar_senha.html")
 
 def logout(request):
     request.session.flush()
-    return redirect(reverse('login2'))
+    return redirect(reverse('login'))
 
 
 def excluir_usuario(request, id):
-    #cargo = in_cargo
     usuario = get_object_or_404(Colaborador, id=id)
     usuario.delete()
 
     messages.add_message(request, messages.SUCCESS, 'Usuário excluído com sucesso.')
-    return redirect(reverse('cadastrar_adm')) # todo: redirecionar para pagina certa
-
-    """if cargo == 'ADM':
-        return redirect(reverse('cadastrar_adm'))
-
-    elif cargo == 'PTR':
-        return redirect(reverse('cadastrar_porteiro'))
-
-    elif cargo == 'SDC':
-        return redirect(reverse('cadastrar_sindico'))
-
-    return redirect(reverse('cadastrar_' + cargo))"""
-
-"""@has_permission_decorator('cadastrar_porteiro')
-def excluir_porteiro(request, id):
-    cargo = "PTR"
-    return excluir_usuario(request, id, cargo)
-
-@has_permission_decorator('cadastrar_adm')
-def excluir_adm(request, id):
-    cargo = "ADM"
-    return excluir_usuario(request, id, cargo)
-
-@has_permission_decorator('cadastrar_sindico')
-def excluir_sindico(request, id):
-    cargo = "SDC"
-    return excluir_usuario(request, id, cargo)
-"""
+    return redirect(reverse('cadastrar_adm')) # todo: redirecionar para propria pagina (f5)

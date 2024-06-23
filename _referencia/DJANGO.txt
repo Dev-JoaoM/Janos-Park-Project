@@ -7,7 +7,21 @@ https://www.youtube.com/shorts/2UgagCt2_9E
 
 
 devs
-devsadmin
+devs
+
+SDC: honor
+ADM: joaq
+PTR: maria
+
+    constants.DEBUG: 'alert-primary',
+    constants.ERROR: 'alert-danger',
+    constants.SUCCESS: 'alert-success',
+    constants.INFO: 'alert-info',
+    constants.WARNING: 'alert-warning'
+
+<a href="{% url 'index'%}"><button type="submit" class="btn_login">Entrar</button></a>
+
+
 
 python manage.py createsuperuser
 
