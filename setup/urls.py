@@ -4,17 +4,19 @@ from django.conf import settings
 from django.conf.urls.static import static # TODO: verificar
 
 
+
 # from cadastros.views import home, CadastroListView, CadastroCreateView, CadastroUptadeView, CadastroDeleteView, CadastroCompleteView
 from cadastros.views import *
 
 urlpatterns = [
     path("admin/", admin.site.urls, name="login_admin"),
     path("", home, name="home"),
-    path("home_portaria/", home_portaria, name="index"),
-    path('home_admin/', home_admin, name='home_admin'),
-    path('controle_veiculos/', veiculos_admin, name='veiculos_admin'),
-    path("login/", login, name="login"),
-    path("recuperar_senha/", recuperar_senha, name="recuperar_senha"),
+    path("home/portaria/", home_portaria, name="index"),
+    path('home/admin/', home_admin, name='home_admin'),
+    path('home/sindico/', home_sindico, name='home_sindico'),
+    path('controle/veiculos/', veiculos_admin, name='veiculos_admin'),
+    #path("login/", login, name="login"),
+    #path("recuperar_senha/", recuperar_senha, name="recuperar_senha"),
     path('auth/', include('usuarios.urls'))
 
     # configura o final do caminho por uma variavel que contém o numero do id ou da pk

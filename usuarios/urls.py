@@ -1,9 +1,13 @@
 from django.urls import path
 from . import views
-urlpatterns = [
-    path('cadastrar_porteiro/', views.cadastrar_porteiro, name="cadastrar_porteiro"),
-    path('login/', views.login, name="login"),
-    path('sair/', views.logout, name="sair"),
-    path('excluir_usuario/<str:id>/', views.excluir_usuario, name="excluir_usuario")
 
+urlpatterns = [
+    path('cadastrar/porteiro/', views.cadastrar_porteiro, name="cadastrar_porteiro"),
+    path('cadastrar/administrador/', views.cadastrar_adm, name="cadastrar_adm"),
+    path('cadastrar/sindico/', views.cadastrar_sindico, name="cadastrar_sindico"),
+    path('login/', views.login, name="login"),
+    path("recuperar_senha/", views.recuperar_senha, name="recuperar_senha"),
+    path('sair/', views.logout, name="sair"),
+    path('excluir_usuario/<str:id>/', views.excluir_usuario, name="excluir_usuario"),
 ]
+# action="{% url 'cadastrar_porteiro' %}"

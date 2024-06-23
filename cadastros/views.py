@@ -9,20 +9,28 @@ from django.http.response import HttpResponse
 from rolepermissions.decorators import has_permission_decorator
 
 
+
 # Essa é uma FBV: Function Base the View
 def home(request):  # recebe uma solicitação
     return render(request, "home.html")
     # renderiza um template.html com as informações passadas, quando se tem  uma request
+    #<p>Subtítulo: usando render, request e o caminho do arquivo html</p>
 
+@has_permission_decorator('visualizar_registro_visitante') #todo: se não for o porteiro, desabilitar o titulo e os botões de cadastrar
+def home_portaria(request):
+    #usuario = request.username
+    return render(request, "home_portaria.html")#, {'usuario': usuario.username})
 
-def home_portaria(request): # TODO: mandar o nome do usuario logado
-    return render(request, "home_portaria.html")
-
-
-
+@has_permission_decorator('cadastrar_apartamento')
 def home_admin(request):
     return render(request, 'home_admin.html')
 
+
+@has_permission_decorator('cadastrar_adm')
+def home_sindico(request):
+    return render(request, 'home_sindico.html')
+
+#@has_permission_decorator('visualizar_carro_morador')
 def veiculos_admin(request):
     return render(request, 'veiculosadm.html')
 
@@ -40,8 +48,6 @@ def login(request):
         else:
             return HttpResponse("Dados inválidos! Tente novamente. Se persistir o erro entre em contato com os admin.")
 
-def recuperar_senha(request):
-    return render(request, "recuperar_senha.html")
 
 # Essas são CBV: Class Base the View
 # São mais recomendadas para se utilizar por poder reutilizar a classe pela herança (POO)
@@ -123,7 +129,7 @@ class ApartamentoDeleteView(DeleteView):
 
 
                         ##### VIEWS DE MORADOR
-
+#@has_permission_decorator('visualizar_morador')
 class MoradorListView(ListView):
     model = Morador# Procura um template que tem o mesmo nome da model 'Morador' acrescido de '_list'
 
@@ -149,7 +155,7 @@ class MoradorDeleteView(DeleteView):
     
     
                     ##### VIEWS DE VISITANTES
-
+#@has_permission_decorator('visualizar_visitante')
 class VisitanteListView(ListView):
     model = Visitante
 

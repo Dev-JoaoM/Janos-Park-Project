@@ -136,7 +136,6 @@ class RegistroVisitante(models.Model):
 
     # TODO: pegar o funcionário que fez o registro de acordo com o login
     # TODO: inserir a data limite por funcao
-    # TODO: inserir a data de entrada atual automaticamente
     # TODO: quando inserir o visitante retornar o carro dele se estiver de carro
     # TODO: não é obrigatório o visitante entrar de carro
 
@@ -165,8 +164,7 @@ class RegistroMorador(models.Model):
 
 
     # TODO: pegar o funcionário que fez o registro de acordo com o login
-    # TODO: inserir a data de entrada atual automaticamente
-    # TODO: quando morador o visitante retornar o carro dele se estiver de carro
+    # TODO: quando morador o retornar o carro dele se estiver de carro
     # TODO: não é obrigatório o morador entrar de carro
 
 
@@ -192,8 +190,6 @@ class Carro(models.Model): #Carros de Moradores
     status = models.CharField(max_length=1, choices=choices_status, null=False, blank=False, default="A")
     """
 
-    # não rá receber duas chaves estrangeiras ao mesmo tempo
-    # TODO: diferenciar o carro de morador e de visitante
 
     def __str__(self):
         return f"Placa {self.placa}, {self.modelo},{self.cor}"
@@ -213,9 +209,6 @@ class CarroVisitante(models.Model):
 
     status = models.CharField(max_length=1, choices=choices_status, null=False, blank=False, default="A")
     """
-
-    # não rá receber duas chaves estrangeiras ao mesmo tempo
-    # TODO: diferenciar o carro de morador e de visitante
 
     def __str__(self):
         return f"Placa {self.placa}, {self.modelo},{self.cor}"

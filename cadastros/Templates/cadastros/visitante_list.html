@@ -19,6 +19,7 @@
               <th scope="col">Telefone</th>
               <!--
               <th scope="col">Carro</th> -->
+              <th scope="col">Situação</th>
 
             </tr>
           </thead>
@@ -33,6 +34,7 @@
                     <td>{{visitante.telefone}}</td>
                     <!--
                     <td>{{visitante.carro|default:" - "}}</td> -->
+                    <td>{{visitante.status}}</td>
                     <td>
 
                         <a href="{% url 'visitantes_edicao' pk=visitante.pk %}"

@@ -1,32 +1,64 @@
 ## 📢 Requisitos
 
-- [ ]  Tela de login
-   - [ ] Redefinição de senha
-- [ ]  Diferenciar as atividade de ADM e de porteiros
-    - [ ] CRUD de morador feito pelos ADM
-    - [ ] CRUD de porteiro feito pelos ADM
-    - [ ] CRUD de visita feito pelos porteiros
+
+### 🚨 Back-end (João)
+- [ ]  Login e autenticação dos usuários (João)
+      - [ ] CRUD de morador feito pelos ADM
+      - [ ] CRUD de apartamento feito pelos ADM
+      - [ ] CRUD de porteiro feito pelos ADM
+      - [ ] CRUD de visita feito pelos porteiros
+      - [ ] Validação de senha
+      - [ ] Geração de senha provisória
+      - [ ] Alerta para alterar a senha provisória
+
+- [ ]  Registro de entrada e saida de morador (João)
+      - [x] Entrada
+        - [ ] Saída
+  
+- [ ]  Registro de entrada e saida de visitante (João)
+      - [x] Entrada
+      - [ ] Saída
+      - [ ] Diferenciar se está a pé ou em um veículo
+      - [ ] Alterar a data limite de saida (3 dias)
+      - [ ] Não permitir a entrada sem autorização do morador
+      - [ ] Inserir o funcionário de acordo com o login 
+      - [ ] Quando inserir o visitante retornar o carro dele se estiver de carro
+        - [ ] Não é obrigatório o visitante entrar de carro
+
 - [x]  CRUD de funcionários
 - [x]  CRUD de apartamentos
 - [x]  CRUD de moradores 
 - [x]  CRUD de visitantes
-- [x]  CRUD de Carro e Moto
-   - [ ] Diferenciar carro de morador e de visitante
-- [x]  CRUDO de Moto
-- [ ]  Registro de entrada e saida de morador
-- [x]  Registro de entrada e saida de visitante
-    - [ ] Diferenciar se está a pé ou em um veículo
-    - [ ] Diferenciar os moradores do cadastro do visitante
-    - [ ] Alterar a data de entrada
-    - [ ] Não permitir a entrada sem autorização do morador
-    - [ ] Inserir o funcionário de acordo com o login 
-- [ ]  Acompanhamento pela placa do veículo e documento do visitante;
-- [ ]  Registrar a entrada do visitante com um morador
-- [ ]  Consulta da situação do estacionamento de visitantes
-- [ ]  Alerta de visita (com véiculo) com 3 dias de estadia (portaria)
-- [ ]  Alerta de visita (com véiculo) com mais de 4 dias de estadia (administração)
-- [ ]  Telas (Thiago, Vitor e Larissa)
-- [ ]  Models (Amanda)
+- [x]  CRUD de Carro
+   - [x] Diferenciar carro de morador e de visitante
+- [x]  CRUD de Moto
+- [x]  Acompanhamento pela placa do veículo e documento do visitante;
+- [x]  Registrar a entrada do visitante com um morador
+
+### Front-end  (Tiago, Vitor e Pedro)
+   - [ ]  Arrumar os campos dos forms em todos os CRUDs 
+   - [ ]  Tela de admin do veículo para terminar.
+   - [ ]  Consulta da situação do estacionamento de visitantes
+   - [ ]  Tela Alerta de visita (com carro) com 3 dias de estadia (portaria)
+   - [ ]  Tela de Alerta de visita (com carro) com mais de 4 dias de estadia (administração)
+   - [ ]  Campos de pesquisa dinâmico
+        - [ ]  Quando digitar a placa retornar os dados do visitante ou morador
+        - [ ]  Quando digitar o nome do morador retornar seus dados
+        - [ ]  Demais lugares necessários
+   - [ ]  Mostrar o nome dos usuários quando estivem logados
+   - [ ]  Home Síndico
+   - [x]  Tela de login
+   - [x]  Redefinição de senha
+   - [x]  Home Portaria
+   - [x]  Home Adm
+   
+
+### BD (Larissa e João)
+- [ ]  Models --> MER
+- [ ]  Funções de registro
+- [ ]  Não deletar os usuários, moradores, visitantes e registro
+   - [ ] Desativa-los e armazenar os registros em algum lugar
+
 
 <details>
 
