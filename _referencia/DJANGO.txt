@@ -1,7 +1,6 @@
 		A primeira fase do entendimento é a confusão
 						Sobral
 
-
 	Personalizando o ADMIN do Django
 https://www.youtube.com/shorts/2UgagCt2_9E
 
