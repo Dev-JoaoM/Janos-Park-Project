@@ -1,0 +1,248 @@
+		A primeira fase do entendimento é a confusão
+						Sobral
+
+	Personalizando o ADMIN do Django
+https://www.youtube.com/shorts/2UgagCt2_9E
+
+
+devs
+devs
+
+SDC: honor
+ADM: joaq
+PTR: maria
+
+    constants.DEBUG: 'alert-primary',
+    constants.ERROR: 'alert-danger',
+    constants.SUCCESS: 'alert-success',
+    constants.INFO: 'alert-info',
+    constants.WARNING: 'alert-warning'
+
+<a href="{% url 'index'%}"><button type="submit" class="btn_login">Entrar</button></a>
+
+
+
+python manage.py createsuperuser
+
+python manage.py startapp usuarios
+registrar o app em settings.py/installed_apps 
+
+
+pessoas = Pessoa.objects.filter(nome=nome).first
+
+user = User.CreateUser(username=nome, password=senha, email=email)
+
+
+
+	DEPLOY de sua aplicação DJANGO GRATUITAMENTE.
+https://www.youtube.com/watch?v=OryCrhcGMZ0
+
+	Hospedagem gratuita
+https://www.youtube.com/watch?v=AED6T5KjU-g&pp=ygUVaGFzaHRhZyBwcm9ncmFtYcOnw6Nv
+
+
+
+	Você precisa conhecer essas 4 extensões | Para Python e Django.
+https://www.youtube.com/watch?v=yQFy0CNYrOo
+
+	3 projetos DJANGO OPEN SOURCE para você estudar
+https://www.youtube.com/watch?v=oWjzpKesYFo
+
+	Sistema de estoque
+https://www.youtube.com/watch?v=bphCOCfK3T0
+
+	Gestão de Paciente
+https://www.youtube.com/watch?v=eUREuUAdjDw
+
+	Crie um projeto completo com Django
+https://www.youtube.com/watch?v=MsUL3Pgofl4
+
+	Desenvolvimento de Sistemas
+https://www.udemy.com/user/leticia-lima-102/
+
+
+NÃO PODE EXCLUIR FISICAMENTE OS FUNCIONÁRIOS, MORADORES E VISITANTES (APENAS DESATIVA-LOS)
+
+
+	Autenticação
+
+	Validação de models 
+https://www.youtube.com/watch?v=6EEDyoNWb8g
+
+
+
+	Autenticação de usuários com Python , Django e Bootstrap
+https://www.youtube.com/watch?v=MGldEzo3caA&list=TLPQMTkwNjIwMjSnLObeMhFAuA&index=7&pp=gAQBiAQB
+	- Ver repositorios na descrição
+	- Login e cadastro de usuario padrão(nome, email e senha)
+
+	- https://github.com/Leonardo-Lourenco/RestApi-Django
+	- https://github.com/Leonardo-Lourenco/blog-django/blob/main/blog/views.py
+	- https://github.com/Leonardo-Lourenco/todo-list-django/blob/main/task/views.py
+	- https://github.com/Leonardo-Lourenco/autenticacao-usuarios-django/blob/main/appYoutube/task/templates/menu.html
+	- Pesquisar pelas navsbar do boostrap
+
+	Agenda de Lembretes - ToDo List com Python e Django
+https://www.youtube.com/watch?v=cmzbmM1ZJEo
+
+
+	Permissões e níveis de acesso com Python e Django
+https://www.youtube.com/watch?v=2gFAQONN-NI
+	- Usando biblioteca externa
+	- usando os mesmos campos de usuario (nome, email, senha)
+	- criação, conceção e revogação de permissões
+	- Tipos de usuarios
+
+	Reset de senha por e-mail
+https://www.youtube.com/watch?v=ZqckdX-tkEg&list=TLPQMTkwNjIwMjSnLObeMhFAuA&index=2
+	- configuração do django, mas com template proprio
+	- envio de e-mail
+	- repo: https://github.com/opencodigos/DjangoAutenticacaoSimples
+
+https://www.instagram.com/eticialima/
+
+
+
+	Como colocar permissão personalizada por usuário no Django Admin
+https://www.youtube.com/watch?v=UPrjjuxlm_o&list=TLPQMTkwNjIwMjSnLObeMhFAuA&index=3
+	- Identificação de quem criou o usuário 
+	- Esse campo será apenas de leitura
+	- Usa o obj user padrao(nome, email, senha)
+	- Mostra apenas os usuários que certo 'admin' cadastrou
+	- 
+	 
+
+	Playlist: Django - OpenCodigo
+https://www.youtube.com/playlist?list=PL2bJNatYYfGRpDMELtET58aNQy6qbEqzY
+
+
+	Como configurar a autenticação no django
+https://www.youtube.com/watch?v=nLQoAlxABX4&list=TLPQMTkwNjIwMjSnLObeMhFAuA&index=1&pp=gAQBiAQB
+	- redirecionamento de login e logout (pode colocar mudar a senha e etc)
+	- if de verificação de login (pode mudar para outro campo como verificar pela função)
+
+	Como colocar permissão personalizada por usuário no Django Admin
+https://www.youtube.com/watch?v=gdhiA6wObw0&ab_channel=pythonando
+	- Pegar quem criou/modificou um registro
+	- Bloquear a edição de um campo
+	
+
+
+	ÁREA ADMIN DJANGO | Crie áreas administrativas com Django | Aula semanal #18
+https://www.youtube.com/watch?v=LaF0PQdV1wI
+
+	AUTENTICAÇÃO COM DJANGO | DJANGO AUTH
+https://www.youtube.com/watch?v=gdhiA6wObw0
+
+	AUTENTICAÇÃO PROFISSIONAL COM DJANGO | ALLAUTH
+https://www.youtube.com/watch?v=Q4Q3S7HLp4w
+	- Biblioteca externa
+	- Permite login com outros sites, ex: face, google, insta, etcf
+
+
+
+
+
+
+	DASHBOARD com DJANGO e CHART.JS | Aula semanal #25
+https://www.youtube.com/watch?v=HozwGeEiXIk
+
+
+
+
+	area admin
+https://www.youtube.com/watch?v=LaF0PQdV1wI&ab_channel=pythonando
+
+	bottstrap
+https://www.youtube.com/watch?v=lp-ICNlSafM
+
+	login
+https://www.youtube.com/watch?v=fhtML8L9HMc
+
+https://www.youtube.com/watch?v=EoJd5EIXtKU&list=TLPQMDIwNjIwMjTJ3Sz9gdtXtw&index=1&pp=gAQBiAQB
+
+
+https://www.youtube.com/watch?v=Qhk5ggHyisA&list=TLPQMDIwNjIwMjTJ3Sz9gdtXtw&index=4&pp=gAQBiAQB
+
+https://www.youtube.com/watch?v=nLQoAlxABX4&list=TLPQMDIwNjIwMjTJ3Sz9gdtXtw&index=3&pp=gAQBiAQB
+
+https://www.youtube.com/watch?v=UPrjjuxlm_o&list=TLPQMDIwNjIwMjTJ3Sz9gdtXtw&index=2&pp=gAQBiAQB
+
+https://www.youtube.com/watch?v=EoJd5EIXtKU&list=TLPQMDIwNjIwMjTJ3Sz9gdtXtw&index=1&pp=gAQBiAQB
+
+
+https://www.youtube.com/watch?v=fhtML8L9HMc
+
+
+https://www.youtube.com/watch?v=lp-ICNlSafM
+
+#############################################################################
+
+	Sobre o Django
+
+
+	DESAFIO | Django: Construindo um Blog em Minutos
+https://www.youtube.com/watch?v=eK2sfDWQUXc
+
+https://drive.google.com/drive/folders/1acEa3i7GI5_qZv1f6RbtrWF6XrgDwLHK
+https://www.google.com/search?client=opera&q=erro+no+pycharm%3A+%27django-admin.py%27+n%C3%A3o+%C3%A9+reconhecido+como+um+comando+internoou+externo%2C+um+programa+oper%C3%A1vel+ou+um+arquivo+em+lotes.&sourceid=opera&ie=UTF-8&oe=UTF-8
+https://cursos.alura.com.br/forum/topico-problemas-com-o-comando-django-admin-144380
+https://github.com/treinaweb/treinaweb-youtube-introducao-ao-django/tree/main
+https://www.youtube.com/watch?v=-m5ywU8SW9E
+https://www.youtube.com/watch?v=YW113aC8TII&t=1693s
+https://www.youtube.com/watch?v=DNGI5aD9MJs&t=3s
+https://www.youtube.com/watch?v=pNlHlhWDpV0&t=2s
+https://www.youtube.com/watch?v=gdhiA6wObw0
+https://www.youtube.com/watch?v=w9KFXoNoJT4
+https://www.youtube.com/watch?v=nLQoAlxABX4
+https://www.youtube.com/watch?v=YW113aC8TII
+https://www.youtube.com/watch?v=pvh_UPHuz9U
+https://pt.stackoverflow.com/questions/413047/como-filtrar-itens-no-field-foreign-key-do-form-django
+
+
+https://www.youtube.com/watch?v=Q4Q3S7HLp4w
+https://www.youtube.com/watch?v=gdhiA6wObw0&t=1157s
+https://www.youtube.com/watch?v=wWHXGcQldhU
+https://www.youtube.com/watch?v=npoVijd0FJ4
+https://www.youtube.com/watch?v=TYivvlxa15E
+https://www.youtube.com/watch?v=cEXt8hDyKQw
+https://www.youtube.com/watch?v=Gi0Mr4Tw_Ic
+https://www.youtube.com/watch?v=LaF0PQdV1wIf
+
+
+
+------------------ VER ----------------------------
+Como Instalar o [Pycharm no Windows](https://www.youtube.com/watch?v=HNUq8X_0nlM&ab_channel=HashtagPrograma%C3%A7%C3%A3o)
+
+PyCharm - [Configurações e Como Funciona](https://www.youtube.com/watch?v=i-5nYErMVsk&list=TLPQMjUwNTIwMjTBx8OQdYcl6w&index=2&pp=gAQBiAQB)
+
+https://www.youtube.com/watch?v=WyXcfCPlIlk
+https://www.youtube.com/watch?v=BSjdcLzgfIw
+https://www.youtube.com/watch?v=i-5nYErMVsk&list=TLPQMjUwNTIwMjTBx8OQdYcl6w&index=2&pp=gAQBiAQB
+
+https://www.youtube.com/watch?v=HNUq8X_0nlM&ab_channel=HashtagPrograma%C3%A7%C3%A3o
+
+
+https://www.youtube.com/shorts/qhxYtNZhvi4
+
+
+https://www.youtube.com/watch?v=NGdvLpu-Xo0
+
+https://www.youtube.com/watch?v=MZgbd7bjCTk
+
+https://www.youtube.com/watch?v=0Ba6PVHMa0A
+
+https://www.youtube.com/watch?v=WyXcfCPlIlk&list=TLPQMjUwNTIwMjTf4YJ-jmlsyw&index=2&ab_channel=HashtagPrograma%C3%A7%C3%A3o
+
+
+
+
+
+	Alterar o nome da app do Django
+https://cursos.alura.com.br/forum/topico-alterar-o-nome-do-app-281741#:~:text=Renomear%20o%20nome%20do%20pacote,aplicativo%20no%20arquivo%20settings.py%20.
+
+
+git clone https://github.com/Dev-JoaoM/Sobre-o-GitHub.git  --branch PAD --single-branch 
+
+
+

@@ -1,6 +1,7 @@
 {% load static %}
-{% block page_title %}
-{% endblock page_title %}
+
+<title>Login Janos System</title>
+
 
 {% block content %}
     <head>
@@ -8,21 +9,28 @@
     </head>
 
     <header class="header">
-        <div class="header-left">Login</div>
+        <div class="header-left">Identifique-se </div>
         <div class="header-right">
-            <img src="{% static 'imagens/Logo_editado_2.png' %}" alt="Jano Systems">
+            <img src="{% static 'imagens/Logo_editado_2.png' %}" alt="Janos Systems">
         </div>
     </header>
 
     <div class="login-container">
         <img class="main-logo" src="{% static 'imagens/Logo_Cond_2.jpeg' %}" alt="Condomínio Parque Santa Lúcia">
         <h2>Bem-vindo!</h2>
-        <span class="sub_text">Entre com seu usuário e senha.</span>
-        <form class="login-form">
-            <input type="" placeholder="Usuário">
-            <input type="password" placeholder="Senha">
+        <!-- <span class="sub_text">Entre com seu usuário e senha.</span> -->
+        <form action="{% url 'login' %}" class="login-form" method="POST">
+            {% csrf_token %}
+
+            <label>Usuário</label>
+            <input type="text" placeholder="Digite seu usuário..." name="usuario" class="form-control">
+            <label>Senha</label>
+            <input type="password" placeholder="Digite a sua senha..." name="senha" class="form-control">
+
+            <button type="submit" class="btn_login">Entrar</button>
         </form>
-        <a href="{%url 'index'%}"><button class="btn_login">Login</button></a>
+
+
         <div class="separator">
             <hr><span>OU</span><hr>
         </div>

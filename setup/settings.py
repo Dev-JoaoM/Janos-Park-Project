@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path, os
 from decouple import config, Csv
 from dj_database_url import parse as db_url
+from django.contrib.messages import constants
 
 # usa um alias (apelido) para usar o parse como db_url
 
@@ -46,10 +47,12 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
+    "rolepermissions",
 ]
 
 MY_APPS = [
     "cadastros.apps.CadastrosConfig",
+    "usuarios.apps.UsuariosConfig",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + MY_APPS
@@ -126,7 +129,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = "pt-br"
+LANGUAGE_CODE = "pt-BR"
 
 TIME_ZONE = "America/Sao_Paulo"
 
@@ -156,3 +159,22 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+
+# Config auth
+AUTH_USER_MODEL = 'usuarios.Colaborador'
+
+
+# Role permissions
+
+ROLEPERMISSIONS_MODULE = 'setup.roles'
+
+# Messages
+
+MESSAGE_TAGS = {
+    constants.DEBUG: 'alert-primary',
+    constants.ERROR: 'alert-danger',
+    constants.SUCCESS: 'alert-success',
+    constants.INFO: 'alert-info',
+    constants.WARNING: 'alert-warning'
+}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}
+    {% if carrovisitante.pk %}
+        Edição de Cadastro
+    {% else %}
+        Cadastro de Carros de Visitantes
+    {% endif %}
+{% endblock page_title %}
+
+{% block content %}
+    {% if carrovisitante.pk %}
+		<h1> Editar Cadastro </h1>
+
+	{% else %}
+        <h1> Cadastro de Carros de Visitantes </h1>
+                <p>Cadastro dos carros de visitantes 'portaria'</p>
+        <h1> Novo Carro de Visitante </h1>
+	{% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form| crispy }}
+
+        {% if carrovisitante.pk %}
+            <button type="submit" class="btn btn-primary" >Editar</button>
+            <a href="{% url 'carros_visitantes_lista' %}" class="btn btn-danger">Cancelar</a>
+
+        {% else %}
+            <button type="submit" class="btn btn-primary" >Cadastrar</button>
+            <a href="{% url 'carros_visitante_cadastro' %}" class="btn btn-danger">Cancelar</a>
+            <a href="{% url 'carros_visitante_lista' %}" class="btn btn-secondary">Carros de Visitantes Cadastrados</a>
+
+        {% endif %}
+
+    </form>
+{% endblock content %}
