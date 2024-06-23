@@ -9,7 +9,9 @@
                 <div class="alert {{message.tags}}">{{message}}</div>
             {% endfor%}
         {% endif %}
-        <form action="{% url 'cadastrar_porteiro' %}" method="POST">{% csrf_token %}
+        <form action="{% url 'cadastrar_porteiro' %}" method="POST">
+            {% csrf_token %}
+
             <br>
             <label>Nome Completo:</label>
             <input type="text" placeholder="Digite o nome completo ..." name="nome" class="form-control">
@@ -76,7 +78,7 @@
                         
                         
                         </td>
-                        <td><a href="{% url 'excluir_usuario' porteiro.id %}" class="btn btn-danger">EXCLUIR</a></td>
+                        <td><a href="{% url 'excluir_usuario' porteiro.id %}" class="btn btn-danger btn-sm">EXCLUIR</a></td>
                     </tr>
                 {% endfor %}
                

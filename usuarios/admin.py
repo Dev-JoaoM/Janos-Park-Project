@@ -12,6 +12,4 @@ class UsersAdmin(admin_auth_django.UserAdmin):
     model = Colaborador
     fieldsets = admin_auth_django.UserAdmin.fieldsets + (
         ('Informações Pessoais', {'fields': ("nome", "dt_nasto","doc_rg", "doc_cpf", "telefone")}),
-	('Situação', {'fields': ("status", "cargo")})
-    )
-
+        ('Situação', {'fields': ("status", "cargo")}))

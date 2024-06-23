@@ -1,22 +1,11 @@
 #import imp
 from rolepermissions.roles import AbstractUserRole
 
-class Gerente(AbstractUserRole):
-    available_permissions = {
-        'cadastrar_produtos': True,
-        'liberar_descontos': True,
-        'cadastrar_vendedor': True,
-    }
-
-class Vendedor(AbstractUserRole):
-    available_permissions = {
-        'realizar_venda': True,
-    }
-
 
 class Sindico(AbstractUserRole):
     available_permissions = {
         'cadastrar_adm': True,
+        'cadastrar_porteiro': True,
         'visualizar_porteiro': True,
         'visualizar_apartamento': True,
         'visualizar_morador': True,
@@ -29,8 +18,7 @@ class Sindico(AbstractUserRole):
         }
 
 
-
-class Adm(AbstractUserRole):
+class Administrador(AbstractUserRole):
     available_permissions = {
         'cadastrar_porteiro': True,
         'cadastrar_apartamento': True,
@@ -42,6 +30,7 @@ class Adm(AbstractUserRole):
         'visualizar_registro_visitante': True,
         'visualizar_registro_morador': True,
         }
+
 
 class Porteiro(AbstractUserRole):
     available_permissions = {

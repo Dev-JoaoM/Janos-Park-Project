@@ -1,5 +1,6 @@
-"""from curses.ascii import HT
-import imp"""
+#from curses.ascii import HT
+
+#import imp
 from django.http import HttpResponse
 from django.shortcuts import render
 from rolepermissions.decorators  import has_permission_decorator
@@ -37,7 +38,7 @@ def cadastrar_porteiro(request):
             # TODO: Utilizar messages do Django
             return HttpResponse('Usuário ou CPF já existe')
 
-        user = Colaborador.objects.create_user(username=usuario, # nome para logar 
+        user = Colaborador.objects.create_user(username=usuario,
                                             nome=nome,
                                             email=email,
                                             dt_nasto = dt_nasto,
@@ -48,7 +49,7 @@ def cadastrar_porteiro(request):
                                             doc_cpf = cpf,
                                             telefone = telefone,
                                             #dt_admissao = dt_admissao,
-                                            cargo="PTR")
+                                            cargo="SDC",)
 
         # TODO: Redirecionar com uma mensagem
         return HttpResponse('Conta criada')
