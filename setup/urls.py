@@ -13,6 +13,7 @@ urlpatterns = [
     path("", home, name="home"),
     path("home/portaria/", home_portaria, name="index"),
     path('home/admin/', home_admin, name='home_admin'),
+    path('home/sindico/', home_sindico, name='home_sindico'),
     path('controle/veiculos/', veiculos_admin, name='veiculos_admin'),
     #path("login/", login, name="login"),
     #path("recuperar_senha/", recuperar_senha, name="recuperar_senha"),

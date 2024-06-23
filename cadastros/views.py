@@ -15,7 +15,7 @@ def home(request):  # recebe uma solicitação
     return render(request, "home.html")
     # renderiza um template.html com as informações passadas, quando se tem  uma request
 
-@has_permission_decorator('cadastrar_visitante')
+@has_permission_decorator('visualizar_registro_visitante') #todo: se não for o porteiro, desabilitar o titulo e os botões de cadastrar
 def home_portaria(request):
     #usuario = request.username
     return render(request, "home_portaria.html")#, {'usuario': usuario.username})
@@ -24,7 +24,12 @@ def home_portaria(request):
 def home_admin(request):
     return render(request, 'home_admin.html')
 
-@has_permission_decorator('visualizar_carro_morador')
+
+@has_permission_decorator('cadastrar_adm')
+def home_sindico(request):
+    return render(request, 'home_sindico.html')
+
+#@has_permission_decorator('visualizar_carro_morador')
 def veiculos_admin(request):
     return render(request, 'veiculosadm.html')
 

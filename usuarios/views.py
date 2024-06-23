@@ -79,13 +79,14 @@ def cadastrar_sindico(request):
 
 
 def redirecionar_home(cargo):
-
     if cargo == "PTR":
         return "index"
+
     elif cargo == "ADM":
         return "home_admin"
+
     elif cargo == "SDC":
-        return "home"
+        return "home_sindico"
 
 def login(request):
     if request.method == "GET":
