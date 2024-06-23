@@ -14,6 +14,7 @@ from rolepermissions.decorators import has_permission_decorator
 def home(request):  # recebe uma solicitação
     return render(request, "home.html")
     # renderiza um template.html com as informações passadas, quando se tem  uma request
+    #<p>Subtítulo: usando render, request e o caminho do arquivo html</p>
 
 @has_permission_decorator('visualizar_registro_visitante') #todo: se não for o porteiro, desabilitar o titulo e os botões de cadastrar
 def home_portaria(request):

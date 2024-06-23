@@ -33,22 +33,21 @@
   </div>
 </header>
 
-    <p>Subtítulo: usando render, request e o caminho do arquivo html</p>
-
     <main class="container">
         <h2> Desenvolvedores: </h2>
         <br> 
-            <h5><strong>Front-end:</strong> Thiago, Pedro & Vitor</h5>
+            <h5><strong>Front-end:</strong> Thiago & Pedro</h5>
             <h5><strong>Back-end:</strong> João</h5>
             <h5><strong>Banco de Dados:</strong> Larissa & João</h5>
 
-        <br>
-        <br>
-        <a href="admin/" class="btn btn-dark">Login Síndico</a>
 
         <br>
         <br>
-        <a href="login/" class="btn btn-dark">Login Funcionários</a>
+        <a href="{% url 'login' %}" class="btn btn-success">Acesso ao Sistema</a>
+
+        <br>
+        <br>
+        <a href="admin/" class="btn btn-dark">Área Admin</a>
 
       </main>
 
