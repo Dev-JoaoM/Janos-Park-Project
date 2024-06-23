@@ -1,12 +1,12 @@
-{% extends 'base.html' %}
+{% extends 'baseus.html' %}
 
 
 {% block 'body' %}
     <div class="container">
         <form action="{% url 'login' %}" method="POST">{% csrf_token %}
             <br>
-            <label>E-mail</label>
-            <input type="email" placeholder="Digite seu E-mail..." name="email" class="form-control">
+            <label>Usuário</label>
+            <input type="text" placeholder="Digite seu usuário..." name="usuario" class="form-control">
             <br>
             <label>Senha</label>
             <input type="password" placeholder="Digite sua Senha..." name="senha" class="form-control">

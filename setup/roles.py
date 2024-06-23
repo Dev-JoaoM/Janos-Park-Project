@@ -43,3 +43,4 @@ class Porteiro(AbstractUserRole):
         'visualizar_carro_morador': True,
         'visualizar_moto_morador': True,
         }
+
