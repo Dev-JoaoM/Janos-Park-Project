@@ -42,8 +42,9 @@ def cadastrar_usuario(request, input_cargo):
 
         if user.exists() or user_cpf.exists():
             # TODO: Utilizar messages do Django
+            messages.add_message(request, messages.SUCCESS, 'Usuário ou senha incorretos.')
             return HttpResponse('Nome de usuário ou CPF já existe.')
-
+# todo: ver criação de usuario repetido
         user = Colaborador.objects.create_user(username=usuario,
                                             nome=nome,
                                             email=email,
@@ -69,7 +70,6 @@ def cadastrar_porteiro(request):
 def cadastrar_adm(request):
     cargo = "ADM"
     return cadastrar_usuario(request, cargo)
-
 
 @has_permission_decorator('cadastrar_sindico')
 def cadastrar_sindico(request):
@@ -111,7 +111,6 @@ def login(request):
         username = user.username
 
         messages.add_message(request, messages.SUCCESS, 'Login realizado com sucesso.')
-
         return redirect(reverse(redirecionar_home(cargo)))
 
 

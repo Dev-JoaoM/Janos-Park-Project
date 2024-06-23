@@ -1,7 +1,10 @@
-{% extends 'baseus.html' %}
+{% extends 'base.html' %}
+{% load static %}
 
-
-{% block 'body' %}
+{% block page_title %}
+    Cadastro de Usuário
+{% endblock page_title %}
+{% block content %}
     <div class="container">
         {% if messages %}
             <br>
@@ -89,4 +92,8 @@
             </tbody>
             </table>
     </div>
-{% endblock %}
+
+
+{% endblock content %}
+
+

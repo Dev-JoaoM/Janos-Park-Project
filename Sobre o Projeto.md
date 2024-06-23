@@ -7,23 +7,36 @@
       - [ ] CRUD de apartamento feito pelos ADM
       - [ ] CRUD de porteiro feito pelos ADM
       - [ ] CRUD de visita feito pelos porteiros
-      - [ ] Validação de senha
+      - [x] Validação de senha
       - [ ] Geração de senha provisória
-      - [ ] Alerta para alterar a senha provisória
+        - [ ] Alerta para alterar a senha provisória
 
 - [ ]  Registro de entrada e saida de morador (João)
       - [x] Entrada
         - [ ] Saída
-  
+        - [ ] video de tarefas
+
 - [ ]  Registro de entrada e saida de visitante (João)
       - [x] Entrada
       - [ ] Saída
-      - [ ] Diferenciar se está a pé ou em um veículo
       - [ ] Alterar a data limite de saida (3 dias)
       - [ ] Não permitir a entrada sem autorização do morador
-      - [ ] Inserir o funcionário de acordo com o login 
+      - [ ] Inserir o funcionário de acordo com o login
       - [ ] Quando inserir o visitante retornar o carro dele se estiver de carro
         - [ ] Não é obrigatório o visitante entrar de carro
+
+
+### BD (Larissa e João)
+- [ ]  Models --> MER
+- [ ]  Funções de registro
+- [ ]  Não deletar os usuários, moradores, visitantes e registro
+   - [ ] Desativa-los e armazenar os registros em algum lugar
+
+
+#### Tarefas segundárias
+  - [ ] Diferenciar se está a pé ou em um veículo
+
+
 
 - [x]  CRUD de funcionários
 - [x]  CRUD de apartamentos
@@ -37,27 +50,28 @@
 
 ### Front-end  (Tiago, Vitor e Pedro)
    - [ ]  Arrumar os campos dos forms em todos os CRUDs 
-   - [ ]  Tela de admin do veículo para terminar.
+   - [x]  Tela de admin do veículo para terminar.
    - [ ]  Consulta da situação do estacionamento de visitantes
    - [ ]  Tela Alerta de visita (com carro) com 3 dias de estadia (portaria)
    - [ ]  Tela de Alerta de visita (com carro) com mais de 4 dias de estadia (administração)
+   - [ ]  Mostrar o nome dos usuários quando estivem logados
+   - [ ]  Arrumar os links do Header de acordo com o usuário
+   - [x]  Home Síndico
+      - [ ] Arrumar
+
+#### Tarefas segundárias
+   - [ ]  Arrumar os campos dos forms em todos os CRUDs 
    - [ ]  Campos de pesquisa dinâmico
         - [ ]  Quando digitar a placa retornar os dados do visitante ou morador
         - [ ]  Quando digitar o nome do morador retornar seus dados
         - [ ]  Demais lugares necessários
-   - [ ]  Mostrar o nome dos usuários quando estivem logados
-   - [ ]  Home Síndico
+   
+
    - [x]  Tela de login
    - [x]  Redefinição de senha
    - [x]  Home Portaria
    - [x]  Home Adm
    
-
-### BD (Larissa e João)
-- [ ]  Models --> MER
-- [ ]  Funções de registro
-- [ ]  Não deletar os usuários, moradores, visitantes e registro
-   - [ ] Desativa-los e armazenar os registros em algum lugar
 
 
 <details>
