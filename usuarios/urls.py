@@ -13,4 +13,7 @@ urlpatterns = [
     path('sair/', views.logout, name="sair"),
     path('excluir_usuario/<str:id>/', views.excluir_usuario, name="excluir_usuario"),
 ]
+
+#todo: fazer a edicão de cadastro de usuário
+
 # action="{% url 'cadastrar_porteiro' %}"

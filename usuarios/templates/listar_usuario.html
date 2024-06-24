@@ -46,11 +46,24 @@
 
                         </td>
                         <td><a href="{% url 'excluir_usuario' usuario.id %}" class="btn btn-danger btn-sm">Excluir</a></td>
+
+
+
                     </tr>
                 {% endfor %}
 
             </tbody>
             </table>
+
+        {% if tipo_user == 'ADM' %}
+            <a href="{% url 'cadastrar_adm' %}" class="btn btn-primary">Cadastrar novo Usuário</a>
+        {% elif tipo_user == 'SDC' %}
+            <a href="{% url 'cadastrar_sindico' %}" class="btn btn-primary">Cadastrar novo Usuário</a>
+        {% else %}
+            <a href="{% url 'cadastrar_porteiro' %}" class="btn btn-primary">Cadastrar novo Usuário</a>
+        {% endif %}
+
+
 
     </div>
 
