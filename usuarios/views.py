@@ -7,7 +7,7 @@ from .models import Colaborador
 from django.urls import reverse
 from django.contrib import auth, messages
 
-#@has_permission_decorator('cadastrar_porteiro')
+
 def cadastrar_usuario(request, input_cargo):
     cargo = input_cargo
 
@@ -42,8 +42,17 @@ def cadastrar_usuario(request, input_cargo):
 
         if user.exists() or user_cpf.exists():
             # TODO: Utilizar messages do Django
-            messages.add_message(request, messages.SUCCESS, 'Usuário ou senha incorretos.')
-            return HttpResponse('Nome de usuário ou CPF já existe.')
+            messages.add_message(request, messages.ERROR, 'Nome de usuário ou CPF inválidos')
+
+            if input_cargo == 'ADM':
+                redirecionar = "cadastrar_adm"
+            elif input_cargo == 'PTR':
+                redirecionar = "cadastrar_porteiro"
+            elif input_cargo == 'SDC':
+                redirecionar = "cadastrar_sindico"
+
+            return redirect(reverse(redirecionar))  # vai para a home do usuario
+            #return HttpResponse('Nome de usuário ou CPF já existe.')
 # todo: ver criação de usuario repetido
         user = Colaborador.objects.create_user(username=usuario,
                                             nome=nome,
@@ -76,6 +85,31 @@ def cadastrar_sindico(request):
     cargo = "SDC"
     return cadastrar_usuario(request, cargo)
 
+
+def rename_cargo(cargo):
+    if cargo == 'ADM':
+        return 'Administrador(a)'
+    elif cargo == 'PTR':
+        return 'Porteiro(a)'
+    elif cargo == 'SDC':
+        return 'Síndico(a)'
+
+@has_permission_decorator('cadastrar_porteiro')
+def listar_porteiro(request):
+    cargo = "PTR"
+    user = Colaborador.objects.filter(cargo=cargo)
+    return render(request, 'listar_usuario.html', {'usuarios': user, 'cargos': rename_cargo(cargo)})
+
+@has_permission_decorator('cadastrar_adm')
+def listar_adm(request):
+    cargo = "ADM"
+    user = Colaborador.objects.filter(cargo=cargo)
+    return render(request, 'listar_usuario.html', {'usuarios': user, 'cargos': rename_cargo(cargo)})
+
+
+@has_permission_decorator('cadastrar_adm')
+def acessar_colaborador(request):
+    return render(request, 'acessar_colaborador.html')
 
 
 def redirecionar_home(cargo):
@@ -120,6 +154,7 @@ def recuperar_senha(request):
 def logout(request):
     request.session.flush()
     return redirect(reverse('login'))
+
 
 
 def excluir_usuario(request, id):
