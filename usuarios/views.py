@@ -74,7 +74,11 @@ def cadastrar_usuario(request, input_cargo):
         messages.add_message(request, messages.SUCCESS, f'{nome} cadastrado(a) como {cargo} com sucesso!')
 
         user = Colaborador.objects.filter(cargo=input_cargo)
-        return render(request, "listar_usuario.html", {'usuarios': user, 'cargos': rename_cargo(cargo), 'tipo_user':input_cargo})
+        #return redirect(reverse(request, "listar_usuario.html", {'usuarios': user, 'cargos': rename_cargo(cargo), 'tipo_user':input_cargo}))
+        if input_cargo == "ADM":
+            return redirect(reverse("listar_adm"))
+        elif input_cargo == "PTR":
+            return redirect(reverse("listar_porteiro"))
 
 @has_permission_decorator('cadastrar_adm')
 def acessar_colaborador(request):
@@ -102,13 +106,18 @@ def cadastrar_sindico(request):
 def listar_porteiro(request):
     cargo = "PTR"
     user = Colaborador.objects.filter(cargo=cargo)
-    return render(request, 'listar_usuario.html', {'usuarios': user, 'cargos': rename_cargo(cargo), 'tipo_user':cargo})
+    nome_cargo = rename_cargo(cargo)
+    return render(request, 'listar_usuario.html', {'usuarios': user, 'tipo_user':cargo, 'cargos':nome_cargo})
 
 @has_permission_decorator('cadastrar_adm')
 def listar_adm(request):
     cargo = "ADM"
     user = Colaborador.objects.filter(cargo=cargo)
-    return render(request, 'listar_usuario.html', {'usuarios': user, 'cargos': rename_cargo(cargo), 'tipo_user':cargo})
+    nome_cargo = rename_cargo("ADM")
+    print(nome_cargo)
+    print(cargo)
+    return render(request, 'listar_usuario.html', {'usuarios': user, 'tipo_user': "ADM", 'cargos': nome_cargo})
+
 
 
 def excluir_usuario(request, id):

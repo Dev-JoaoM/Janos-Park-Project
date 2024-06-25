@@ -6,6 +6,7 @@ class Sindico(AbstractUserRole):
     available_permissions = {
         'cadastrar_adm': True,
         'cadastrar_porteiro': True,
+        'visualizar_adm': True,
         'visualizar_porteiro': True,
         'visualizar_apartamento': True,
         'visualizar_morador': True,
@@ -25,6 +26,10 @@ class Administrador(AbstractUserRole):
         'cadastrar_morador': True,
         'cadastrar_carro_morador': True,
         'cadastrar_moto_morador': True,
+        'visualizar_apartamento': True,
+        'visualizar_morador': True,
+        'visualizar_carro_morador': True,
+        'visualizar_moto_morador': True,
         'visualizar_visitante': True,
         'visualizar_carro_visitante': True,
         'visualizar_registro_visitante': True,
@@ -38,9 +43,13 @@ class Porteiro(AbstractUserRole):
         'cadastrar_carro_visitante': True,
         'cadastrar_registro_visitante': True,
         'cadastrar_registro_morador': True,
-        'visualizar_morador': True,
         'visualizar_apartamento': True,
+        'visualizar_morador': True,
         'visualizar_carro_morador': True,
         'visualizar_moto_morador': True,
+        'visualizar_visitante': True,
+        'visualizar_carro_visitante': True,
+        'visualizar_registro_visitante': True,
+        'visualizar_registro_morador': True,
         }
 
