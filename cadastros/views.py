@@ -9,10 +9,21 @@ from django.http.response import HttpResponse
 from rolepermissions.decorators import has_permission_decorator
 from datetime import date
 
-def filtro_visitas_controle(request):
+def filtro_visitas_controle(request): #pagina de filtro das visitas com mais de 3 dias
     data_hoje = date.today()
-    registros = RegistroVisitante.objects.filter(data_limite__lt=data_hoje)
+    registros = RegistroVisitante.objects.filter(data_limite__lt=data_hoje) #TODO: validar comparando com a data de entrada
     return render(request, "controle_visitas_list.html", {"registros": registros})
+
+def controle_visitas_4_list(request): #pagina de filtro das visitas com mais de 3 dias
+    #usuario = request.username
+    return render(request, "controle_visitas_4_list.html")#, {'usuario': usuario.username})
+
+def controle_visitas_list(request):
+    #usuario = request.username
+    return render(request, "controle_visitas_list.html")#, {'usuario': usuario.username})
+
+def controle_visitas(request): #pagina de acesso a lista de pendencias
+    return render(request, 'controle_visitas.html')
 
 
 # Essa é uma FBV: Function Base the View
@@ -26,16 +37,7 @@ def home_portaria(request):
     #usuario = request.username
     return render(request, "home_portaria.html")#, {'usuario': usuario.username})
 
-
-def controle_visitas_4_list(request):
-    #usuario = request.username
-    return render(request, "controle_visitas_4_list.html")#, {'usuario': usuario.username})
-def controle_visitas_list(request):
-    #usuario = request.username
-    return render(request, "controle_visitas_list.html")#, {'usuario': usuario.username})
-
 @has_permission_decorator('cadastrar_apartamento')
-
 def home_admin(request):
     return render(request, 'home_admin.html')
 
@@ -46,8 +48,7 @@ def estacionamento(request):
 def home_sindico(request):
     return render(request, 'home_sindico.html')
 
-def controle_visitas(request):
-    return render(request, 'controle_visitas.html')
+
 
 
 #@has_permission_decorator('visualizar_carro_morador')
@@ -306,7 +307,7 @@ class RegistroMoradorListView(ListView):
 
 class RegistroMoradorCreateView(CreateView):
     model = RegistroMorador
-    fields = ["morador", "funcionario"]
+    fields = ["morador", ]
     readonly_fields = ["data_entrada"]
     success_url = reverse_lazy("registro_moradores_lista")
 

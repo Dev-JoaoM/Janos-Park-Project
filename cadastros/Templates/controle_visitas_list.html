@@ -5,46 +5,48 @@
 {% endblock page_title %}
 
 {% block content %}
-    <h1> Visitantes até 3 dias </h1>
+    <h1> Visitantes com mais de 3 dias </h1>
     {% if registros %}
         <table class="table">
           <thead>
             <tr>
               <th scope="col">ID</th>
               <th scope="col">Nome</th>
-              <th scope="col">RG</th>
-              <th scope="col">CPF</th>
-              <th scope="col">Telefone</th>
+              <th scope="col">Data de Entrada</th>
+              <th scope="col">Data Limite de Saída</th>
+              <th scope="col">Telefone Visitante</th>
+              <th scope="col">Morador</th>
+
               <!--
               <th scope="col">Carro</th> -->
-              <th scope="col">Situação</th>
+              <th scope="col">Telefone Morador</th>
 
             </tr>
           </thead>
           <tbody>
-            {% for visitante in registros %}
+            {% for registro_visitante in registros %}
                 <tr>
-                    <th scope="row">{{ visitante.pk }}</th>
-                    <td>{{visitante.nome}}</td>
-                    <td>{{visitante.morador.apartamento.bloco}}</td>
-                    <td>{{visitante.data_entrada}}</td>
-                    <td>{{visitante.data_saida}}</td>
-                    <td>{{visitante.status}}</td>
+                    <th scope="row">{{ registro_visitante.pk }}</th>
+                    <td>{{registro_visitante.visitante.nome}}</td>
+                    <td>{{registro_visitante.data_entrada}}</td>
+                    <td>{{registro_visitante.data_limite}}</td>
+                    <td>{{registro_visitante.visitante.telefone}}</td>
+                    <td>{{registro_visitante.morador.nome}}</td>
+                    <td>{{registro_visitante.morador.apartamento.telefone_apto}}</td>
 
                     <td>
 
-                        <a href="{% url 'visitantes_edicao' pk=visitante.pk %}"
+                        <a href="{% url 'registro_visitantes_edicao' pk=registro_visitante.pk %}"
                            class="btn btn-secondary btn-sm">Editar</a>
-                        <a href="{% url 'visitantes_exclusao' pk=visitante.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                        <a href="{% url 'registro_visitantes_exclusao' pk=registro_visitante.pk %}" class="btn btn-danger btn-sm">Excluir</a>
                     </td>
                 </tr>
             {% endfor %}
           </tbody>
         </table>
     {% else %}
-        <p>Não há visitantes cadastrados</p>
+        <p>Não há registro_visitantes cadastrados</p>
     {% endif %}
 
-    <a href="{% url 'visitantes_cadastro' %} " class="btn btn-primary">Novo Visitante</a>
-    <a href="{% url 'carros_visitante_cadastro' %}" class="btn btn-primary">Novo Carro</a>
+    
 {% endblock content %}
