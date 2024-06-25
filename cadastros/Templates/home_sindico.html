@@ -24,6 +24,16 @@
 
     <div class="card-container" style="text-align: center">
             <div class="card">
+                <h1>Registros</h1>
+                <img src="{% static '/imagens/funcionario.png' %}" alt="Porteiro(a)">
+                <br>
+                <p>Consultar Registros</p>
+                <br>
+                <a href="{% url 'acessar_registros' %}"><button>Acessar Registros</button></a><br>
+
+            </div>
+
+            <div class="card">
                 <h1>Colaboradores</h1>
                 <img src="{% static '/imagens/funcionario.png' %}" alt="Porteiro(a)">
                 <p>Cadastrar e gerenciar os colaboradores</p>

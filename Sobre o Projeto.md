@@ -3,26 +3,30 @@
 
 ### 🚨 Back-end (João)
 - [ ]  Login e autenticação dos usuários (João)
-      - [ ] CRUD de morador feito pelos ADM
-      - [ ] CRUD de apartamento feito pelos ADM
-      - [ ] CRUD de porteiro feito pelos ADM
-      - [ ] CRUD de visita feito pelos porteiros
-      - [X] Validação de senha
+      - [X] CRUD de morador feito pelos ADM
+      - [X] CRUD de apartamento feito pelos ADM
+      - [X] CRUD de porteiro feito pelos ADM e SDC
+      - [X] CRUD de visita feito pelos porteiros
+      - [ ] Confirmação de senha no cadastro
       - [ ] Geração de senha provisória
         - [ ] Alerta para alterar a senha provisória
+
+- [ ] Lógica do estacionamento
+      - [ ] Qnt de resgistro de entrada de visitante com carro e sem data de saída
+      - [ ] Validar o cadastro de novo registro por essa qnt
 
 - [X]  Registro de entrada e saida de morador (João)
       - [X] Entrada
         - [X] Saída
         - [X] video de tarefas
-        - [ ] Inserir o funcionário de acordo com o login
+        - [ ] Inserir o funcionário de acordo com o login (se der)
 
 - [ ]  Registro de entrada e saida de visitante (João)
       - [X] Entrada
       - [X] Saída
       - [X] Alterar a data limite de saida (3 dias)
       - [X] Não permitir a entrada sem autorização do morador
-      - [ ] Inserir o funcionário de acordo com o login
+      - [ ] Inserir o funcionário de acordo com o login (se der)
       - [ ] Quando inserir o visitante retornar o carro dele se estiver de carro
         - [ ] Não é obrigatório o visitante entrar de carro
 
@@ -57,6 +61,8 @@
    - [ ]  Tela de Alerta de visita (com carro) com mais de 4 dias de estadia (administração)
    - [X]  Mostrar o nome dos usuários quando estivem logados
    - [X]  Arrumar os links do Header de acordo com o usuário
+   - [ ]  Arrumar os botões do controle de veículos
+   - [ ]  Header de cada nível de acesso: porteiro, adm, sindico	
    - [X]  Home Síndico
       - [ ] Arrumar
 

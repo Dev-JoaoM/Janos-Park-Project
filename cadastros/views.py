@@ -49,7 +49,9 @@ def home_sindico(request):
     return render(request, 'home_sindico.html')
 
 
-
+@has_permission_decorator('cadastrar_adm')
+def acessar_registros(request):
+    return render(request, 'acessar_registros.html')
 
 #@has_permission_decorator('visualizar_carro_morador')
 def veiculos_admin(request):

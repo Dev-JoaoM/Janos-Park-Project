@@ -14,6 +14,8 @@ urlpatterns = [
     path("home/portaria/", home_portaria, name="index"),
     path('home/admin/', home_admin, name='home_admin'),
     path('home/sindico/', home_sindico, name='home_sindico'),
+    path('acessar/registros/', acessar_registros, name='acessar_registros'),
+
     path('controle/veiculos/', veiculos_admin, name='veiculos_admin'),
 
     path('controle/visitante/', controle_visitas, name='controle_visitas'), #pagina geral de pendencias de visitantes

@@ -84,6 +84,7 @@ def cadastrar_usuario(request, input_cargo):
 def acessar_colaborador(request):
     return render(request, 'acessar_colaborador.html')
 
+
             # CADASTRO DE USUÁRIOS
 @has_permission_decorator('cadastrar_porteiro')
 def cadastrar_porteiro(request):
