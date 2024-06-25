@@ -122,12 +122,6 @@ class RegistroVisitante(models.Model):
             self.data_saida = datetime.now()
             self.save()
 
-
-    def calc_data_limite(self):
-        if self.data_entrada:
-            self.data_limite = date.today() + timedelta(days=3) - timedelta(minutes=1)
-            self.save()
-
     """
         choices_status= (
     ('A', 'Ativo(a)'), 
@@ -149,10 +143,12 @@ class RegistroMorador(models.Model):
     data_entrada = models.DateTimeField(auto_now_add=True, null=False, blank=False)
     data_saida = models.DateTimeField(null=True, blank=True)
     #funcionario = models.ForeignKey(Funcionario, on_delete=models.DO_NOTHING)  # rever esse parametro
-
+    class Meta:
+        ordering = ["data_saida"]
+        
     def marcar_saida(self):
         if not self.data_saida:
-            self.data_saida = date.today()
+            self.data_saida = datetime.now()
             self.save()
 
     # TODO: def de saida com um checkbox

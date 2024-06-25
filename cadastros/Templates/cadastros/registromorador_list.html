@@ -15,6 +15,7 @@
               <th scope="col">Data de Entrada</th>
               <th scope="col">Data Saída</th>
               <th scope="col">Porteiro</th>
+              <th scope="col">Ações</th>
 
             </tr>
           </thead>
@@ -27,9 +28,15 @@
                     <td>{{registromorador.data_saida|default:" - "}}</td>
                     <td>{{registromorador.funcionario}}</td>
                     <td>
+                      <a 
+                      href="{% url 'registro_morador_saida' pk=registromorador.pk %}" 
+                      class="btn btn-primary btn-sm {% if registromorador.data_saida  %} disabled {% endif %}"
+                    >
+                        Saída
+                    </a>
 
                         <a href="{% url 'registro_moradores_edicao' pk=registromorador.pk %}"
-                           class="btn btn-secondary btn-sm">Editar</a>
+                           class="btn btn-secondary btn-sm {% if registromorador.data_saida %} disabled{% endif %}">Editar</a>
                         <a href="{% url 'registro_moradores_exclusao' pk=registromorador.pk %}" class="btn btn-danger btn-sm">Excluir</a>
                     </td>
                 </tr>

@@ -283,7 +283,7 @@ class RegistroVisitanteCreateView(CreateView):
     readonly_fields = ["data_entrada"]
     success_url = reverse_lazy("registro_visitantes_lista")
 
-    def form_valid(self, form):
+    def form_valid(self, form): # Inclusão da data limite de saída
         # Salva o objeto mas ainda não o envia para o banco de dados
         self.object = form.save(commit=False)
         if self.object.autorizacao == True:
@@ -349,3 +349,9 @@ class RegistroMoradorUptadeView(UpdateView):
 class RegistroMoradorDeleteView(DeleteView):
     model = RegistroMorador
     success_url = reverse_lazy("registro_moradores_lista")
+
+class RegistroMoradorSaidaView(View):
+    def get(self, request, pk):
+        registro = get_object_or_404(RegistroMorador, pk=pk)
+        registro.marcar_saida()
+        return redirect("registro_moradores_lista")

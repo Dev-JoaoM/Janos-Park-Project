@@ -99,7 +99,8 @@ url_reg_morador = [
     path("registro_moradores-lista/", RegistroMoradorListView.as_view(), name="registro_moradores_lista"),
     path("registro_moradores-cadastro/", RegistroMoradorCreateView.as_view(), name="registro_moradores_cadastro",),
     path("registro_moradores-edicao/<int:pk>", RegistroMoradorUptadeView.as_view(), name="registro_moradores_edicao",),
-    path("registro_moradores-exclucao/<int:pk>", RegistroMoradorDeleteView.as_view(), name="registro_moradores_exclusao",)
+    path("registro_moradores-exclucao/<int:pk>", RegistroMoradorDeleteView.as_view(), name="registro_moradores_exclusao",),
+    path("registro_moradores-saida/<int:pk>", RegistroMoradorSaidaView.as_view(), name="registro_morador_saida",)
 ]
 
 url_cruds = url_funcionarios + url_apartamentos + url_moradores + url_visitantes + url_carros + url_motos + url_carros_visitantes + url_reg_visitante + url_reg_morador
