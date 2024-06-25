@@ -110,7 +110,7 @@ class RegistroVisitante(models.Model):
     data_limite = models.DateTimeField(auto_now_add=False, null=False, blank=False) # TODO: TIRAR  ESSE AUTO ADD
     data_saida = models.DateTimeField(null=True)
     autorizacao = models.BooleanField(verbose_name="Autorização do Morador", null=False, blank=False)
-    funcionario = models.ForeignKey(Funcionario, on_delete=models.DO_NOTHING)  # rever esse parametro
+    ##funcionario = models.ForeignKey(Funcionario, on_delete=models.DO_NOTHING)  # rever esse parametro
     # TODO: def de saida com um checkbox
     # TODO: Se não tem autorização do morador não tem data de entrada e nem data limite de saida
 
@@ -174,6 +174,7 @@ class QntVagasVisita(models.Model):
     registro_visitante = models.ForeignKey(RegistroVisitante, on_delete=models.DO_NOTHING)  # rever esse parametro
     qnt_vagas = models.IntegerField(null=False, blank=False)
     vagas_disponiveis = models.IntegerField(null=False, blank=False)
+
     # Talvez não precise do 'vagas_disponiveis' por ser um campo calculado
 
 

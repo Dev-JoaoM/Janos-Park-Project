@@ -1,7 +1,11 @@
-/* CSS para a pagina Index*/
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
 
 h1,h4{
     text-align: center;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .text_Inicial{
@@ -33,6 +37,7 @@ h1,h4{
     text-align: center;
     font-size: 60px;
     margin: 15px 0 10px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .card p {

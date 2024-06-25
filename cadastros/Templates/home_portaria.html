@@ -6,6 +6,7 @@
 
 {% block content %}
     <head>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'styles/index.css' %}">
     </head>
 
@@ -37,7 +38,7 @@
             <img src="{% static 'imagens/visitante.png' %}" alt="Visitante">
              <p>Visualizar o estacionamento</p>
             <br><br><br>
-             <a href=""><button>Acessar o estacionamento</button></a><br>
+             <a href="{% url 'estacionamento' %}"><button>Acessar o estacionamento</button></a><br>
 
         </div>
 
