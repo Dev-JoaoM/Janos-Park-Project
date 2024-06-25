@@ -110,7 +110,7 @@ class RegistroVisitante(models.Model):
     data_limite = models.DateTimeField(auto_now_add=False, null=False, blank=False) # TODO: TIRAR  ESSE AUTO ADD
     data_saida = models.DateTimeField(null=True)
     autorizacao = models.BooleanField(verbose_name="Autorização do Morador", null=False, blank=False)
-    funcionario = models.ForeignKey(Funcionario, on_delete=models.DO_NOTHING)  # rever esse parametro
+    ##funcionario = models.ForeignKey(Funcionario, on_delete=models.DO_NOTHING)  # rever esse parametro
     # TODO: def de saida com um checkbox
     # TODO: Se não tem autorização do morador não tem data de entrada e nem data limite de saida
     def marcar_saida(self):

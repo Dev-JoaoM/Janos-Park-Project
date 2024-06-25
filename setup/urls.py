@@ -16,6 +16,7 @@ urlpatterns = [
     path('home/sindico/', home_sindico, name='home_sindico'),
     path('controle/veiculos/', veiculos_admin, name='veiculos_admin'),
     path('controle_visitas/', controle_visitas, name='controle_visitas'),
+    path('controle_visitas_list/', filtro_visitas_controle, name='controle_visitas_list'),
     #path("login/", login, name="login"),
     #path("recuperar_senha/", recuperar_senha, name="recuperar_senha"),
     path('auth/', include('usuarios.urls'))

@@ -6,7 +6,8 @@
 
 {% block content %}
     <h1> Visitantes até 3 dias </h1>
-    {% if registros %}
+
+    {% if visitante_list %}
         <table class="table">
           <thead>
             <tr>
@@ -22,15 +23,15 @@
             </tr>
           </thead>
           <tbody>
-            {% for visitante in registros %}
+            {% for visitante in visitante_list %}
                 <tr>
                     <th scope="row">{{ visitante.pk }}</th>
                     <td>{{visitante.nome}}</td>
-                    <td>{{visitante.morador.apartamento.bloco}}</td>
-                    <td>{{visitante.data_entrada}}</td>
-                    <td>{{visitante.data_saida}}</td>
+                    <td>{{visitante.doc_rg}}</td>
+                    <td>{{visitante.doc_cpf}}</td>
+                    <td>{{visitante.telefone}}</td>
                     <td>{{visitante.status}}</td>
-
+                    <td>{{visitante.status}}</td>
                     <td>
 
                         <a href="{% url 'visitantes_edicao' pk=visitante.pk %}"
