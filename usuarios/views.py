@@ -7,10 +7,11 @@ from .models import Colaborador
 from django.urls import reverse
 from django.contrib import auth, messages
 
-#@has_permission_decorator('cadastrar_porteiro')
+
 def cadastrar_usuario(request, input_cargo):
     cargo = input_cargo
 
+        # Para mostrar o Cargo na tela
     if cargo == 'ADM':
         cargo = 'Administrador(a)'
     elif cargo == 'PTR':
@@ -18,11 +19,19 @@ def cadastrar_usuario(request, input_cargo):
     elif cargo == 'SDC':
         cargo = 'Síndico(a)'
 
-    if request.method == "GET":
-        user = Colaborador.objects.filter(cargo=input_cargo)
-        return render(request, 'cadastrar_usuario.html', {'usuarios': user, 'cargos': cargo})
+        # Para redirecionar em caso de dados inválidos
+    if input_cargo == 'ADM':
+        redirecionar = "cadastrar_adm"
+    elif input_cargo == 'PTR':
+        redirecionar = "cadastrar_porteiro"
+    elif input_cargo == 'SDC':
+        redirecionar = "cadastrar_sindico"
 
-    if request.method == "POST":
+    if request.method == "GET": # Se estiver acessando a página
+        #user = Colaborador.objects.filter(cargo=input_cargo)
+        return render(request, 'cadastrar_usuario.html', {'cadastro': input_cargo, 'cargos': cargo})
+
+    if request.method == "POST": # Se estiver tentando enviar alguma informação (cadastro, edição, login)
         nome = request.POST.get('nome')
         #sobrenome = request.POST.get('sobrenome')
         usuario = request.POST.get('usuario')
@@ -42,8 +51,10 @@ def cadastrar_usuario(request, input_cargo):
 
         if user.exists() or user_cpf.exists():
             # TODO: Utilizar messages do Django
-            messages.add_message(request, messages.SUCCESS, 'Usuário ou senha incorretos.')
-            return HttpResponse('Nome de usuário ou CPF já existe.')
+            messages.add_message(request, messages.ERROR, 'Nome de usuário ou CPF inválidos')
+
+            return redirect(reverse(redirecionar))  # vai para a home do usuario
+
 # todo: ver criação de usuario repetido
         user = Colaborador.objects.create_user(username=usuario,
                                             nome=nome,
@@ -59,8 +70,21 @@ def cadastrar_usuario(request, input_cargo):
                                             cargo=input_cargo)
 
         # TODO: Redirecionar com uma mensagem
-        return HttpResponse(f'{nome} cadastrado(a) como {cargo} com sucesso!')
 
+        messages.add_message(request, messages.SUCCESS, f'{nome} cadastrado(a) como {cargo} com sucesso!')
+
+        user = Colaborador.objects.filter(cargo=input_cargo)
+        #return redirect(reverse(request, "listar_usuario.html", {'usuarios': user, 'cargos': rename_cargo(cargo), 'tipo_user':input_cargo}))
+        if input_cargo == "ADM":
+            return redirect(reverse("listar_adm"))
+        elif input_cargo == "PTR":
+            return redirect(reverse("listar_porteiro"))
+
+@has_permission_decorator('cadastrar_adm')
+def acessar_colaborador(request):
+    return render(request, 'acessar_colaborador.html')
+
+            # CADASTRO DE USUÁRIOS
 @has_permission_decorator('cadastrar_porteiro')
 def cadastrar_porteiro(request):
     cargo = "PTR"
@@ -77,17 +101,38 @@ def cadastrar_sindico(request):
     return cadastrar_usuario(request, cargo)
 
 
+            # LISTAGEM DE USUÁRIOS
+@has_permission_decorator('cadastrar_porteiro')
+def listar_porteiro(request):
+    cargo = "PTR"
+    user = Colaborador.objects.filter(cargo=cargo)
+    nome_cargo = rename_cargo(cargo)
+    return render(request, 'listar_usuario.html', {'usuarios': user, 'tipo_user':cargo, 'cargos':nome_cargo})
 
-def redirecionar_home(cargo):
-    if cargo == "PTR":
-        return "index"
+@has_permission_decorator('cadastrar_adm')
+def listar_adm(request):
+    cargo = "ADM"
+    user = Colaborador.objects.filter(cargo=cargo)
+    nome_cargo = rename_cargo("ADM")
+    print(nome_cargo)
+    print(cargo)
+    return render(request, 'listar_usuario.html', {'usuarios': user, 'tipo_user': "ADM", 'cargos': nome_cargo})
 
-    elif cargo == "ADM":
-        return "home_admin"
 
-    elif cargo == "SDC":
-        return "home_sindico"
 
+def excluir_usuario(request, id):
+    usuario = get_object_or_404(Colaborador, id=id)
+    cargo = usuario.cargo
+    usuario.delete() #TODO: desativar usuário
+
+    messages.add_message(request, messages.SUCCESS, 'Usuário excluído com sucesso.')
+    if cargo == "ADM":
+        return redirect(reverse('listar_adm')) # todo: redirecionar para propria pagina (f5)
+    else:
+        return redirect(reverse('listar_porteiro'))  # todo: redirecionar para propria pagina (f5)
+
+
+            # LOGIN e LOGOUT
 def login(request):
     if request.method == "GET":
         if request.user.is_authenticated:
@@ -122,9 +167,23 @@ def logout(request):
     return redirect(reverse('login'))
 
 
-def excluir_usuario(request, id):
-    usuario = get_object_or_404(Colaborador, id=id)
-    usuario.delete()
 
-    messages.add_message(request, messages.SUCCESS, 'Usuário excluído com sucesso.')
-    return redirect(reverse('cadastrar_adm')) # todo: redirecionar para propria pagina (f5)
+
+def redirecionar_home(cargo):
+    if cargo == "PTR":
+        return "index"
+
+    elif cargo == "ADM":
+        return "home_admin"
+
+    elif cargo == "SDC":
+        return "home_sindico"
+
+
+def rename_cargo(cargo):
+    if cargo == 'ADM':
+        return 'Administrador(a)'
+    elif cargo == 'PTR':
+        return 'Porteiro(a)'
+    elif cargo == 'SDC':
+        return 'Síndico(a)'
