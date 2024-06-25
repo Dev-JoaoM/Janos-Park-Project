@@ -7,7 +7,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login as login_django
 from django.http.response import HttpResponse
 from rolepermissions.decorators import has_permission_decorator
-from datetime import date
+from datetime import date, timedelta, datetime
 
 def filtro_visitas_controle(request): #pagina de filtro das visitas com mais de 3 dias
     data_hoje = date.today()
@@ -279,24 +279,38 @@ class RegistroVisitanteListView(ListView):
 
 class RegistroVisitanteCreateView(CreateView):
     model = RegistroVisitante
-    fields = ["visitante", "morador", "autorizacao", "data_limite"]
+    fields = ["visitante", "morador", "autorizacao"]
     readonly_fields = ["data_entrada"]
     success_url = reverse_lazy("registro_visitantes_lista")
-    
-    """def get(self, request, pk):
-        registro = get_object_or_404(RegistroVisitante, pk=pk)
-        registro.calc_data_limite()
-    
-        return success_url"""
-    
 
+    def form_valid(self, form):
+        # Salva o objeto mas ainda não o envia para o banco de dados
+        self.object = form.save(commit=False)
+        if self.object.autorizacao == True:
+            # Define data_limite como a data atual mais 3 dias menos 1 minuto
+            self.object.data_limite = datetime.now() + timedelta(days=3) - timedelta(minutes=1)
+        # Salva o objeto no banco de dados
+        self.object.save()
+        return super().form_valid(form)
+         
 
 class RegistroVisitanteUptadeView(UpdateView):
     model = RegistroVisitante
-    fields = ["visitante", "morador", "data_limite", "data_saida"]
+    fields = ["visitante", "morador", "autorizacao"]
     readonly_fields = ["data_entrada"]
-
     success_url = reverse_lazy("registro_visitantes_lista")
+
+    def form_valid(self, form):
+        # Salva o objeto mas ainda não o envia para o banco de dados
+        self.object = form.save(commit=False)
+        if self.object.autorizacao == True:
+            # Define data_limite como a data atual mais 3 dias menos 1 minuto
+            self.object.data_limite = self.object.data_entrada + timedelta(days=3) - timedelta(minutes=1)
+        else:
+            self.object.data_limite = None
+        # Salva o objeto no banco de dados
+        self.object.save()
+        return super().form_valid(form)
 
 
 class RegistroVisitanteDeleteView(DeleteView):

@@ -41,6 +41,8 @@ model --> views --> url --> template.html
 ## Extenções do VS Code
 
 
+
+
 - Django by Baptiste Darthenay (Para adicionar sintaxe nos templates do django)
 - SQLite Viewer
 - MySQL by Weijan Chen

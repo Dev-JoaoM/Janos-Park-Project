@@ -28,7 +28,7 @@
                     <th scope="row">{{ registrovisitante.pk }}</th>
                     <td>{{registrovisitante.visitante}}</td>
                     <td>{{registrovisitante.data_entrada}}</td>
-                    <td>{{registrovisitante.data_limite}}</td>
+                    <td>{{registrovisitante.data_limite|default:" - "}}</td>
                     <td>{{registrovisitante.data_saida|default:" - "}}</td>
                     <td>{{registrovisitante.morador}}</td>
                     <td>{{registrovisitante.autorizacao}}</td>
@@ -36,7 +36,7 @@
                     <td>
                       <a 
                         href="{% url 'registro_visitante_saida' pk=registrovisitante.pk %}" 
-                        class="btn btn-primary btn-sm {% if registrovisitante.data_saida %} disabled{% endif %}"
+                        class="btn btn-primary btn-sm {% if registrovisitante.data_saida  %} disabled {% elif not registrovisitante.autorizacao %} disabled{% endif %}"
                       >
                           Saída
                       </a>
