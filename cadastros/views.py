@@ -21,10 +21,11 @@ def home_portaria(request):
     #usuario = request.username
     return render(request, "home_portaria.html")#, {'usuario': usuario.username})
 
-@has_permission_decorator('cadastrar_apartamento')
 def home_admin(request):
     return render(request, 'home_admin.html')
 
+def estacionamento(request):
+    return render(request, 'estacionamento.html')
 
 @has_permission_decorator('cadastrar_adm')
 def home_sindico(request):
