@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import date, timedelta, datetime
+from datetime import date, datetime
 from usuarios.models import Colaborador
 
 class Cadastro(models.Model):
@@ -142,10 +142,12 @@ class RegistroMorador(models.Model):
     morador = models.ForeignKey(Morador, on_delete=models.DO_NOTHING)  # rever esse parametro
     data_entrada = models.DateTimeField(auto_now_add=True, null=False, blank=False)
     data_saida = models.DateTimeField(null=True, blank=True)
-    #funcionario = models.ForeignKey(Funcionario, on_delete=models.DO_NOTHING)  # rever esse parametro
+    #criador_por = models.ForeignKey(Colaborador, on_delete=models.DO_NOTHING)  # rever esse parametro
+    #atualizado_por = models.ForeignKey(Colaborador, on_delete=models.DO_NOTHING)  # rever esse parametro
+
     class Meta:
         ordering = ["data_saida"]
-        
+
     def marcar_saida(self):
         if not self.data_saida:
             self.data_saida = datetime.now()
