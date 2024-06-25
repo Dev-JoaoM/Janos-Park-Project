@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block page_title %}
-    Cadastro de Usuário
+    Cadastro de {{cargos}}
 {% endblock page_title %}
 {% block content %}
     <div class="container">
@@ -54,11 +54,21 @@
             <label>Senha</label>
             <input type="password" placeholder="Digite a Senha..." name="senha" class="form-control">
             <br>
-            <input type="submit" class="btn btn-success">
-        
+
+            <button type="submit" class="btn btn-success" >Cadastrar</button>
+
+
+            {% if cadastro == 'ADM' %}
+                <a href="{% url 'cadastrar_adm' %}" class="btn btn-danger">Cancelar</a>
+            {% elif cadastro == 'SDC' %}
+                <a href="{% url 'cadastrar_sindico' %}" class="btn btn-danger">Cancelar</a>
+            {% else %}
+                <a href="{% url 'cadastrar_porteiro' %}" class="btn btn-danger">Cancelar</a>
+            {% endif %}
+
         </form>
 
-        <hr class="bg-hr">
+        <!-- <hr class="bg-hr">
 
         <table class="table table-striped table-dark">
             <thead>
@@ -91,6 +101,7 @@
 
             </tbody>
             </table>
+            -->
     </div>
 
 
