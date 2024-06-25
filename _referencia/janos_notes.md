@@ -41,7 +41,8 @@ model --> views --> url --> template.html
 ## Extenções do VS Code
 
 
-
+Isso não funcionou. Ele estava verificando se tinha a data entrada, e retornava falso com isso ele não colocava a data limite.
+Como no tabela o campo data entrada está com ato_now_add=True eu tirei essa linha "if self.object.data_entrada:" e então funcionou como esperado. Obrigado
 
 - Django by Baptiste Darthenay (Para adicionar sintaxe nos templates do django)
 - SQLite Viewer
