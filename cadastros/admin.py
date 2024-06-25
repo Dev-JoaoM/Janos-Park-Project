@@ -12,4 +12,3 @@ from .models import Funcionario
 
 admin.site.register(Funcionario, FuncionarioAdmin)"""
 
-admin.site.register(Funcionario)

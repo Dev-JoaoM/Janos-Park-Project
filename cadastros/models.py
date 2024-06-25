@@ -113,6 +113,8 @@ class RegistroVisitante(models.Model):
     funcionario = models.ForeignKey(Funcionario, on_delete=models.DO_NOTHING)  # rever esse parametro
     # TODO: def de saida com um checkbox
     # TODO: Se não tem autorização do morador não tem data de entrada e nem data limite de saida
+
+
     def marcar_saida(self):
         if not self.data_saida:
             self.data_saida = date.today()
