@@ -5,6 +5,12 @@
 {% endblock page_title %}
 
 {% block content %}
+    {% if messages %}
+    <br>
+    {% for message in messages%}
+        <div class="alert {{message.tags}}">{{message}}</div>
+    {% endfor%}
+    {% endif %}
     <head>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'styles/index.css' %}">

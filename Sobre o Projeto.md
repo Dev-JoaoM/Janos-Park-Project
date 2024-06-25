@@ -55,8 +55,8 @@
    - [ ]  Consulta da situação do estacionamento de visitantes
    - [ ]  Tela Alerta de visita (com carro) com 3 dias de estadia (portaria)
    - [ ]  Tela de Alerta de visita (com carro) com mais de 4 dias de estadia (administração)
-   - [ ]  Mostrar o nome dos usuários quando estivem logados
-   - [ ]  Arrumar os links do Header de acordo com o usuário
+   - [X]  Mostrar o nome dos usuários quando estivem logados
+   - [X]  Arrumar os links do Header de acordo com o usuário
    - [X]  Home Síndico
       - [ ] Arrumar
 

@@ -5,6 +5,12 @@
 {% endblock page_title %}
 
 {% block content %}
+    {% if messages %}
+    <br>
+    {% for message in messages%}
+        <div class="alert {{message.tags}}">{{message}}</div>
+    {% endfor%}
+    {% endif %}
 
 <head>
   <title>Controle do Administrador</title>
