@@ -7,7 +7,12 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login as login_django
 from django.http.response import HttpResponse
 from rolepermissions.decorators import has_permission_decorator
+from datetime import date
 
+def filtro_visitas_controle(request):
+    data_hoje = date.today()
+    registros = RegistroVisitante.objects.filter(data_limite__lt=data_hoje)
+    return render(request, "controle_visitas_list.html", {"registros": registros})
 
 
 # Essa é uma FBV: Function Base the View
@@ -21,6 +26,16 @@ def home_portaria(request):
     #usuario = request.username
     return render(request, "home_portaria.html")#, {'usuario': usuario.username})
 
+
+def controle_visitas_4_list(request):
+    #usuario = request.username
+    return render(request, "controle_visitas_4_list.html")#, {'usuario': usuario.username})
+def controle_visitas_list(request):
+    #usuario = request.username
+    return render(request, "controle_visitas_list.html")#, {'usuario': usuario.username})
+
+@has_permission_decorator('cadastrar_apartamento')
+
 def home_admin(request):
     return render(request, 'home_admin.html')
 
@@ -30,6 +45,10 @@ def estacionamento(request):
 @has_permission_decorator('cadastrar_adm')
 def home_sindico(request):
     return render(request, 'home_sindico.html')
+
+def controle_visitas(request):
+    return render(request, 'controle_visitas.html')
+
 
 #@has_permission_decorator('visualizar_carro_morador')
 def veiculos_admin(request):
@@ -259,14 +278,14 @@ class RegistroVisitanteListView(ListView):
 
 class RegistroVisitanteCreateView(CreateView):
     model = RegistroVisitante
-    fields = ["visitante", "morador", "autorizacao", "funcionario"]
+    fields = ["visitante", "morador", "autorizacao", "data_limite"]
     readonly_fields = ["data_entrada"]
     success_url = reverse_lazy("registro_visitantes_lista")
 
 
 class RegistroVisitanteUptadeView(UpdateView):
     model = RegistroVisitante
-    fields = ["visitante", "morador", "funcionario", "data_limite", "data_saida"]
+    fields = ["visitante", "morador", "data_limite", "data_saida"]
     readonly_fields = ["data_entrada"]
 
     success_url = reverse_lazy("registro_visitantes_lista")
