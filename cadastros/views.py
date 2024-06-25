@@ -282,6 +282,13 @@ class RegistroVisitanteCreateView(CreateView):
     fields = ["visitante", "morador", "autorizacao", "data_limite"]
     readonly_fields = ["data_entrada"]
     success_url = reverse_lazy("registro_visitantes_lista")
+    
+    """def get(self, request, pk):
+        registro = get_object_or_404(RegistroVisitante, pk=pk)
+        registro.calc_data_limite()
+    
+        return success_url"""
+    
 
 
 class RegistroVisitanteUptadeView(UpdateView):
@@ -297,6 +304,12 @@ class RegistroVisitanteDeleteView(DeleteView):
     success_url = reverse_lazy("registro_visitantes_lista")
 
 
+class RegistroVisitanteSaidaView(View):
+    def get(self, request, pk):
+        registro = get_object_or_404(RegistroVisitante, pk=pk)
+        registro.marcar_saida()
+        return redirect("registro_visitantes_lista")
+    
 
                         ##### VIEWS DE REGISTRO MORADORES
 

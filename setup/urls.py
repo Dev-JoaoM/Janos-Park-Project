@@ -91,7 +91,8 @@ url_reg_visitante = [
     path("registro_visitantes-lista/", RegistroVisitanteListView.as_view(), name="registro_visitantes_lista"),
     path("registro_visitantes-cadastro/", RegistroVisitanteCreateView.as_view(), name="registro_visitantes_cadastro",),
     path("registro_visitantes-edicao/<int:pk>", RegistroVisitanteUptadeView.as_view(), name="registro_visitantes_edicao",),
-    path("registro_visitantes-exclucao/<int:pk>", RegistroVisitanteDeleteView.as_view(), name="registro_visitantes_exclusao",)
+    path("registro_visitantes-exclucao/<int:pk>", RegistroVisitanteDeleteView.as_view(), name="registro_visitantes_exclusao",),
+    path("registro_visitantes-saida/<int:pk>", RegistroVisitanteSaidaView.as_view(), name="registro_visitante_saida",)
 ]
 
 url_reg_morador = [

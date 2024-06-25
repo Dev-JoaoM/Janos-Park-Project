@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import date
+from datetime import date, timedelta, datetime
 from usuarios.models import Colaborador
 
 class Cadastro(models.Model):
@@ -100,7 +100,7 @@ class Visitante(models.Model):
     status = models.CharField(max_length=1, choices=choices_status, null=False, blank=False, default="A")
 
     def __str__(self):
-        return (f"{self.nome}, telefone: {self.telefone}")
+        return (f"{self.nome}")
 
 
 class RegistroVisitante(models.Model):
@@ -114,16 +114,18 @@ class RegistroVisitante(models.Model):
     # TODO: def de saida com um checkbox
     # TODO: Se não tem autorização do morador não tem data de entrada e nem data limite de saida
 
+    class Meta:
+        ordering = ["data_limite"]
 
     def marcar_saida(self):
         if not self.data_saida:
-            self.data_saida = date.today()
+            self.data_saida = datetime.now()
             self.save()
 
 
     def calc_data_limite(self):
         if self.data_entrada:
-            self.data_limite = date.today() + 3
+            self.data_limite = date.today() + timedelta(days=3) - timedelta(minutes=1)
             self.save()
 
     """

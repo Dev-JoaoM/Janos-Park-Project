@@ -18,6 +18,7 @@
               <th scope="col">Morador</th>
               <th scope="col">Autorização</th>
               <th scope="col">Funcionário</th>
+              <th scope="col">Ações</th>
 
             </tr>
           </thead>
@@ -33,9 +34,15 @@
                     <td>{{registrovisitante.autorizacao}}</td>
                     <td>{{registrovisitante.funcionario}}</td>
                     <td>
+                      <a 
+                        href="{% url 'registro_visitante_saida' pk=registrovisitante.pk %}" 
+                        class="btn btn-primary btn-sm {% if registrovisitante.data_saida %} disabled{% endif %}"
+                      >
+                          Saída
+                      </a>
 
                         <a href="{% url 'registro_visitantes_edicao' pk=registrovisitante.pk %}"
-                           class="btn btn-secondary btn-sm">Editar</a>
+                           class="btn btn-secondary btn-sm {% if registrovisitante.data_saida %} disabled{% endif %}">Editar</a>
                         <a href="{% url 'registro_visitantes_exclusao' pk=registrovisitante.pk %}" class="btn btn-danger btn-sm">Excluir</a>
                     </td>
                 </tr>
