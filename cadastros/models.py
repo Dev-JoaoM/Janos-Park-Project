@@ -172,6 +172,7 @@ class QntVagasVisita(models.Model):
     registro_visitante = models.ForeignKey(RegistroVisitante, on_delete=models.DO_NOTHING)  # rever esse parametro
     qnt_vagas = models.IntegerField(null=False, blank=False)
     vagas_disponiveis = models.IntegerField(null=False, blank=False)
+
     # Talvez não precise do 'vagas_disponiveis' por ser um campo calculado
 
 

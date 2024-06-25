@@ -21,6 +21,10 @@ def home_portaria(request):
     #usuario = request.username
     return render(request, "home_portaria.html")#, {'usuario': usuario.username})
 
+def controle_visitas_list(request):
+    #usuario = request.username
+    return render(request, "controle_visitas_list.html")#, {'usuario': usuario.username})
+
 @has_permission_decorator('cadastrar_apartamento')
 def home_admin(request):
     return render(request, 'home_admin.html')
@@ -29,6 +33,10 @@ def home_admin(request):
 @has_permission_decorator('cadastrar_adm')
 def home_sindico(request):
     return render(request, 'home_sindico.html')
+
+def controle_visitas(request):
+    return render(request, 'controle_visitas.html')
+
 
 #@has_permission_decorator('visualizar_carro_morador')
 def veiculos_admin(request):
