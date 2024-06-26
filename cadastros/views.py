@@ -46,7 +46,7 @@ def estacionamento(request):
     vagas_ocupadas = RegistroVisitante.objects.filter(data_saida__isnull=True).count()
     vagas_livres = total_vagas - vagas_ocupadas
     # visitante_carro = CarroVisitante.objects.all()
-    vagas_list = RegistroVisitante.objects.filter(data_saida__isnull=True)
+    vagas_list = RegistroVisitante.objects.filter(data_saida__isnull=True, data_limite__lt=date.today())
 
     context = {
         'total_vagas': total_vagas,
@@ -311,7 +311,7 @@ class RegistroVisitanteCreateView(CreateView):
 
 class RegistroVisitanteUptadeView(UpdateView):
     model = RegistroVisitante
-    fields = ["visitante", "morador", "autorizacao"]
+    fields = ["visitante", "morador", "autorizacao", "data_entrada"]
     readonly_fields = ["data_entrada"]
     success_url = reverse_lazy("registro_visitantes_lista")
 

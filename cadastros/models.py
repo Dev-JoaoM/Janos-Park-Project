@@ -113,6 +113,12 @@ class RegistroVisitante(models.Model):
     ##funcionario = models.ForeignKey(Funcionario, on_delete=models.DO_NOTHING)  # rever esse parametro
     # TODO: def de saida com um checkbox
     # TODO: Se não tem autorização do morador não tem data de entrada e nem data limite de saida
+    def __str__(self):
+        if self.data_saida:
+            datas= self.data_saida
+        else:
+            datas= '-'
+        return (f" Visitante {self.visitante}, Data Saida: {datas}:,  Morador {self.morador}")
 
     class Meta:
         ordering = ["data_limite"]

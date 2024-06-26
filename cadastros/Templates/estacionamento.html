@@ -23,12 +23,16 @@
             <canvas id="vagasChart"></canvas>
         </div>
         <div class="list-container">
-            <h3 style="text-align: center;">Lista de Visitantes</h3>
+            <h3 style="text-align: center;">Lista de Visitantes Pendentes</h3>
             <ul>
                 {% for visitante in vagas_list %}
                     <li>
                         <strong>Visitante:</strong> {{ visitante.visitante.nome }}
-                        <strong>Entrada:</strong> {{ visitante.data_entrada }}<br>
+                        <strong>Telefone Visitante:</strong> {{ visitante.visitante.telefone }}<br>
+                        <!-- <strong>Entrada:</strong> {{ visitante.data_entrada }}<br> -->
+                        <strong>Morador:</strong> {{ visitante.morador }}
+                        <strong>Telefone Morador:</strong> {{ visitante.morador.apartamento.telefone_apto }}<br>
+                        <strong>Limite Saida:</strong> {{ visitante.data_limite }}<br>
                         {% comment %} <strong>Carro:</strong> {{ visitante.visitante.visitante__carrovisitante.modelo }} {% endcomment %}
                         {% comment %} <strong>. Placa:</strong> {{ visitante.visitante.visitante__carrovisitante.placa }} {% endcomment %}
                     </li>
