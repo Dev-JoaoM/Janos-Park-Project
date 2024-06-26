@@ -7,12 +7,23 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login as login_django
 from django.http.response import HttpResponse
 from rolepermissions.decorators import has_permission_decorator
-from datetime import date
+from datetime import date, timedelta, datetime
 
-def filtro_visitas_controle(request):
+def filtro_visitas_controle(request): #pagina de filtro das visitas com mais de 3 dias
     data_hoje = date.today()
-    registros = RegistroVisitante.objects.filter(data_limite__lt=data_hoje)
+    registros = RegistroVisitante.objects.filter(data_limite__lt=data_hoje) #TODO: validar comparando com a data de entrada
     return render(request, "controle_visitas_list.html", {"registros": registros})
+
+def controle_visitas_4_list(request): #pagina de filtro das visitas com mais de 3 dias
+    #usuario = request.username
+    return render(request, "controle_visitas_4_list.html")#, {'usuario': usuario.username})
+
+def controle_visitas_list(request):
+    #usuario = request.username
+    return render(request, "controle_visitas_list.html")#, {'usuario': usuario.username})
+
+def controle_visitas(request): #pagina de acesso a lista de pendencias
+    return render(request, 'controle_visitas.html')
 
 
 # Essa é uma FBV: Function Base the View
@@ -26,16 +37,7 @@ def home_portaria(request):
     #usuario = request.username
     return render(request, "home_portaria.html")#, {'usuario': usuario.username})
 
-
-def controle_visitas_4_list(request):
-    #usuario = request.username
-    return render(request, "controle_visitas_4_list.html")#, {'usuario': usuario.username})
-def controle_visitas_list(request):
-    #usuario = request.username
-    return render(request, "controle_visitas_list.html")#, {'usuario': usuario.username})
-
 @has_permission_decorator('cadastrar_apartamento')
-
 def home_admin(request):
     return render(request, 'home_admin.html')
 
@@ -44,7 +46,7 @@ def estacionamento(request):
     vagas_ocupadas = RegistroVisitante.objects.filter(data_saida__isnull=True).count()
     vagas_livres = total_vagas - vagas_ocupadas
     # visitante_carro = CarroVisitante.objects.all()
-    vagas_list = RegistroVisitante.objects.filter(data_saida__isnull=True)
+    vagas_list = RegistroVisitante.objects.filter(data_saida__isnull=True, data_limite__lt=date.today())
 
     context = {
         'total_vagas': total_vagas,
@@ -59,9 +61,10 @@ def estacionamento(request):
 def home_sindico(request):
     return render(request, 'home_sindico.html')
 
-def controle_visitas(request):
-    return render(request, 'controle_visitas.html')
 
+@has_permission_decorator('cadastrar_adm')
+def acessar_registros(request):
+    return render(request, 'acessar_registros.html')
 
 #@has_permission_decorator('visualizar_carro_morador')
 def veiculos_admin(request):
@@ -291,17 +294,38 @@ class RegistroVisitanteListView(ListView):
 
 class RegistroVisitanteCreateView(CreateView):
     model = RegistroVisitante
-    fields = ["visitante", "morador", "autorizacao", "data_limite"]
+    fields = ["visitante", "morador", "autorizacao"]
     readonly_fields = ["data_entrada"]
     success_url = reverse_lazy("registro_visitantes_lista")
 
+    def form_valid(self, form): # Inclusão da data limite de saída
+        # Salva o objeto mas ainda não o envia para o banco de dados
+        self.object = form.save(commit=False)
+        if self.object.autorizacao == True:
+            # Define data_limite como a data atual mais 3 dias menos 1 minuto
+            self.object.data_limite = datetime.now() + timedelta(days=3) - timedelta(minutes=1)
+        # Salva o objeto no banco de dados
+        self.object.save()
+        return super().form_valid(form)
+         
 
 class RegistroVisitanteUptadeView(UpdateView):
     model = RegistroVisitante
-    fields = ["visitante", "morador", "data_limite", "data_saida"]
+    fields = ["visitante", "morador", "autorizacao", "data_entrada"]
     readonly_fields = ["data_entrada"]
-
     success_url = reverse_lazy("registro_visitantes_lista")
+
+    def form_valid(self, form):
+        # Salva o objeto mas ainda não o envia para o banco de dados
+        self.object = form.save(commit=False)
+        if self.object.autorizacao == True:
+            # Define data_limite como a data atual mais 3 dias menos 1 minuto
+            self.object.data_limite = self.object.data_entrada + timedelta(days=3) - timedelta(minutes=1)
+        else:
+            self.object.data_limite = None
+        # Salva o objeto no banco de dados
+        self.object.save()
+        return super().form_valid(form)
 
 
 class RegistroVisitanteDeleteView(DeleteView):
@@ -309,6 +333,12 @@ class RegistroVisitanteDeleteView(DeleteView):
     success_url = reverse_lazy("registro_visitantes_lista")
 
 
+class RegistroVisitanteSaidaView(View):
+    def get(self, request, pk):
+        registro = get_object_or_404(RegistroVisitante, pk=pk)
+        registro.marcar_saida()
+        return redirect("registro_visitantes_lista")
+    
 
                         ##### VIEWS DE REGISTRO MORADORES
 
@@ -319,7 +349,7 @@ class RegistroMoradorListView(ListView):
 
 class RegistroMoradorCreateView(CreateView):
     model = RegistroMorador
-    fields = ["morador", "funcionario"]
+    fields = ["morador", ]
     readonly_fields = ["data_entrada"]
     success_url = reverse_lazy("registro_moradores_lista")
 
@@ -334,3 +364,9 @@ class RegistroMoradorUptadeView(UpdateView):
 class RegistroMoradorDeleteView(DeleteView):
     model = RegistroMorador
     success_url = reverse_lazy("registro_moradores_lista")
+
+class RegistroMoradorSaidaView(View):
+    def get(self, request, pk):
+        registro = get_object_or_404(RegistroMorador, pk=pk)
+        registro.marcar_saida()
+        return redirect("registro_moradores_lista")

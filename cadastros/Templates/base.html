@@ -17,6 +17,16 @@
 <header>
   <div class="header-left">
       <p>Condôminio Parque Santa Lúcia</p>
+      {% if request.user.cargo == "PTR" %}
+        <p>Porteiro(a): {{ request.user.username }} </p>
+      {% elif request.user.cargo == "ADM" %}
+        <p>Administrador(a): {{ request.user.username }} </p>
+      {% elif request.user.cargo == "SDC" %}
+        <p>Síndico(a): {{ request.user.username }} </p>
+      {% endif%}
+      
+
+
     </div>
   <div class="header-center">
     <a><img id="logo" src="{% static 'imagens/Logo_editado_2.png' %}" alt="Jano Systems"></a>
@@ -24,12 +34,24 @@
   <div class="header-right">
       <nav>
           <ul class="list_menu">
-              <li><a href="{%url 'index'%}">Portaria</a></li>
+            {% if request.user.cargo == "PTR" %}
+              <li><a href="{%url 'index'%}">Tela Inicial</a></li>
               <li><a href="{%url 'apartamentos_lista'%}">Apartamento</a></li>
               <li><a href="{% url 'moradores_lista' %}">Morador</a></li>
               <li><a href="{% url 'visitantes_lista' %}">Visitante</a></li>
-              <li><a href="{%url 'home_admin'%}">Admin</a></li>
+
+            {% elif request.user.cargo == "ADM" %}
+              <li><a href="{%url 'home_admin'%}">Tela Inicial</a></li>
+              <li><a href="{% url 'visitantes_lista' %}">Visitante</a></li>
+              <li><a href="{%url 'controle_visitas'%}">Estacionamento</a></li>
+              
+            {% elif request.user.cargo == "SDC" %}
+              <li><a href="{%url 'home_sindico'%}">Tela Inicial</a></li>
+              <li><a href="{%url 'controle_visitas'%}">Estacionamento</a></li>
+            {% endif%}
+
               <li><a href="{%url 'veiculos_admin'%}">Veículos</a></li>
+              
               <li><a href=""></a></li>
               <a href="{%url 'sair' %}"><button type="button" class="btn btn-dark">Sair</button></a>
           </ul>
@@ -52,7 +74,7 @@
         </div>
         <div class="footer-right">
           
-          <p id="copyright"><a color=ffff href= "{%url 'home'%}" target="_blank"><strong>Contato/Sobre Nós</strong></a></p>
+          <p id="copyright">📞<a color=ffff href= "{%url 'home'%}" target="_blank"><strong>Suporte</strong></a></p>
           
         </div>
     </div>

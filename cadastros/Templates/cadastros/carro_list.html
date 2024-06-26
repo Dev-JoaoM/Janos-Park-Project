@@ -26,12 +26,14 @@
                     <td>{{carro.modelo}}</td>
                     <td>{{carro.cor}}</td>
                     <td>{{carro.morador}}</td>
+                    {% if request.user.cargo == "ADM" %}
                     <td>
 
                         <a href="{% url 'carros_edicao' pk=carro.pk %}"
                            class="btn btn-secondary btn-sm ">Editar</a>
                         <a href="{% url 'carros_exclusao' pk=carro.pk %}" class="btn btn-danger btn-sm">Excluir</a>
                     </td>
+                    {% endif %}
                 </tr>
             {% endfor %}
           </tbody>
@@ -39,6 +41,7 @@
     {% else %}
         <p>Não há carros de moradores cadastrados</p>
     {% endif %}
-
-    <a href="{% url 'carros_cadastro' %} " class="btn btn-primary btn-sm">Novo Cadastro</a>
+    {% if request.user.cargo == "ADM" %}
+      <a href="{% url 'carros_cadastro' %} " class="btn btn-primary btn-sm">Novo Cadastro</a>
+    {% endif %}
 {% endblock content %}

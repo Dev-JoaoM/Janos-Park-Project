@@ -27,12 +27,14 @@
                     <td>{{apartamento.andar}}</td>
                     <td>{{apartamento.numero_apto}}</td>
                     <td>{{apartamento.telefone_apto}}</td>
+                    {% if request.user.cargo == "ADM" %}
                     <td>
 
                         <a href="{% url 'apartamentos_edicao' pk=apartamento.pk %}"
                            class="btn btn-secondary btn-sm {% if apartamento.dt_demissao %} disabled {% endif %}">Editar</a>
                         <a href="{% url 'apartamentos_exclusao' pk=apartamento.pk %}" class="btn btn-danger btn-sm">Excluir</a>
                     </td>
+                    {% endif %}
                 </tr>
             {% endfor %}
           </tbody>
@@ -40,6 +42,7 @@
     {% else %}
         <p>Não há apartamentos cadastrados</p>
     {% endif %}
-
-    <a href="{% url 'apartamentos_cadastro' %} " class="btn btn-primary btn-sm">Novo Cadastro</a>
+    {% if request.user.cargo == "ADM" %}
+      <a href="{% url 'apartamentos_cadastro' %} " class="btn btn-primary btn-sm">Novo Cadastro</a>
+    {% endif %}
 {% endblock content %}

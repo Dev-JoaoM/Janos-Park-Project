@@ -4,7 +4,7 @@
 {% endblock page_title %}
 
 {% block content %}
-    <h1> Lista de Registro de Visitantes </h1>
+    <h1> Lista de Registro de Visitantes  </h1>
 
     {% if registrovisitante_list %}
         <table class="table">
@@ -17,7 +17,8 @@
               <th scope="col">Data Saída</th>
               <th scope="col">Morador</th>
               <th scope="col">Autorização</th>
-              <th scope="col">Funcionário</th>
+              <th scope="col">Porteiro(a)</th>
+              
 
             </tr>
           </thead>
@@ -27,17 +28,26 @@
                     <th scope="row">{{ registrovisitante.pk }}</th>
                     <td>{{registrovisitante.visitante}}</td>
                     <td>{{registrovisitante.data_entrada}}</td>
-                    <td>{{registrovisitante.data_limite}}</td>
+                    <td>{{registrovisitante.data_limite|default:" - "}}</td>
                     <td>{{registrovisitante.data_saida|default:" - "}}</td>
                     <td>{{registrovisitante.morador}}</td>
                     <td>{{registrovisitante.autorizacao}}</td>
                     <td>{{registrovisitante.funcionario}}</td>
+                    {% if request.user.cargo == "PTR" %}
                     <td>
+                      
+                      <a 
+                        href="{% url 'registro_visitante_saida' pk=registrovisitante.pk %}" 
+                        class="btn btn-primary btn-sm {% if registrovisitante.data_saida  %} disabled {% elif not registrovisitante.autorizacao %} disabled{% endif %}"
+                      >
+                          Saída
+                      </a>
 
                         <a href="{% url 'registro_visitantes_edicao' pk=registrovisitante.pk %}"
-                           class="btn btn-secondary btn-sm">Editar</a>
+                           class="btn btn-secondary btn-sm {% if registrovisitante.data_saida %} disabled{% endif %}">Editar</a>
                         <a href="{% url 'registro_visitantes_exclusao' pk=registrovisitante.pk %}" class="btn btn-danger btn-sm">Excluir</a>
                     </td>
+                    {% endif %}
                 </tr>
             {% endfor %}
           </tbody>
@@ -45,6 +55,7 @@
     {% else %}
         <p>Não há registro de visitantes cadastrados</p>
     {% endif %}
-
-    <a href="{% url 'registro_visitantes_cadastro' %} " class="btn btn-primary btn-sm">Novo Cadastro</a>
+    {% if request.user.cargo == "PTR" %}
+      <a href="{% url 'registro_visitantes_cadastro' %} " class="btn btn-primary btn-sm">Novo Cadastro</a>
+    {% endif %}
 {% endblock content %}

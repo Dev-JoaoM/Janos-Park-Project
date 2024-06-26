@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block page_title %}
+    Acessar Registros
+{% endblock page_title %}
+
+{% block content %}
+    {% if messages %}
+    <br>
+    {% for message in messages%}
+        <div class="alert {{message.tags}}">{{message}}</div>
+    {% endfor%}
+    {% endif %}
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+    </head>
+
+    <div class="text_Inicial">
+<h1> <strong>Cadastros Registrados</strong></h1>
+
+    </div>
+
+    <div class="card-container" style="text-align: center">
+
+        <div class="card">
+            <h1>Apartamento</h1><br><br><br>
+            <img src="{% static '/imagens/apartamento.png' %}" alt="Apartamento">
+            <p>Cadastrar e gerenciar Apartamentos</p>
+            <a href="{% url 'apartamentos_lista' %}"><button>Listar Apartamentos</button></a>
+        </div>
+        
+        <div class="card">
+            <h1>Moradores</h1><br><br>
+            <img src="{% static '/imagens/moradores.png' %}" alt="Moradores">
+            <p>Cadastrar e gerenciar acesso de moradores</p>
+            <a href="{% url 'moradores_lista' %}"><button>Listar Moradores</button></a>
+        </div>
+
+        <div class="card">
+            <h1>Visitantes</h1><br><br>
+            <img src="{% static 'imagens/visitante.png' %}" alt="Visitante">
+             <p>Cadastrar e gerenciar acesso de visitantes</p>
+             <a href="{% url 'visitantes_lista' %}"><button>Listar Registros</button></a>
+        </div>
+
+    </div>
+
+
+    </div>
+
+
+{% endblock content %}

@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import date
+from datetime import date, datetime
 from usuarios.models import Colaborador
 
 class Cadastro(models.Model):
@@ -100,28 +100,32 @@ class Visitante(models.Model):
     status = models.CharField(max_length=1, choices=choices_status, null=False, blank=False, default="A")
 
     def __str__(self):
-        return (f"{self.nome}, telefone: {self.telefone}")
+        return (f"{self.nome}")
 
 
 class RegistroVisitante(models.Model):
     morador = models.ForeignKey(Morador, on_delete=models.DO_NOTHING)  # rever esse parametro
     visitante = models.ForeignKey(Visitante, on_delete=models.DO_NOTHING)  # rever esse parametro
     data_entrada = models.DateTimeField(auto_now_add=True, null=False, blank=False)
-    data_limite = models.DateTimeField(auto_now_add=False, null=False, blank=False) # TODO: TIRAR  ESSE AUTO ADD
+    data_limite = models.DateTimeField(null=True, blank=True) 
     data_saida = models.DateTimeField(null=True)
     autorizacao = models.BooleanField(verbose_name="Autorização do Morador", null=False, blank=False)
     ##funcionario = models.ForeignKey(Funcionario, on_delete=models.DO_NOTHING)  # rever esse parametro
     # TODO: def de saida com um checkbox
     # TODO: Se não tem autorização do morador não tem data de entrada e nem data limite de saida
+    def __str__(self):
+        if self.data_saida:
+            datas= self.data_saida
+        else:
+            datas= '-'
+        return (f" Visitante {self.visitante}, Data Saida: {datas}:,  Morador {self.morador}")
+
+    class Meta:
+        ordering = ["data_limite"]
+
     def marcar_saida(self):
         if not self.data_saida:
-            self.data_saida = date.today()
-            self.save()
-
-
-    def calc_data_limite(self):
-        if self.data_entrada:
-            self.data_limite = date.today() + 3
+            self.data_saida = datetime.now()
             self.save()
 
     """
@@ -144,11 +148,15 @@ class RegistroMorador(models.Model):
     morador = models.ForeignKey(Morador, on_delete=models.DO_NOTHING)  # rever esse parametro
     data_entrada = models.DateTimeField(auto_now_add=True, null=False, blank=False)
     data_saida = models.DateTimeField(null=True, blank=True)
-    funcionario = models.ForeignKey(Funcionario, on_delete=models.DO_NOTHING)  # rever esse parametro
+    #criador_por = models.ForeignKey(Colaborador, on_delete=models.DO_NOTHING)  # rever esse parametro
+    #atualizado_por = models.ForeignKey(Colaborador, on_delete=models.DO_NOTHING)  # rever esse parametro
+
+    class Meta:
+        ordering = ["data_saida"]
 
     def marcar_saida(self):
         if not self.data_saida:
-            self.data_saida = date.today()
+            self.data_saida = datetime.now()
             self.save()
 
     # TODO: def de saida com um checkbox

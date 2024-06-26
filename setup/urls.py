@@ -14,10 +14,12 @@ urlpatterns = [
     path("home/portaria/", home_portaria, name="index"),
     path('home/admin/', home_admin, name='home_admin'),
     path('home/sindico/', home_sindico, name='home_sindico'),
+    path('acessar/registros/', acessar_registros, name='acessar_registros'),
+
     path('controle/veiculos/', veiculos_admin, name='veiculos_admin'),
 
-    path('controle_visitas/', controle_visitas, name='controle_visitas'),
-    path('controle_visitas_list/', filtro_visitas_controle, name='controle_visitas_list'),
+    path('controle/visitante/', controle_visitas, name='controle_visitas'), #pagina geral de pendencias de visitantes
+    path('controle_visitas_list/', filtro_visitas_controle, name='controle_visitas_list'), #Visitas com mais de 3 dias
     #path("login/", login, name="login"),
 
     path("estacionamento/", estacionamento, name="estacionamento"),
@@ -91,14 +93,16 @@ url_reg_visitante = [
     path("registro_visitantes-lista/", RegistroVisitanteListView.as_view(), name="registro_visitantes_lista"),
     path("registro_visitantes-cadastro/", RegistroVisitanteCreateView.as_view(), name="registro_visitantes_cadastro",),
     path("registro_visitantes-edicao/<int:pk>", RegistroVisitanteUptadeView.as_view(), name="registro_visitantes_edicao",),
-    path("registro_visitantes-exclucao/<int:pk>", RegistroVisitanteDeleteView.as_view(), name="registro_visitantes_exclusao",)
+    path("registro_visitantes-exclucao/<int:pk>", RegistroVisitanteDeleteView.as_view(), name="registro_visitantes_exclusao",),
+    path("registro_visitantes-saida/<int:pk>", RegistroVisitanteSaidaView.as_view(), name="registro_visitante_saida",)
 ]
 
 url_reg_morador = [
     path("registro_moradores-lista/", RegistroMoradorListView.as_view(), name="registro_moradores_lista"),
     path("registro_moradores-cadastro/", RegistroMoradorCreateView.as_view(), name="registro_moradores_cadastro",),
     path("registro_moradores-edicao/<int:pk>", RegistroMoradorUptadeView.as_view(), name="registro_moradores_edicao",),
-    path("registro_moradores-exclucao/<int:pk>", RegistroMoradorDeleteView.as_view(), name="registro_moradores_exclusao",)
+    path("registro_moradores-exclucao/<int:pk>", RegistroMoradorDeleteView.as_view(), name="registro_moradores_exclusao",),
+    path("registro_moradores-saida/<int:pk>", RegistroMoradorSaidaView.as_view(), name="registro_morador_saida",)
 ]
 
 url_cruds = url_funcionarios + url_apartamentos + url_moradores + url_visitantes + url_carros + url_motos + url_carros_visitantes + url_reg_visitante + url_reg_morador
