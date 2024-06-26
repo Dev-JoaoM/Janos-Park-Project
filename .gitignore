@@ -13,4 +13,4 @@ usuarios/migrations/__pycache__/
 
 
 #Arquivo do BD
-db.sqlite3
+#db.sqlite3

@@ -46,7 +46,7 @@
             var vagasChart = new Chart(ctx, {
                 type: 'doughnut',
                 data: {
-                    labels: ['Vagas Ocupadas', 'Vagas Livres'],
+                    labels: ['Vagas Ocupadas:  ' + {{ vagas_ocupadas }}, 'Vagas Livres:  ' +  {{ vagas_livres }}],
                     datasets: [{
                         data: [{{ vagas_ocupadas }}, {{ vagas_livres }}],
                         backgroundColor: ['#b40505', '#cccccc'],
