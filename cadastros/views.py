@@ -7,6 +7,8 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login as login_django
 from django.http.response import HttpResponse
 from rolepermissions.decorators import has_permission_decorator
+from datetime import date, timedelta
+
 from datetime import date
 
 def filtro_visitas_controle(request):
@@ -14,6 +16,12 @@ def filtro_visitas_controle(request):
     registros = RegistroVisitante.objects.filter(data_limite__lt=data_hoje)
     return render(request, "controle_visitas_list.html", {"registros": registros})
 
+
+def filtro_visitas_controle_4(request):
+    data_hoje = date.today()
+    tres_dias_atras = data_hoje - timedelta(days=3)
+    registros4 = RegistroVisitante.objects.filter(data_limite__lt=tres_dias_atras)
+    return render(request, "controle_visitas_4_list.html", {"registros4": registros4})
 
 # Essa é uma FBV: Function Base the View
 def home(request):  # recebe uma solicitação

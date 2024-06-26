@@ -65,9 +65,23 @@ class Apartamento(models.Model):
 
     status = models.CharField(max_length=1, choices=choices_status, null=False, blank=False, default="A")
     """
-    def __str__(self):
-        return f"Apartamento n° {self.numero_apto}, {self.andar}º andar, bloco {self.bloco}"
 
+    def __str__(self):
+        return (f"Apartamento n° {self.numero_apto}\n"
+                f"Andar: {self.andar}º\n"
+                f"Bloco: {self.bloco}")
+
+    def get_bloco(self):
+        return f"Bloco: {self.bloco}"
+
+    def get_andar(self):
+        return f"Andar: {self.andar}º"
+
+    def get_numero_apto(self):
+        return f"Apartamento n° {self.numero_apto}"
+
+    def get_telefone_apto(self):
+        return f"Telefone: {self.telefone_apto}"
 class Morador(models.Model):
     apartamento = models.ForeignKey(Apartamento, on_delete=models.CASCADE)
     nome = models.CharField(verbose_name="Nome", max_length=50, null=False, blank=False)
