@@ -62,7 +62,7 @@ def home_sindico(request):
     return render(request, 'home_sindico.html')
 
 
-@has_permission_decorator('cadastrar_adm')
+@has_permission_decorator('visualizar_apartamento')
 def acessar_registros(request):
     return render(request, 'acessar_registros.html')
 

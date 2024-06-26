@@ -26,22 +26,29 @@
         <div class="card">
             <h1>Apartamento</h1><br><br><br>
             <img src="{% static '/imagens/apartamento.png' %}" alt="Apartamento">
-            <p>Cadastrar e gerenciar Apartamentos</p>
-            <a href="{% url 'apartamentos_lista' %}"><button>Listar Apartamentos</button></a>
+            <p>Listar Apartamentos</p>
+            <a href="{% url 'apartamentos_lista' %}"><button>Acessar </button></a>
         </div>
         
         <div class="card">
             <h1>Moradores</h1><br><br>
             <img src="{% static '/imagens/moradores.png' %}" alt="Moradores">
-            <p>Cadastrar e gerenciar acesso de moradores</p>
-            <a href="{% url 'moradores_lista' %}"><button>Listar Moradores</button></a>
+            <p>Listar Moradores</p>
+            <a href="{% url 'moradores_lista' %}"><button>Acessar</button></a>
         </div>
 
         <div class="card">
             <h1>Visitantes</h1><br><br>
             <img src="{% static 'imagens/visitante.png' %}" alt="Visitante">
-             <p>Cadastrar e gerenciar acesso de visitantes</p>
-             <a href="{% url 'visitantes_lista' %}"><button>Listar Registros</button></a>
+             <p>Listar Visitantes</p>
+             <a href="{% url 'visitantes_lista' %}"><button>Acessar</button></a>
+        </div>
+
+        <div class="card">
+            <h1>Veículos</h1><br><br>
+            <img src="{% static 'imagens/visitante.png' %}" alt="Visitante">
+             <p>Listar Veículos</p>
+             <a href="{% url 'veiculos_admin' %}"><button>Acessar</button></a>
         </div>
 
     </div>
