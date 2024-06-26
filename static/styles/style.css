@@ -1,5 +1,9 @@
 
 /* Aplica sombra ao div dentro do header */
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
 .header-content {
   background-color: #ffffff; /* Cor de fundo do div */
   padding: 20px;
@@ -15,13 +19,17 @@ header {
   align-items: center;
   padding: 100px 90px;
   margin-bottom: 25px;
-  background-color: #333; /* Cor de fundo do header */
+  background-color: #f8f9fa; /* Cor de fundo do header */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Propriedade de sombra */
 }
 
 /* Estilos para a seção à esquerda do header */
 .header-left {
   flex: 1;
+}
+
+.header-left:hover {
+  text-decoration: underline;
 }
 
 /* Estilos para a seção central do header */
@@ -51,6 +59,7 @@ nav ul {
 nav ul li {
   margin-left: 30px;
   font-size: 30px;
+  /* font-family: 'Roboto', sans-serif; */
 }
 
 nav ul li a {
@@ -71,6 +80,7 @@ header p {
 header a {
   font-size: 30px;
   font-weight: bold;
+  /* font-family: 'Open Sans', sans-serif; */
 }/*Fim header*/
 
 /* Footer */
@@ -78,6 +88,10 @@ footer {
   padding: 75px 250px;
   background-color: #ffffff; /* Cor de fundo do footer */
   text-align: center;
+}
+
+footer p{
+  font-family: 'Roboto', sans-serif;
 }
 
 footer hr {
