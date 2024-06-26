@@ -105,11 +105,13 @@ class Visitante(models.Model):
 
 class RegistroVisitante(models.Model):
     morador = models.ForeignKey(Morador, on_delete=models.DO_NOTHING)  # rever esse parametro
-    visitante = models.ForeignKey(Visitante, on_delete=models.DO_NOTHING)  # rever esse parametro
+    visitante = models.ForeignKey(Visitante, on_delete=models.CASCADE)  # rever esse parametro
     data_entrada = models.DateTimeField(auto_now_add=True, null=False, blank=False)
     data_limite = models.DateTimeField(null=True, blank=True) 
     data_saida = models.DateTimeField(null=True)
-    autorizacao = models.BooleanField(verbose_name="Autorização do Morador", null=False, blank=False)
+    autorizacao = models.BooleanField(verbose_name="Autorização do Morador", null=True, blank=False)
+    ligacao = models.BooleanField(verbose_name="Ligou para o Visitante?", null=True, blank=True)
+    data_ligacao = models.DateTimeField(null=True, blank=True) 
     ##funcionario = models.ForeignKey(Funcionario, on_delete=models.DO_NOTHING)  # rever esse parametro
     # TODO: def de saida com um checkbox
     # TODO: Se não tem autorização do morador não tem data de entrada e nem data limite de saida
@@ -126,6 +128,11 @@ class RegistroVisitante(models.Model):
     def marcar_saida(self):
         if not self.data_saida:
             self.data_saida = datetime.now()
+            self.save()
+    
+    def marcar_data_ligacao(self):
+        if not self.data_ligacao:
+            self.data_ligacao = datetime.now()
             self.save()
 
     """

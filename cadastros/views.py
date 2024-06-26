@@ -311,7 +311,7 @@ class RegistroVisitanteCreateView(CreateView):
 
 class RegistroVisitanteUptadeView(UpdateView):
     model = RegistroVisitante
-    fields = ["visitante", "morador", "autorizacao", "data_entrada"]
+    fields = ["visitante", "morador", "autorizacao"]
     readonly_fields = ["data_entrada"]
     success_url = reverse_lazy("registro_visitantes_lista")
 
