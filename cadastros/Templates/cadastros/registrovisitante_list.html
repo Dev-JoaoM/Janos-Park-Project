@@ -18,6 +18,7 @@
               <th scope="col">Morador</th>
               <th scope="col">Autorização</th>
               <th scope="col">Porteiro(a)</th>
+              <th scope="col">Data Ligação</th>
               
 
             </tr>
@@ -33,6 +34,7 @@
                     <td>{{registrovisitante.morador}}</td>
                     <td>{{registrovisitante.autorizacao}}</td>
                     <td>{{registrovisitante.funcionario}}</td>
+                    <td>{{registrovisitante.data_ligacao|default:" - "}}</td>
                     {% if request.user.cargo == "PTR" %}
                     <td>
                       

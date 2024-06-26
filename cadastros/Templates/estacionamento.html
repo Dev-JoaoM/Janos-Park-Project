@@ -32,6 +32,7 @@
                         <!-- <strong>Entrada:</strong> {{ visitante.data_entrada }}<br> -->
                         <strong>Morador:</strong> {{ visitante.morador }}
                         <strong>Telefone Morador:</strong> {{ visitante.morador.apartamento.telefone_apto }}<br>
+                        <strong>Data da Ligação:</strong> {{ visitante.data_ligacao|default:" - " }}<br>
                         <strong>Limite Saida:</strong> {{ visitante.data_limite }}<br>
                         {% comment %} <strong>Carro:</strong> {{ visitante.visitante.visitante__carrovisitante.modelo }} {% endcomment %}
                         {% comment %} <strong>. Placa:</strong> {{ visitante.visitante.visitante__carrovisitante.placa }} {% endcomment %}

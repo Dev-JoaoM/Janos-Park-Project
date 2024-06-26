@@ -304,6 +304,7 @@ class RegistroVisitanteCreateView(CreateView):
         if self.object.autorizacao == True:
             # Define data_limite como a data atual mais 3 dias menos 1 minuto
             self.object.data_limite = datetime.now() + timedelta(days=3) - timedelta(minutes=1)
+                
         # Salva o objeto no banco de dados
         self.object.save()
         return super().form_valid(form)
@@ -311,18 +312,24 @@ class RegistroVisitanteCreateView(CreateView):
 
 class RegistroVisitanteUptadeView(UpdateView):
     model = RegistroVisitante
-    fields = ["visitante", "morador", "autorizacao"]
+    fields = ["visitante", "morador", "autorizacao", "ligacao"]
     readonly_fields = ["data_entrada"]
     success_url = reverse_lazy("registro_visitantes_lista")
 
     def form_valid(self, form):
         # Salva o objeto mas ainda não o envia para o banco de dados
         self.object = form.save(commit=False)
-        if self.object.autorizacao == True:
+        if self.object.autorizacao == True and not self.object.data_limite:
             # Define data_limite como a data atual mais 3 dias menos 1 minuto
             self.object.data_limite = self.object.data_entrada + timedelta(days=3) - timedelta(minutes=1)
-        else:
+        elif self.object.autorizacao == False:
             self.object.data_limite = None
+        
+        if self.object.ligacao == True and self.object.autorizacao == True:
+            #marcar_data_ligacao
+            self.object.data_ligacao = datetime.now()
+        elif self.object.ligacao == False:
+            self.object.data_ligacao = None
         # Salva o objeto no banco de dados
         self.object.save()
         return super().form_valid(form)
