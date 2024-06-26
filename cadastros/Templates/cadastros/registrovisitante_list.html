@@ -18,7 +18,7 @@
               <th scope="col">Morador</th>
               <th scope="col">Autorização</th>
               <th scope="col">Porteiro(a)</th>
-              <th scope="col">Ações</th>
+              
 
             </tr>
           </thead>
@@ -33,7 +33,9 @@
                     <td>{{registrovisitante.morador}}</td>
                     <td>{{registrovisitante.autorizacao}}</td>
                     <td>{{registrovisitante.funcionario}}</td>
+                    {% if request.user.cargo == "PTR" %}
                     <td>
+                      
                       <a 
                         href="{% url 'registro_visitante_saida' pk=registrovisitante.pk %}" 
                         class="btn btn-primary btn-sm {% if registrovisitante.data_saida  %} disabled {% elif not registrovisitante.autorizacao %} disabled{% endif %}"
@@ -45,6 +47,7 @@
                            class="btn btn-secondary btn-sm {% if registrovisitante.data_saida %} disabled{% endif %}">Editar</a>
                         <a href="{% url 'registro_visitantes_exclusao' pk=registrovisitante.pk %}" class="btn btn-danger btn-sm">Excluir</a>
                     </td>
+                    {% endif %}
                 </tr>
             {% endfor %}
           </tbody>
@@ -52,6 +55,7 @@
     {% else %}
         <p>Não há registro de visitantes cadastrados</p>
     {% endif %}
-
-    <a href="{% url 'registro_visitantes_cadastro' %} " class="btn btn-primary btn-sm">Novo Cadastro</a>
+    {% if request.user.cargo == "PTR" %}
+      <a href="{% url 'registro_visitantes_cadastro' %} " class="btn btn-primary btn-sm">Novo Cadastro</a>
+    {% endif %}
 {% endblock content %}

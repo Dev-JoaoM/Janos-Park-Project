@@ -1,5 +1,5 @@
 
-.container_estacionamento {
+.container {
     display: flex;
     flex-direction: row;
     gap: 20px;
@@ -11,7 +11,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-} 
+}
 
 #vagasChart {
     width: 100%;
@@ -38,13 +38,4 @@
 .list-container ul li {
     padding: 5px 0;
     border-bottom: 1px solid #ddd;
-}
-
-.buttons{
-    /* display: flex; */
-    /* position: flex-start; */
-    /* justify-content: center; */
-    font-family: 'Open Sans', sans-serif;
-    margin-left: 15%;
-    /* gap: 20px; */
 }

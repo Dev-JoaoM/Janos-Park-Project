@@ -35,12 +35,14 @@
                     <!--
                     <td>{{visitante.carro|default:" - "}}</td> -->
                     <td>{{visitante.status}}</td>
+                    {% if request.user.cargo == "PTR" %}
                     <td>
 
                         <a href="{% url 'visitantes_edicao' pk=visitante.pk %}"
                            class="btn btn-secondary btn-sm">Editar</a>
                         <a href="{% url 'visitantes_exclusao' pk=visitante.pk %}" class="btn btn-danger btn-sm">Excluir</a>
                     </td>
+                    {% endif %}
                 </tr>
             {% endfor %}
           </tbody>
@@ -48,7 +50,8 @@
     {% else %}
         <p>Não há visitantes cadastrados</p>
     {% endif %}
-
-    <a href="{% url 'visitantes_cadastro' %} " class="btn btn-primary">Novo Visitante</a>
-    <a href="{% url 'carros_visitante_cadastro' %}" class="btn btn-primary">Novo Carro</a>
+    {% if request.user.cargo == "PTR" %}
+      <a href="{% url 'visitantes_cadastro' %} " class="btn btn-primary">Novo Visitante</a>
+      <a href="{% url 'carros_visitante_cadastro' %}" class="btn btn-primary">Novo Carro</a>
+    {% endif %}
 {% endblock content %}

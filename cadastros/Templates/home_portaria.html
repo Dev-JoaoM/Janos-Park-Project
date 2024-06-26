@@ -22,12 +22,14 @@
     </div>
 
 
-    <div class="card-container" >
+    <div class="card-container" style="text-align: center">
         <div class="card">
             <h1>Controle Moradores</h1>
             <img src="{% static 'imagens/2470642.png' %}" alt="Morador">
             <p>Cadastrar e gerenciar acesso de moradores</p>
-            <a href="{% url 'registro_moradores_cadastro' %}"><button>Cadastrar Entrada/Saída</button></a><br>
+            <a href="{% url 'registro_moradores_cadastro' %}"
+            class="btn btn-primary btn-sm {% if request.user.cargo != "PTR" %} disabled {% endif %}"
+            ><button>Cadastrar Entrada/Saída</button></a><br>
             <a href="{% url 'registro_moradores_lista' %}"><button>Listar Registros</button></a>
         </div>
 
@@ -35,15 +37,17 @@
             <h1>Controle de Vistantes</h1>
             <img src="{% static 'imagens/visitante.png' %}" alt="Visitante">
              <p>Cadastrar e gerenciar acesso de visitantes</p>
-             <a href="{% url 'registro_visitantes_cadastro' %}"><button>Cadastrar Entrada/Saída</button></a><br>
+             <a href="{% url 'registro_visitantes_cadastro' %}"
+             class="btn btn-primary btn-sm {% if request.user.cargo != "PTR" %} disabled {% endif %}"
+             ><button>Cadastrar Entrada/Saída</button></a><br>
              <a href="{% url 'registro_visitantes_lista' %}"><button>Listar Registros</button></a>
         </div>
 
         <div class="card">
             <h1>Estacionamento</h1><br><br>
-            <img src="{% static 'imagens/visitante.png' %}" alt="Visitante">
-             <p>Visualizar o estacionamento</p>
-            <br><br><br>
+            <img src="{% static 'imagens/estacionamento.png' %}" alt="Visitante">
+             <p>Visualizar o gerenciamento do estacionamento</p>
+            <br>
              <a href="{% url 'estacionamento' %}"><button>Acessar o estacionamento</button></a><br>
 
         </div>

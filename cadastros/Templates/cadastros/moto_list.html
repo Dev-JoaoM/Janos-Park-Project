@@ -27,12 +27,14 @@
                     <td>{{moto.modelo}}</td>
                     <td>{{moto.cor}}</td>
                     <td>{{moto.morador}}</td>
+                    {% if request.user.cargo == "ADM" %}
                     <td>
 
                         <a href="{% url 'motos_edicao' pk=moto.pk %}"
                            class="btn btn-secondary btn-sm ">Editar</a>
                         <a href="{% url 'motos_exclusao' pk=moto.pk %}" class="btn btn-danger btn-sm">Excluir</a>
                     </td>
+                    {% endif %}
                 </tr>
             {% endfor %}
           </tbody>
@@ -40,6 +42,7 @@
     {% else %}
         <p>Não há motos cadastrados</p>
     {% endif %}
-
-    <a href="{% url 'motos_cadastro' %} " class="btn btn-primary btn-sm">Novo Cadastro</a>
+    {% if request.user.cargo == "ADM" %}
+      <a href="{% url 'motos_cadastro' %} " class="btn btn-primary btn-sm">Novo Cadastro</a>
+      {% endif %}
 {% endblock content %}

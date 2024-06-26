@@ -4,15 +4,21 @@
 ### 🚨 Back-end (João)
 - [ ]  Login e autenticação dos usuários (João)
       - [X] CRUD de morador feito pelos ADM
+      - [X] CRUD de carro morador feito pelos ADM
+      - [X] CRUD de moto morador feito pelos ADM
       - [X] CRUD de apartamento feito pelos ADM
       - [X] CRUD de porteiro feito pelos ADM e SDC
+      - [X] CRUD de ADM feito pelos SDC
       - [X] CRUD de visita feito pelos porteiros
+      - [X] CRUD de carro visita feito pelos porteiros
+      - [X] CRUD de registro de visita feito pelos porteiros
+      - [X] CRUD de registro de morador feito pelos porteiros
       - [ ] Confirmação de senha no cadastro
       - [ ] Geração de senha provisória
         - [ ] Alerta para alterar a senha provisória
 
 - [ ] Lógica do estacionamento
-      - [ ] Qnt de resgistro de entrada de visitante com carro e sem data de saída
+      - [X] Qnt de resgistro de entrada de visitante com carro e sem data de saída
       - [ ] Validar o cadastro de novo registro por essa qnt
 
 - [X]  Registro de entrada e saida de morador (João)
