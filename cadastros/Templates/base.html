@@ -36,21 +36,21 @@
           <ul class="list_menu">
             {% if request.user.cargo == "PTR" %}
               <li><a href="{%url 'index'%}">Tela Inicial</a></li>
-              <li><a href="{%url 'apartamentos_lista'%}">Apartamento</a></li>
-              <li><a href="{% url 'moradores_lista' %}">Morador</a></li>
+              <li><a href="{%url 'acessar_registros'%}">Registros</a></li>
               <li><a href="{% url 'visitantes_lista' %}">Visitante</a></li>
 
             {% elif request.user.cargo == "ADM" %}
               <li><a href="{%url 'home_admin'%}">Tela Inicial</a></li>
               <li><a href="{% url 'visitantes_lista' %}">Visitante</a></li>
-              <li><a href="{%url 'controle_visitas'%}">Estacionamento</a></li>
+              <li><a href="{%url 'veiculos_admin'%}">Veículos</a></li>
+              <li><a href="{%url 'estacionamento'%}">Estacionamento</a></li>
               
             {% elif request.user.cargo == "SDC" %}
               <li><a href="{%url 'home_sindico'%}">Tela Inicial</a></li>
-              <li><a href="{%url 'controle_visitas'%}">Estacionamento</a></li>
+              <li><a href="{%url 'estacionamento'%}">Estacionamento</a></li>
             {% endif%}
 
-              <li><a href="{%url 'veiculos_admin'%}">Veículos</a></li>
+              
               
               <li><a href=""></a></li>
               <a href="{%url 'sair' %}"><button type="button" class="btn btn-dark">Sair</button></a>

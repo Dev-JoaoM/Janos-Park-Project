@@ -32,6 +32,7 @@
                         <!-- <strong>Entrada:</strong> {{ visitante.data_entrada }}<br> -->
                         <strong>Morador:</strong> {{ visitante.morador }}
                         <strong>Telefone Morador:</strong> {{ visitante.morador.apartamento.telefone_apto }}<br>
+                        <strong>Data da Ligação:</strong> {{ visitante.data_ligacao|default:" - " }}<br>
                         <strong>Limite Saida:</strong> {{ visitante.data_limite }}<br>
                         {% comment %} <strong>Carro:</strong> {{ visitante.visitante.visitante__carrovisitante.modelo }} {% endcomment %}
                         {% comment %} <strong>. Placa:</strong> {{ visitante.visitante.visitante__carrovisitante.placa }} {% endcomment %}
@@ -45,9 +46,9 @@
             var vagasChart = new Chart(ctx, {
                 type: 'doughnut',
                 data: {
-                    labels: ['Vagas Ocupadas', 'Vagas Livres'],
+                    labels: ['Vagas Ocupadas:  ' + {{ vagas_ocupadas }}, 'Vagas Livres:  ' +  {{ vagas_livres }}],
                     datasets: [{
-                        data: [{{ vagas_ocupadas }}, {{ total_vagas }}],
+                        data: [{{ vagas_ocupadas }}, {{ vagas_livres }}],
                         backgroundColor: ['#b40505', '#cccccc'],
                     }]
                 },

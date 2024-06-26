@@ -32,6 +32,7 @@
       - [X] Saída
       - [X] Alterar a data limite de saida (3 dias)
       - [X] Não permitir a entrada sem autorização do morador
+      - [X] Campo de ligação e data de ligação
       - [ ] Inserir o funcionário de acordo com o login (se der)
       - [ ] Quando inserir o visitante retornar o carro dele se estiver de carro
         - [ ] Não é obrigatório o visitante entrar de carro
@@ -62,7 +63,7 @@
 ### Front-end  (Tiago, Vitor e Pedro)
    - [ ]  Arrumar os campos dos forms em todos os CRUDs 
    - [X]  Tela de admin do veículo para terminar.
-   - [ ]  Consulta da situação do estacionamento de visitantes
+   - [X]  Consulta da situação do estacionamento de visitantes
    - [ ]  Tela Alerta de visita (com carro) com 3 dias de estadia (portaria)
    - [ ]  Tela de Alerta de visita (com carro) com mais de 4 dias de estadia (administração)
    - [X]  Mostrar o nome dos usuários quando estivem logados
