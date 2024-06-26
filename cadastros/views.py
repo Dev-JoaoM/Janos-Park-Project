@@ -43,7 +43,7 @@ def home_admin(request):
 
 def estacionamento(request):
     total_vagas = 75
-    vagas_ocupadas = RegistroVisitante.objects.filter(data_saida__isnull=True).count()
+    vagas_ocupadas = RegistroVisitante.objects.filter(data_saida__isnull=True, autorizacao=True).count()
     vagas_livres = total_vagas - vagas_ocupadas
     # visitante_carro = CarroVisitante.objects.all()
     vagas_list = RegistroVisitante.objects.filter(data_saida__isnull=True, data_limite__lt=date.today())

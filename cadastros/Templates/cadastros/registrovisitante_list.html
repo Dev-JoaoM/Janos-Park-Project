@@ -32,7 +32,7 @@
                     <td>{{registrovisitante.data_limite|default:" - "}}</td>
                     <td>{{registrovisitante.data_saida|default:" - "}}</td>
                     <td>{{registrovisitante.morador}}</td>
-                    <td>{{registrovisitante.autorizacao}}</td>
+                    <td>{%if registrovisitante.autorizacao %}Sim{%else%}Não{% endif %}</td>
                     <td>{{registrovisitante.funcionario}}</td>
                     <td>{{registrovisitante.data_ligacao|default:" - "}}</td>
                     {% if request.user.cargo == "PTR" %}

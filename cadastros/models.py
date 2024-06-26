@@ -109,7 +109,7 @@ class RegistroVisitante(models.Model):
     data_entrada = models.DateTimeField(auto_now_add=True, null=False, blank=False)
     data_limite = models.DateTimeField(null=True, blank=True) 
     data_saida = models.DateTimeField(null=True)
-    autorizacao = models.BooleanField(verbose_name="Autorização do Morador", null=True, blank=False)
+    autorizacao = models.BooleanField(verbose_name="Autorização do Morador", null=False, blank=False)
     ligacao = models.BooleanField(verbose_name="Ligou para o Visitante?", null=True, blank=True)
     data_ligacao = models.DateTimeField(null=True, blank=True) 
     ##funcionario = models.ForeignKey(Funcionario, on_delete=models.DO_NOTHING)  # rever esse parametro
