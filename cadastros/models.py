@@ -110,7 +110,7 @@ class RegistroVisitante(models.Model):
     data_limite = models.DateTimeField(null=True, blank=True) 
     data_saida = models.DateTimeField(null=True)
     autorizacao = models.BooleanField(verbose_name="Autorização do Morador", null=False, blank=False)
-    ligacao = models.BooleanField(verbose_name="Ligou para o Visitante?", null=True, blank=True)
+    ligacao = models.BooleanField(verbose_name="Ligou para o Visitante?", null=False, blank=True)
     data_ligacao = models.DateTimeField(null=True, blank=True) 
     ##funcionario = models.ForeignKey(Funcionario, on_delete=models.DO_NOTHING)  # rever esse parametro
     # TODO: def de saida com um checkbox
