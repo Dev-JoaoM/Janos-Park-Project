@@ -40,7 +40,20 @@ def home_admin(request):
     return render(request, 'home_admin.html')
 
 def estacionamento(request):
-    return render(request, 'estacionamento.html')
+    total_vagas = 75
+    vagas_ocupadas = RegistroVisitante.objects.filter(data_saida__isnull=True).count()
+    vagas_livres = total_vagas - vagas_ocupadas
+    # visitante_carro = CarroVisitante.objects.all()
+    vagas_list = RegistroVisitante.objects.filter(data_saida__isnull=True)
+
+    context = {
+        'total_vagas': total_vagas,
+        'vagas_ocupadas': vagas_ocupadas,
+        'vagas_livres': vagas_livres,
+        # 'visitante_carro': visitante_carro,
+        'vagas_list': vagas_list,
+    }
+    return render(request, 'estacionamento.html', context)
 
 @has_permission_decorator('cadastrar_adm')
 def home_sindico(request):
