@@ -14,13 +14,14 @@
      - [X] CRUD de registro de visita feito pelos porteiros
      - [X] CRUD de registro de morador feito pelos porteiros
      - [X] Confirmação de senha no cadastro
-     - [-] Geração de senha provisória
+     - [X] Alteração de senha 
        - [X] Redirecionamento para alterar a primeira senha
 
 - [ ] Lógica do estacionamento
 
      - [X] Qnt de resgistro de entrada de visitante com carro e sem data de saída
-     - [ ] Validar o cadastro de novo registro por essa qnt
+     - [ ] Validar o cadastro de novo registro pela quanto total de vagas
+     - [ ] Alteração da qnt total de vagas pelo sindico
 
 
 - [X]  Registro de entrada e saida de morador (João)
@@ -37,15 +38,15 @@
      - [X] Não permitir a entrada sem autorização do morador
      - [X] Campo de ligação e data de ligação
      - [ ] Inserir o funcionário de acordo com o login (se der)
-     - [ ] Quando inserir o visitante retornar o carro dele se estiver de carro
-       - [ ] Não é obrigatório o visitante entrar de carro
+     - [ ] Quando inserir o visitante retornar o carro dele se estiver de carro (se der)
+       - [ ] Não é obrigatório o visitante entrar de carro(se der) 
 
 
 ### BD (Larissa e João)
 - [ ]  Models --> MER
 - [ ]  Funções de registro
 - [ ]  Não deletar os usuários, moradores, visitantes e registro
-   - [ ] Desativa-los e armazenar os registros em algum lugar
+   - [ ] Desativa-los e/ou armazenar os registros em algum lugar
 
 
 #### Tarefas segundárias
@@ -63,7 +64,7 @@
 - [X]  Acompanhamento pela placa do veículo e documento do visitante;
 - [X]  Registrar a entrada do visitante com um morador
 
-### Front-end  (Tiago, Vitor e Pedro)
+### Front-end  (Tiago, Larissa e Pedro)
    - [ ]  Arrumar os campos dos forms em todos os CRUDs 
    - [X]  Tela de admin do veículo para terminar.
    - [X]  Consulta da situação do estacionamento de visitantes
