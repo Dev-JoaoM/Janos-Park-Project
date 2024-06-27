@@ -31,15 +31,15 @@
 
             <br>
             <label>RG</label>
-            <input type="text" placeholder="000.000.000-0" name="doc_rg" class="form-control">
+            <input type="text" placeholder="000.000.000-0" id="rg" name="doc_rg" class="form-control">
 
             <br>
             <label>CPF</label>
-            <input type="text" placeholder="000.000.000-00" name="doc_cpf" class="form-control">
+            <input type="text" placeholder="000.000.000-00" id="cpf" name="doc_cpf" class="form-control">
 
             <br>
             <label>Telefone</label>
-            <input type="number" placeholder="(00) 00000-0000" name="telefone" class="form-control">
+            <input type="number" placeholder="(00) 0 0000-0000" id="phone" name="telefone" class="form-control">
 
             <!-- <br>
             <label>Cargo</label>
@@ -55,6 +55,10 @@
             <input type="password" placeholder="Digite a Senha..." name="senha" class="form-control">
             <br>
 
+            <label>Senha</label>
+            <input type="password" placeholder="Confirme a Senha..." name="senha" class="form-control">
+            <br>
+
             <button type="submit" class="btn btn-success" >Cadastrar</button>
 
 
@@ -67,6 +71,28 @@
             {% endif %}
 
         </form>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+        
+        <script>
+            $(document).ready(function(){
+            $('#cpf').mask('000.000.000-00', {reverse: true});
+                });
+        </script>
+
+        <script>
+            $(document).ready(function(){
+            $('#rg').mask('00.000.000-0', {reverse: true});
+                });
+        </script>
+
+        
+        <script>
+            $(document).ready(function(){
+            $('#phone').mask('(00) 0 0000-0000', {reverse: true});
+                });
+        </script>
 
         <!-- <hr class="bg-hr">
 

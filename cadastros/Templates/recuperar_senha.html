@@ -20,6 +20,8 @@
             <form class="login-form" id="recovery-form">
                 <input type="text" id="cpf" placeholder="CPF">
                 <input type="date" placeholder="Data de nascimento">
+                <input type="text" placeholder="Digite a nova senha...">
+                <input type="text" placeholder="Confirme a senha...">
                 <button type="submit" class="btn_login">Redefinir Senha</button>
         </form>
         </div>
@@ -35,7 +37,7 @@
         document.getElementById('recovery-form').addEventListener('submit', function(event) {
             event.preventDefault();
             alert('Sua senha foi restaurada com sucesso!');
-            window.location.href = "{%url 'index'%}";
+            window.location.href = "{%url 'login'%}";
         });
     </script>
 {% endblock content %}
