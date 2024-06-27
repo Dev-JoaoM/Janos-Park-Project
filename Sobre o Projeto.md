@@ -3,68 +3,42 @@
 
 ### 🚨 Back-end (João)
 - [ ]  Login e autenticação dos usuários (João)
-
-      - [X] CRUD de morador feito pelos ADM
-
-      - [X] CRUD de carro morador feito pelos ADM
-
-      - [X] CRUD de moto morador feito pelos ADM
-
-      - [X] CRUD de apartamento feito pelos ADM
-
-      - [X] CRUD de porteiro feito pelos ADM e SDC
-
-      - [X] CRUD de ADM feito pelos SDC
-
-      - [X] CRUD de visita feito pelos porteiros
-
-      - [X] CRUD de carro visita feito pelos porteiros
-
-      - [X] CRUD de registro de visita feito pelos porteiros
-
-      - [X] CRUD de registro de morador feito pelos porteiros
-
-      - [X] Confirmação de senha no cadastro
-
-      - [-] Geração de senha provisória
-
-        - [X] Redirecionamento para alterar a primeira senha
-
-
+     - [X] CRUD de morador feito pelos ADM
+     - [X] CRUD de carro morador feito pelos ADM
+     - [X] CRUD de moto morador feito pelos ADM
+     - [X] CRUD de apartamento feito pelos ADM
+     - [X] CRUD de porteiro feito pelos ADM e SDC
+     - [X] CRUD de ADM feito pelos SDC
+     - [X] CRUD de visita feito pelos porteiros
+     - [X] CRUD de carro visita feito pelos porteiros
+     - [X] CRUD de registro de visita feito pelos porteiros
+     - [X] CRUD de registro de morador feito pelos porteiros
+     - [X] Confirmação de senha no cadastro
+     - [-] Geração de senha provisória
+       - [X] Redirecionamento para alterar a primeira senha
 
 - [ ] Lógica do estacionamento
 
-      - [X] Qnt de resgistro de entrada de visitante com carro e sem data de saída
-
-      - [ ] Validar o cadastro de novo registro por essa qnt
+     - [X] Qnt de resgistro de entrada de visitante com carro e sem data de saída
+     - [ ] Validar o cadastro de novo registro por essa qnt
 
 
 - [X]  Registro de entrada e saida de morador (João)
+     - [X] Entrada
+       - [X] Saída
+       - [X] video de tarefas
 
-      - [X] Entrada
-
-        - [X] Saída
-
-        - [X] video de tarefas
-
-        - [ ] Inserir o funcionário de acordo com o login (se der)
+       - [ ] Inserir o funcionário de acordo com o login (se der)
 
 - [ ]  Registro de entrada e saida de visitante (João)
-      - [X] Entrada
-
-      - [X] Saída
-
-      - [X] Alterar a data limite de saida (3 dias)
-
-      - [X] Não permitir a entrada sem autorização do morador
-
-      - [X] Campo de ligação e data de ligação
-
-      - [ ] Inserir o funcionário de acordo com o login (se der)
-
-      - [ ] Quando inserir o visitante retornar o carro dele se estiver de carro
-
-        - [ ] Não é obrigatório o visitante entrar de carro
+     - [X] Entrada
+     - [X] Saída
+     - [X] Alterar a data limite de saida (3 dias)
+     - [X] Não permitir a entrada sem autorização do morador
+     - [X] Campo de ligação e data de ligação
+     - [ ] Inserir o funcionário de acordo com o login (se der)
+     - [ ] Quando inserir o visitante retornar o carro dele se estiver de carro
+       - [ ] Não é obrigatório o visitante entrar de carro
 
 
 ### BD (Larissa e João)
