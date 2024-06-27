@@ -7,7 +7,7 @@ from .models import Colaborador
 from django.urls import reverse
 from django.contrib import auth, messages
 from datetime import datetime
-from django.contrib.auth.hashers import make_password
+
 
 
 def cadastrar_usuario(request, input_cargo):
@@ -40,6 +40,7 @@ def cadastrar_usuario(request, input_cargo):
         email = request.POST.get('email')
         dt_nasto = request.POST.get('dt_nasto')
         senha = request.POST.get('senha')
+        confirm_senha = request.POST.get('confirm_senha')
         rg = request.POST.get('doc_rg')
         cpf = request.POST.get('doc_cpf')
         telefone = request.POST.get('telefone')
@@ -57,6 +58,10 @@ def cadastrar_usuario(request, input_cargo):
 
             return redirect(reverse(redirecionar))  # vai para a home do usuario
 
+        if senha != confirm_senha:
+            messages.add_message(request, messages.ERROR, 'As senhas não são iguais.')
+            return redirect(reverse(redirecionar))  # vai para a home do usuario
+            
 # todo: ver criação de usuario repetido
         user = Colaborador.objects.create_user(username=usuario,
                                             nome=nome,
@@ -175,7 +180,7 @@ def recuperar_senha(request):
     if request.method == "POST":    
                 
         login = request.POST.get('usuario')
-        doc_cpf = request.POST.get('doc_cpf')
+        #doc_cpf = request.POST.get('doc_cpf')
         nova_senha = request.POST.get('senha')
         confirm_senha = request.POST.get('confirm_senha')
 
@@ -184,7 +189,7 @@ def recuperar_senha(request):
             cpf = request.user.CPF"""
                 
      
-        user = Colaborador.objects.filter(username=login, doc_cpf=doc_cpf).first()
+        user = Colaborador.objects.filter(username=login).first()
 
         if user:
             # TODO: Utilizar messages do Django

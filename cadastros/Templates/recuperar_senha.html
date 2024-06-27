@@ -3,12 +3,7 @@
 {% endblock page_title %}
 
 {% block content %}
-    {% if messages %}
-    <br>
-    {% for message in messages%}
-        <div class="alert {{message.tags}}">{{message}}</div>
-    {% endfor%}
-    {% endif %}
+
     <head>
         <link rel="stylesheet" href="{% static 'styles/login.css' %}">
     </head>
@@ -18,16 +13,22 @@
             <img src="{% static 'imagens/Logo_editado_2.png' %}" alt="Jano Systems">
         </div>
     </header>
+    {% if messages %}
+    <br>
+    {% for message in messages%}
+        <div class="alert {{message.tags}}">{{message}}</div>
+    {% endfor%}
+    {% endif %}
     <div class="login-container">
         <img class="main-logo" src="{% static 'imagens/Logo_Cond_2.jpeg' %}" alt="Condomínio Parque Santa Lúcia">
         <h2>Redefinir Senha</h2>
-        <span class="sub_text">Não se preocupe, insira seu CPF e data de nascimento<br>
-            para receber uma Nova Senha.</span>
+        <span class="sub_text">Não se preocupe, insira seu nome de usuário<br>
+            para e digite uma Nova Senha.</span>
             <form class="login-form" id="recovery-form" method="POST">
                 {% csrf_token %}
         
                 <input type="text" name='usuario'  placeholder='Digite seu usuário...'>
-                <input type="text" name="doc_cpf" id="cpf"  placeholder="CPF...">
+                <!--<input type="text" name="doc_cpf" id="cpf"  placeholder="CPF...">-->
                 <input type="password" name='senha' placeholder="Digite a nova senha...">
                 <input type="password" name='confirm_senha' placeholder="Confirme a senha...">
                 <button type="submit" class="btn_login">Redefinir Senha</button>

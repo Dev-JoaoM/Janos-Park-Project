@@ -28,7 +28,7 @@
 
       - [-] Geração de senha provisória
 
-        - [ ] Redirecionamento para alterar a primeira senha
+        - [X] Redirecionamento para alterar a primeira senha
 
 
 
