@@ -6,6 +6,8 @@ from rolepermissions.decorators  import has_permission_decorator
 from .models import Colaborador
 from django.urls import reverse
 from django.contrib import auth, messages
+from datetime import datetime
+from django.contrib.auth.hashers import make_password
 
 
 def cadastrar_usuario(request, input_cargo):
@@ -151,6 +153,11 @@ def login(request):
             #TODO: Redirecionar com mensagem de erro
             messages.add_message(request, messages.ERROR, 'Usuário ou senha incorretos.')
             return redirect(reverse('login'))  # todo: redirecionar para pagina certa
+        
+        elif not user.last_login: #Primeiro Acesso
+            messages.add_message(request, messages.SUCCESS, 'Antes do seu primeiro acesso. Mude sua senha!')
+            return redirect(reverse('recuperar_senha'))  
+
 
         auth.login(request, user)
         cargo = user.cargo
@@ -161,7 +168,39 @@ def login(request):
 
 
 def recuperar_senha(request):
-    return render(request, "recuperar_senha.html")
+
+    if request.method == "GET":       
+        return render(request, 'recuperar_senha.html')
+    
+    if request.method == "POST":    
+                
+        login = request.POST.get('usuario')
+        doc_cpf = request.POST.get('doc_cpf')
+        nova_senha = request.POST.get('senha')
+        confirm_senha = request.POST.get('confirm_senha')
+
+        """if request.user.username:
+            username = request.user.username
+            cpf = request.user.CPF"""
+                
+     
+        user = Colaborador.objects.filter(username=login, doc_cpf=doc_cpf).first()
+
+        if user:
+            # TODO: Utilizar messages do Django
+            
+            if nova_senha != confirm_senha:
+                messages.add_message(request, messages.ERROR, 'Atenção. As senhas não são iguais.')
+                return redirect(reverse('recuperar_senha'))  
+            
+            user.set_password(nova_senha)
+            user.last_login = datetime.now()
+            user.save()
+            
+            return redirect(reverse("login"))  # vai para a home do usuario    
+        messages.add_message(request, messages.ERROR, 'Usuário ou CPF não encontrado.')
+        return render(request, "recuperar_senha.html")
+    #return render(request, 'recuperar_senha.html', {"username":username, "doc_cpf":cpf})
 
 def logout(request):
     request.session.flush()
