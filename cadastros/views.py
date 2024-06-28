@@ -2,8 +2,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, View
 from django.urls import reverse_lazy  # usado para acessar as rotas 'path' pelos nomes
-from .models import Funcionario, Morador, Apartamento, Visitante, Carro, Moto, CarroVisitante, RegistroVisitante, RegistroMorador  # importação das classes do arquivo models
+from .models import Funcionario, Morador, Apartamento, Visitante, Carro, Moto, CarroVisitante, RegistroVisitante, RegistroMorador, QntVagasVisita  # importação das classes do arquivo models
 from django.contrib.auth import authenticate
+from django.contrib import messages
 from django.contrib.auth import login as login_django
 from django.http.response import HttpResponse
 from rolepermissions.decorators import has_permission_decorator
@@ -41,15 +42,30 @@ def home_portaria(request):
 def home_admin(request):
     return render(request, 'home_admin.html')
 
-def estacionamento(request):
-    total_vagas = 75
+
+TOTAL_VAGAS = 8
+def qnt_vagas():
+    #total = QntVagasVisita.qnt_vagas
+    #vagas_disp = QntVagasVisita.vagas_disponiveis
+    
+    #if vagas_disp > 0:
+    #    return vagas_disp
+    #if vagas_totais:
+    #    QntVagasVisita.qnt_vagas = vagas_totais
+    
     vagas_ocupadas = RegistroVisitante.objects.filter(data_saida__isnull=True, autorizacao=True).count()
-    vagas_livres = total_vagas - vagas_ocupadas
+    vagas_livres = TOTAL_VAGAS - vagas_ocupadas
+    return vagas_ocupadas, vagas_livres
+
+    
+def estacionamento(request):
+    vagas_ocupadas = qnt_vagas()[0]
+    vagas_livres = qnt_vagas()[1]
     # visitante_carro = CarroVisitante.objects.all()
     vagas_list = RegistroVisitante.objects.filter(data_saida__isnull=True, data_limite__lt=date.today())
 
     context = {
-        'total_vagas': total_vagas,
+        'total_vagas': TOTAL_VAGAS,
         'vagas_ocupadas': vagas_ocupadas,
         'vagas_livres': vagas_livres,
         # 'visitante_carro': visitante_carro,
@@ -290,8 +306,7 @@ class CarrosVisitanteDeleteView(DeleteView):
 
 class RegistroVisitanteListView(ListView):
     model = RegistroVisitante
-
-
+            
 class RegistroVisitanteCreateView(CreateView):
     model = RegistroVisitante
     fields = ["visitante", "morador", "autorizacao"]
@@ -308,6 +323,14 @@ class RegistroVisitanteCreateView(CreateView):
         # Salva o objeto no banco de dados
         self.object.save()
         return super().form_valid(form)
+
+    def dispatch(self, request, *args, **kwargs):
+        if qnt_vagas()[1] <= 0:
+
+            messages.add_message(request, messages.ERROR, 'Estacionamento cheio!')
+            return redirect(reverse_lazy("estacionamento"))
+        return super().dispatch(request, *args, **kwargs)
+
          
 
 class RegistroVisitanteUptadeView(UpdateView):
@@ -322,10 +345,10 @@ class RegistroVisitanteUptadeView(UpdateView):
         if self.object.autorizacao == True and not self.object.data_limite:
             # Define data_limite como a data atual mais 3 dias menos 1 minuto
             self.object.data_limite = self.object.data_entrada + timedelta(days=3) - timedelta(minutes=1)
-        elif self.object.autorizacao == False:
+        elif not self.object.autorizacao :
             self.object.data_limite = None
         
-        if self.object.ligacao == True and self.object.autorizacao == True:
+        if self.object.ligacao and self.object.autorizacao:
             #marcar_data_ligacao
             self.object.data_ligacao = datetime.now()
         elif self.object.ligacao == False:
@@ -333,6 +356,16 @@ class RegistroVisitanteUptadeView(UpdateView):
         # Salva o objeto no banco de dados
         self.object.save()
         return super().form_valid(form)
+    
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+    
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        if qnt_vagas()[1] <= 0:
+            form.fields['autorizacao'].disabled = True
+            messages.error(self.request, 'Estacionamento cheio! A autorização não pode ser marcada como verdadeira.')
+        return form
 
 
 class RegistroVisitanteDeleteView(DeleteView):

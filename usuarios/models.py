@@ -19,7 +19,7 @@ class Colaborador(AbstractUser):
     dt_nasto = models.DateField(verbose_name="Data de Nascimento", null=True)
     doc_rg = models.CharField(verbose_name="RG", max_length=9, null=True)
     doc_cpf = models.CharField(verbose_name="CPF", max_length=11, null=True)
-    telefone = models.CharField(verbose_name="Telefone", max_length=12, null=True)
+    telefone = models.CharField(verbose_name="Telefone", max_length=11, null=True)
     """dt_admissao = models.DateField(verbose_name="Data de Admissão", null=True)
     dt_demissao = models.DateField(verbose_name="Data de Demissão", null=True)
     motivo_demissao = models.CharField(verbose_name="Motivo da Demissao", max_length=200, null=True)

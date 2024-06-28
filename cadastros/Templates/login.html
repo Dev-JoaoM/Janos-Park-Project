@@ -10,11 +10,16 @@
     </head>
 
     <header class="header">
+        
         <div class="header-left">Identifique-se </div>
         <div class="header-right">
             <img src="{% static 'imagens/Logo_editado_2.png' %}" alt="Janos Systems">
+            
         </div>
+
+        
     </header>
+
     {% if messages %}
     <br>
     {% for message in messages%}
@@ -23,6 +28,7 @@
     {% endif %}
 
     <div class="login-container">
+        
         <img class="main-logo" src="{% static 'imagens/Logo_Cond_2.jpeg' %}" alt="Condomínio Parque Santa Lúcia">
         <h2>Bem-vindo!</h2>
         <!-- <span class="sub_text">Entre com seu usuário e senha.</span> -->
@@ -43,4 +49,7 @@
         </div>
         <a href="{%url 'recuperar_senha'%}"><button class="forgot-password">Esqueceu a senha?</button></a>
     </div>
+
+
+
 {% endblock content %}

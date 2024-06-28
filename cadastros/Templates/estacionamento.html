@@ -17,6 +17,12 @@
     <h1>Vagas Visitantes</h1>
     <p>Total de vagas disponíveis e ocupadas</p>
 </div><br>
+    {% if messages %}
+    <br>
+    {% for message in messages%}
+        <div class="alert {{message.tags}}">{{message}}</div>
+    {% endfor%}
+    {% endif %}
 
     <div class="container_estacionamento">
         <div class="chart-container">
@@ -61,7 +67,7 @@
     </script>    
     </div><br>
     <div class="buttons">
-        <a href="{% url 'registro_visitantes_cadastro' %}" class="btn btn-success">Registrar Entrada</a>
-        <a href="{% url 'registro_visitantes_lista' %}" class="btn btn-danger">Registrar Saída</a>
+        <a href="{% url 'registro_visitantes_cadastro' %}" class="btn btn-success {% if request.user.cargo != 'PTR'%} disabled {% endif %}">Registrar Entrada</a>
+        <a href="{% url 'registro_visitantes_lista' %}" class="btn btn-dark ">Listar registros</a>
     </div>
 {% endblock content %}
