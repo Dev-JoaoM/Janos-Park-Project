@@ -43,7 +43,7 @@ def home_admin(request):
     return render(request, 'home_admin.html')
 
 
-TOTAL_VAGAS = 7
+TOTAL_VAGAS = 8
 def qnt_vagas():
     #total = QntVagasVisita.qnt_vagas
     #vagas_disp = QntVagasVisita.vagas_disponiveis
@@ -329,7 +329,7 @@ class RegistroVisitanteCreateView(CreateView):
 
             messages.add_message(request, messages.ERROR, 'Estacionamento cheio!')
             return redirect(reverse_lazy("estacionamento"))
-        return super().dispatch(*args, **kwargs)
+        return super().dispatch(request, *args, **kwargs)
 
          
 
@@ -345,10 +345,10 @@ class RegistroVisitanteUptadeView(UpdateView):
         if self.object.autorizacao == True and not self.object.data_limite:
             # Define data_limite como a data atual mais 3 dias menos 1 minuto
             self.object.data_limite = self.object.data_entrada + timedelta(days=3) - timedelta(minutes=1)
-        elif self.object.autorizacao == False:
+        elif not self.object.autorizacao :
             self.object.data_limite = None
         
-        if self.object.ligacao == True and self.object.autorizacao == True:
+        if self.object.ligacao and self.object.autorizacao:
             #marcar_data_ligacao
             self.object.data_ligacao = datetime.now()
         elif self.object.ligacao == False:
@@ -356,6 +356,16 @@ class RegistroVisitanteUptadeView(UpdateView):
         # Salva o objeto no banco de dados
         self.object.save()
         return super().form_valid(form)
+    
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+    
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        if qnt_vagas()[1] <= 0:
+            form.fields['autorizacao'].disabled = True
+            messages.error(self.request, 'Estacionamento cheio! A autorização não pode ser marcada como verdadeira.')
+        return form
 
 
 class RegistroVisitanteDeleteView(DeleteView):
