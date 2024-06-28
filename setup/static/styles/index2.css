@@ -1,21 +1,16 @@
 
-body {
+h1 {
+    text-align: center;
     font-family: 'Roboto', sans-serif;
 }
 
-h1,h4{
+h4{
     text-align: center;
     font-family: 'Open Sans', sans-serif;
 }
 
 .text_Inicial{
     padding: 50px;
-}
-
-.card-container {
-    justify-content: center;
-    display: flex;
-    gap: 75px;
 }
 
 .card-container_2 {
@@ -31,7 +26,6 @@ h1,h4{
     padding: 20px;
     align-items: center;
     width: 500px;
-    text-align: center;
 }
 
 .card img {
@@ -53,8 +47,9 @@ h1,h4{
     margin: 10px 0;
 }
 
+
 .card button {
-    background-color: #222222;
+    background-color: #383838;
     color: #fff;
     border: none;
     border-radius: 10px;
@@ -63,7 +58,7 @@ h1,h4{
     font-size: 23px;
     font-weight: bold;
     height: 50px;
-    width: 350px;
+    width: 150px;
 }
 
 .card button:hover {

@@ -12,19 +12,19 @@
     {% endfor%}
     {% endif %}
     <head>
+        <link rel="stylesheet" href="{% static 'styles/index2.css' %}">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{% static 'styles/index.css' %}">
     </head>
 
     <div class="text_Inicial">
-<h1> <strong>Cadastros Registrados</strong></h1>
+<h1><strong>Cadastros Registrados</strong></h1>
 
     </div>
 
-    <div class="card-container" style="text-align: center">
+    <div class="card-container_2" style="text-align: center">
 
         <div class="card">
-            <h1>Apartamento</h1><br><br><br>
+            <h1>Apartamento</h1><br><br>
             <img src="{% static '/imagens/apartamento.png' %}" alt="Apartamento">
             <p>Listar Apartamentos</p>
             <a href="{% url 'apartamentos_lista' %}"><button>Acessar </button></a>

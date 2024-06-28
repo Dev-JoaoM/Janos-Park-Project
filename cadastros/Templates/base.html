@@ -35,12 +35,12 @@
       <nav>
           <ul class="list_menu">
             {% if request.user.cargo == "PTR" %}
-              <li><a href="{%url 'index'%}">Tela Inicial</a></li>
+              <li><a href="{%url 'index'%}">Início</a></li>
               <li><a href="{%url 'acessar_registros'%}">Registros</a></li>
               <li><a href="{% url 'visitantes_lista' %}">Visitante</a></li>
 
             {% elif request.user.cargo == "ADM" %}
-              <li><a href="{%url 'home_admin'%}">Tela Inicial</a></li>
+              <li><a href="{%url 'home_admin'%}">Início</a></li>
               <li><a href="{% url 'visitantes_lista' %}">Visitante</a></li>
               <li><a href="{%url 'veiculos_admin'%}">Veículos</a></li>
               <li><a href="{%url 'estacionamento'%}">Estacionamento</a></li>
