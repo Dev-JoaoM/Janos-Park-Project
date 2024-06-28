@@ -13,12 +13,16 @@
             <img src="{% static 'imagens/Logo_editado_2.png' %}" alt="Jano Systems">
         </div>
     </header>
+
+    
     {% if messages %}
     <br>
     {% for message in messages%}
         <div class="alert {{message.tags}}">{{message}}</div>
     {% endfor%}
     {% endif %}
+
+
     <div class="login-container">
         <img class="main-logo" src="{% static 'imagens/Logo_Cond_2.jpeg' %}" alt="Condomínio Parque Santa Lúcia">
         <h2>Redefinir Senha</h2>

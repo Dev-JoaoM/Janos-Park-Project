@@ -201,9 +201,9 @@ def recuperar_senha(request):
             user.set_password(nova_senha)
             user.last_login = datetime.now()
             user.save()
-            
+            messages.add_message(request, messages.SUCCESS, 'Senha alterada com sucesso.')
             return redirect(reverse("login"))  # vai para a home do usuario    
-        messages.add_message(request, messages.ERROR, 'Usuário ou CPF não encontrado.')
+        messages.add_message(request, messages.ERROR, 'Usuário não encontrado.')
         return render(request, "recuperar_senha.html")
     #return render(request, 'recuperar_senha.html', {"username":username, "doc_cpf":cpf})
 

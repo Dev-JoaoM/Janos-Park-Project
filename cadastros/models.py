@@ -110,7 +110,7 @@ class RegistroVisitante(models.Model):
     data_limite = models.DateTimeField(null=True, blank=True) 
     data_saida = models.DateTimeField(null=True)
     autorizacao = models.BooleanField(verbose_name="Autorização do Morador", null=False, blank=False)
-    ligacao = models.BooleanField(verbose_name="Ligou para o Visitante?", null=False, blank=True)
+    ligacao = models.BooleanField(verbose_name="Ligou para o Visitante?", null=True, blank=True)
     data_ligacao = models.DateTimeField(null=True, blank=True) 
     ##funcionario = models.ForeignKey(Funcionario, on_delete=models.DO_NOTHING)  # rever esse parametro
     # TODO: def de saida com um checkbox
@@ -123,7 +123,7 @@ class RegistroVisitante(models.Model):
         return (f" Visitante {self.visitante}, Data Saida: {datas}:,  Morador {self.morador}")
 
     class Meta:
-        ordering = ["data_limite"]
+        ordering = ["data_limite", "data_saida"]
 
     def marcar_saida(self):
         if not self.data_saida:
@@ -184,7 +184,7 @@ class RegistroMorador(models.Model):
 
 
 class QntVagasVisita(models.Model):
-    registro_visitante = models.ForeignKey(RegistroVisitante, on_delete=models.DO_NOTHING)  # rever esse parametro
+    #registro_visitante = models.ForeignKey(RegistroVisitante, on_delete=models.DO_NOTHING)  # rever esse parametro
     qnt_vagas = models.IntegerField(null=False, blank=False)
     vagas_disponiveis = models.IntegerField(null=False, blank=False)
 

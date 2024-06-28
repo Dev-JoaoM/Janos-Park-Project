@@ -2,20 +2,6 @@
 
 
 ### 🚨 Back-end (João)
-- [ ]  Login e autenticação dos usuários (João)
-     - [X] CRUD de morador feito pelos ADM
-     - [X] CRUD de carro morador feito pelos ADM
-     - [X] CRUD de moto morador feito pelos ADM
-     - [X] CRUD de apartamento feito pelos ADM
-     - [X] CRUD de porteiro feito pelos ADM e SDC
-     - [X] CRUD de ADM feito pelos SDC
-     - [X] CRUD de visita feito pelos porteiros
-     - [X] CRUD de carro visita feito pelos porteiros
-     - [X] CRUD de registro de visita feito pelos porteiros
-     - [X] CRUD de registro de morador feito pelos porteiros
-     - [X] Confirmação de senha no cadastro
-     - [X] Alteração de senha 
-       - [X] Redirecionamento para alterar a primeira senha
 
 - [ ] Lógica do estacionamento
 
@@ -26,10 +12,10 @@
 
 - [X]  Registro de entrada e saida de morador (João)
      - [X] Entrada
-       - [X] Saída
-       - [X] video de tarefas
-
-       - [ ] Inserir o funcionário de acordo com o login (se der)
+     - [X] Saída
+     - [X] video de tarefas
+     - [X] Ligação de data de ligação
+     - [ ] Inserir o funcionário de acordo com o login (se der)
 
 - [ ]  Registro de entrada e saida de visitante (João)
      - [X] Entrada
@@ -53,7 +39,7 @@
   - [ ] Diferenciar se está a pé ou em um veículo
 
 
-
+## Prontas
 - [X]  CRUD de funcionários
 - [X]  CRUD de apartamentos
 - [X]  CRUD de moradores 
@@ -63,6 +49,22 @@
 - [X]  CRUD de Moto
 - [X]  Acompanhamento pela placa do veículo e documento do visitante;
 - [X]  Registrar a entrada do visitante com um morador
+
+- [X]  Login e autenticação dos usuários (João)
+     - [X] CRUD de morador feito pelos ADM
+     - [X] CRUD de carro morador feito pelos ADM
+     - [X] CRUD de moto morador feito pelos ADM
+     - [X] CRUD de apartamento feito pelos ADM
+     - [X] CRUD de porteiro feito pelos ADM e SDC
+     - [X] CRUD de ADM feito pelos SDC
+     - [X] CRUD de visita feito pelos porteiros
+     - [X] CRUD de carro visita feito pelos porteiros
+     - [X] CRUD de registro de visita feito pelos porteiros
+     - [X] CRUD de registro de morador feito pelos porteiros
+     - [X] Confirmação de senha no cadastro
+     - [X] Alteração de senha 
+       - [X] Redirecionamento para alterar a primeira senha
+
 
 ### Front-end  (Tiago, Larissa e Pedro)
    - [ ]  Arrumar os campos dos forms em todos os CRUDs 
