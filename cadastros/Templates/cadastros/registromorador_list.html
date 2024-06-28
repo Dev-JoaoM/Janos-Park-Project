@@ -14,7 +14,8 @@
               <th scope="col">Morador</th>
               <th scope="col">Data de Entrada</th>
               <th scope="col">Data Saída</th>
-              <th scope="col">Porteiro</th>
+              <th scope="col">Ações</th>
+              
               
 
             </tr>
@@ -26,7 +27,7 @@
                     <td>{{registromorador.morador}}</td>
                     <td>{{registromorador.data_entrada|date:"d/m/Y à\s H:i"}}</td>
                     <td>{{registromorador.data_saida|date:"d/m/Y à\s H:i"|default:" - "}}</td>
-                    <td>{{registromorador.funcionario}}</td>
+                    
                     {% if request.user.cargo == "PTR" %}
                     <td>
                       <a 
