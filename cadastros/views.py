@@ -306,31 +306,31 @@ class CarrosVisitanteDeleteView(DeleteView):
 
 class RegistroVisitanteListView(ListView):
     model = RegistroVisitante
-
-def not_auth():
-    #messages.add_message(request, messages.ERROR, 'Estacionamento cheio!')
-    return HttpResponse("Estacionamento cheio!")
             
 class RegistroVisitanteCreateView(CreateView):
-    if qnt_vagas()[1] <= 0:
-        success_url = reverse_lazy("estacionamento")
+    model = RegistroVisitante
+    fields = ["visitante", "morador", "autorizacao"]
+    readonly_fields = ["data_entrada"]
+    success_url = reverse_lazy("registro_visitantes_lista")
 
-    else:
-        model = RegistroVisitante
-        fields = ["visitante", "morador", "autorizacao"]
-        readonly_fields = ["data_entrada"]
-        success_url = reverse_lazy("registro_visitantes_lista")
+    def form_valid(self, form): # Inclusão da data limite de saída
+        # Salva o objeto mas ainda não o envia para o banco de dados
+        self.object = form.save(commit=False)
+        if self.object.autorizacao == True:
+            # Define data_limite como a data atual mais 3 dias menos 1 minuto
+            self.object.data_limite = datetime.now() + timedelta(days=3) - timedelta(minutes=1)
+                
+        # Salva o objeto no banco de dados
+        self.object.save()
+        return super().form_valid(form)
 
-        def form_valid(self, form): # Inclusão da data limite de saída
-            # Salva o objeto mas ainda não o envia para o banco de dados
-            self.object = form.save(commit=False)
-            if self.object.autorizacao == True:
-                # Define data_limite como a data atual mais 3 dias menos 1 minuto
-                self.object.data_limite = datetime.now() + timedelta(days=3) - timedelta(minutes=1)
-                    
-            # Salva o objeto no banco de dados
-            self.object.save()
-            return super().form_valid(form)
+    def dispatch(self, request, *args, **kwargs):
+        if qnt_vagas()[1] <= 0:
+
+            messages.add_message(request, messages.ERROR, 'Estacionamento cheio!')
+            return redirect(reverse_lazy("estacionamento"))
+        return super().dispatch(*args, **kwargs)
+
          
 
 class RegistroVisitanteUptadeView(UpdateView):

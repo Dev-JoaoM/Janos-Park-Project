@@ -6,8 +6,8 @@
 - [ ] Lógica do estacionamento
 
      - [X] Qnt de resgistro de entrada de visitante com carro e sem data de saída
-     - [ ] Validar o cadastro de novo registro pela quanto total de vagas
-     - [ ] Alteração da qnt total de vagas pelo sindico
+     - [X] Validar o cadastro de novo registro pela quanto total de vagas
+     - [ ] Alteração da qnt total de vagas pelo sindico (futura atualização)
 
 
 - [X]  Registro de entrada e saida de morador (João)
