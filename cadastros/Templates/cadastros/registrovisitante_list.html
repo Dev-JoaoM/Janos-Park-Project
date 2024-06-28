@@ -4,10 +4,13 @@
 {% endblock page_title %}
 
 {% block content %}
+
+
     <h1> Lista de Registro de Visitantes  </h1>
+    
 
     {% if registrovisitante_list %}
-        <table class="table">
+        <table class="table table-striped">
           <thead>
             <tr>
               <th scope="col">ID</th>
@@ -15,10 +18,11 @@
               <th scope="col">Data de Entrada</th>
               <th scope="col">Data Limite de saída</th>
               <th scope="col">Data Saída</th>
+              <th scope="col">Está de Carro?</th>
               <th scope="col">Morador</th>
               <th scope="col">Autorização</th>
-              <th scope="col">Porteiro(a)</th>
               <th scope="col">Data Ligação</th>
+              <th scope="col">Ações</th>
               
 
             </tr>
@@ -28,13 +32,14 @@
                 <tr>
                     <th scope="row">{{ registrovisitante.pk }}</th>
                     <td>{{registrovisitante.visitante}}</td>
-                    <td>{{registrovisitante.data_entrada}}</td>
-                    <td>{{registrovisitante.data_limite|default:" - "}}</td>
-                    <td>{{registrovisitante.data_saida|default:" - "}}</td>
+                    <td>{{registrovisitante.data_entrada|date:"d/m/Y à\s H:i"}}</td>
+                    <td>{{registrovisitante.data_limite|date:"d/m/Y à\s H:i" | default:" - "}}</td>
+                    <td>{{registrovisitante.data_saida|date:"d/m/Y à\s H:i"|default:" - "}}</td>
+                    <td>{%if registrovisitante.esta_de_carro %}Sim{%else%}Não{% endif %}</td>
                     <td>{{registrovisitante.morador}}</td>
                     <td>{%if registrovisitante.autorizacao %}Sim{%else%}Não{% endif %}</td>
-                    <td>{{registrovisitante.funcionario}}</td>
-                    <td>{{registrovisitante.data_ligacao|default:" - "}}</td>
+
+                    <td>{{registrovisitante.data_ligacao|date:"d/m/Y à\s H:i"|default:" - "}}</td>
                     {% if request.user.cargo == "PTR" %}
                     <td>
                       

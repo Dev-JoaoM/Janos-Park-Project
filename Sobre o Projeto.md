@@ -7,7 +7,7 @@
 
      - [X] Qnt de resgistro de entrada de visitante com carro e sem data de saída
      - [X] Validar o cadastro de novo registro pela quantidade de vagas livres
-     - [X] Validar a edição de registrovisitante pela quantidade de vagas livres
+     - [X] Validar a edição de registro visitante pela quantidade de vagas livres
      - [ ] Alteração da qnt total de vagas pelo sindico (futura atualização)
 
 
@@ -25,8 +25,8 @@
      - [X] Não permitir a entrada sem autorização do morador
      - [X] Campo de ligação e data de ligação
      - [ ] Inserir o funcionário de acordo com o login (se der)
-     - [ ] Quando inserir o visitante retornar o carro dele se estiver de carro (se der)
-       - [ ] Não é obrigatório o visitante entrar de carro(se der) 
+     - [X] Campo e verificação se a visita está de carro. Estacionamento cheio, não entra mais visita
+       - [X] Não é obrigatório o visitante entrar de carro(se der) 
 
 
 ### BD (Larissa e João)

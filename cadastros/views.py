@@ -53,7 +53,7 @@ def qnt_vagas():
     #if vagas_totais:
     #    QntVagasVisita.qnt_vagas = vagas_totais
     
-    vagas_ocupadas = RegistroVisitante.objects.filter(data_saida__isnull=True, autorizacao=True).count()
+    vagas_ocupadas = RegistroVisitante.objects.filter(data_saida__isnull=True, autorizacao=True, esta_de_carro=True).count()
     vagas_livres = TOTAL_VAGAS - vagas_ocupadas
     return vagas_ocupadas, vagas_livres
 
@@ -309,11 +309,12 @@ class RegistroVisitanteListView(ListView):
             
 class RegistroVisitanteCreateView(CreateView):
     model = RegistroVisitante
-    fields = ["visitante", "morador", "autorizacao"]
-    readonly_fields = ["data_entrada"]
+    fields = ["visitante", "morador", "autorizacao","esta_de_carro"]
     success_url = reverse_lazy("registro_visitantes_lista")
 
     def form_valid(self, form): # Inclusão da data limite de saída
+
+
         # Salva o objeto mas ainda não o envia para o banco de dados
         self.object = form.save(commit=False)
         if self.object.autorizacao == True:
@@ -324,18 +325,27 @@ class RegistroVisitanteCreateView(CreateView):
         self.object.save()
         return super().form_valid(form)
 
-    def dispatch(self, request, *args, **kwargs):
-        if qnt_vagas()[1] <= 0:
+#    def dispatch(self, request, *args, **kwargs):
+        
+ #       if qnt_vagas()[1] <= 0:
 
-            messages.add_message(request, messages.ERROR, 'Estacionamento cheio!')
-            return redirect(reverse_lazy("estacionamento"))
-        return super().dispatch(request, *args, **kwargs)
+            #messages.add_message(request, messages.ERROR, 'dispach create Estacionamento cheio! Consulte a lista de visitantes pendentes.')
+            #return redirect(reverse_lazy("registro_visitantes_lista"))
+  #      return super().dispatch(request, *args, **kwargs)
+    
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        if qnt_vagas()[1] <= 0:
+            form.fields['esta_de_carro'].disabled = True
+            messages.add_message(self.request, messages.WARNING, 'Atenção. O estacionamento de visitantes está cheio!')
+            
+        return form
 
          
 
 class RegistroVisitanteUptadeView(UpdateView):
     model = RegistroVisitante
-    fields = ["visitante", "morador", "autorizacao", "ligacao"]
+    fields = ["visitante", "morador", "autorizacao", "ligacao"] # TODO: rever o campo de autorização na hora de editar o registro
     readonly_fields = ["data_entrada"]
     success_url = reverse_lazy("registro_visitantes_lista")
 

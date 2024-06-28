@@ -112,6 +112,7 @@ class RegistroVisitante(models.Model):
     autorizacao = models.BooleanField(verbose_name="Autorização do Morador", null=False, blank=False)
     ligacao = models.BooleanField(verbose_name="Ligou para o Visitante?", null=True, blank=True)
     data_ligacao = models.DateTimeField(null=True, blank=True) 
+    esta_de_carro = models.BooleanField(verbose_name="Está de carro?", null=False, blank=False)
     ##funcionario = models.ForeignKey(Funcionario, on_delete=models.DO_NOTHING)  # rever esse parametro
     # TODO: def de saida com um checkbox
     # TODO: Se não tem autorização do morador não tem data de entrada e nem data limite de saida

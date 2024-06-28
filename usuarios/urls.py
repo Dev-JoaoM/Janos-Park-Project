@@ -12,6 +12,7 @@ urlpatterns = [
     path("recuperar_senha/", views.recuperar_senha, name="recuperar_senha"),
     path('sair/', views.logout, name="sair"),
     path('excluir_usuario/<str:id>/', views.excluir_usuario, name="excluir_usuario"),
+    path('ativar_usuario/<str:id>/', views.ativar_usuario, name="ativar_usuario"),
 ]
 
 #todo: fazer a edicão de cadastro de usuário

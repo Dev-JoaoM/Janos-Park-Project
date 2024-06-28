@@ -58,8 +58,8 @@ def cadastrar_usuario(request, input_cargo):
 
             return redirect(reverse(redirecionar))  # vai para a home do usuario
 
-        if senha != confirm_senha:
-            messages.add_message(request, messages.ERROR, 'As senhas não são iguais.')
+        if not senha or (senha != confirm_senha):
+            messages.add_message(request, messages.ERROR, 'Essas senhas são inválidas.')
             return redirect(reverse(redirecionar))  # vai para a home do usuario
             
 # todo: ver criação de usuario repetido
@@ -127,13 +127,28 @@ def listar_adm(request):
     return render(request, 'listar_usuario.html', {'usuarios': user, 'tipo_user': "ADM", 'cargos': nome_cargo})
 
 
-
+    
 def excluir_usuario(request, id):
     usuario = get_object_or_404(Colaborador, id=id)
     cargo = usuario.cargo
-    usuario.delete() #TODO: desativar usuário
+    #usuario.delete() #TODO: desativar usuário
+    usuario.status = 'I'
+    usuario.save()
 
-    messages.add_message(request, messages.SUCCESS, 'Usuário excluído com sucesso.')
+    messages.add_message(request, messages.INFO, 'Usuário desativado com sucesso.')
+    if cargo == "ADM":
+        return redirect(reverse('listar_adm')) # todo: redirecionar para propria pagina (f5)
+    else:
+        return redirect(reverse('listar_porteiro'))  # todo: redirecionar para propria pagina (f5)
+
+
+def ativar_usuario(request, id):
+    usuario = get_object_or_404(Colaborador, id=id)
+    cargo = usuario.cargo
+    usuario.status = 'A'
+    usuario.save()
+
+    messages.add_message(request, messages.SUCCESS, 'Usuário ativado com sucesso.')
     if cargo == "ADM":
         return redirect(reverse('listar_adm')) # todo: redirecionar para propria pagina (f5)
     else:
@@ -146,19 +161,29 @@ def login(request):
         if request.user.is_authenticated:
             cargo = request.user.cargo
             return redirect(reverse(redirecionar_home(cargo))) #vai para a home do usuario
-        return render(request, 'login.html')
+        else:
+            return render(request, 'login.html')
+
+        """elif request.user.status == "I": #verifica se o user esta ativo
+            messages.add_message(request, messages.ERROR, 'Seu cadastro está desativado ou excluído, entre em contato com os administradores do condomínio.')
+            return redirect(reverse('home')) #vai para a home do usuario"""
+
 
     elif request.method == "POST":
         login = request.POST.get('usuario')
         senha = request.POST.get('senha')
-
+        user_I = Colaborador.objects.filter(username=login).first()
         user = auth.authenticate(username=login, password=senha)
 
-        if not user:
+        if user_I and user_I.status == 'I':            
+            messages.add_message(request, messages.ERROR, 'Seu cadastro está desativado ou excluído, entre em contato com os administradores do condomínio.')
+            return redirect(reverse('home')) #vai para a home do usuario 
+              
+        elif not user:
             #TODO: Redirecionar com mensagem de erro
             messages.add_message(request, messages.ERROR, 'Usuário ou senha incorretos.')
             return redirect(reverse('login'))  # todo: redirecionar para pagina certa
-        
+
         elif not user.last_login: #Primeiro Acesso
             messages.add_message(request, messages.SUCCESS, 'Antes do seu primeiro acesso. Mude sua senha!')
             return redirect(reverse('recuperar_senha'))  

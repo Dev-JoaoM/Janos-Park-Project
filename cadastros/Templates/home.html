@@ -21,6 +21,12 @@
     <header>
     <div class="header-left">
       <h1>Sobre Nós</h1>
+      {% if messages %}
+      <br>
+      {% for message in messages%}
+          <div class="alert {{message.tags}}">{{message}}</div>
+      {% endfor%}
+      {% endif %}
     </div>
   <div class="header-center">
     <a><img id="logo" src="{% static 'imagens/Logo_editado_2.png' %}" alt="Jano Systems"></a>
@@ -29,6 +35,7 @@
  
   <body>
     <div class="container">
+
         <div class="contact-info">
             <h2>Dados para Contato</h2><br><br><br>
             <p>Você também pode utilizar nossos canais diretos para falar conosco</p>
