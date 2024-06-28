@@ -13,6 +13,9 @@
             {% endfor%}
         {% endif %}
 
+
+        
+
         <h1>Cadastro de {{ cargos }} </h1>
         <form  action="" method="POST">
 
@@ -70,7 +73,8 @@
                 <a href="{% url 'cadastrar_porteiro' %}" class="btn btn-danger">Cancelar</a>
             {% endif %}
 
-        </form>
+        </form> 
+
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
@@ -132,5 +136,3 @@
 
 
 {% endblock content %}
-
-
