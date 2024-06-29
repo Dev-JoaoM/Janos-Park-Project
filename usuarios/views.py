@@ -135,7 +135,7 @@ def excluir_usuario(request, id):
     usuario.status = 'I'
     usuario.save()
 
-    messages.add_message(request, messages.INFO, 'Usuário desativado com sucesso.')
+    messages.add_message(request, messages.WARNING, 'Usuário desativado com sucesso.')
     if cargo == "ADM":
         return redirect(reverse('listar_adm')) # todo: redirecionar para propria pagina (f5)
     else:

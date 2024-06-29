@@ -55,7 +55,7 @@ class Apartamento(models.Model):
     bloco = models.CharField(verbose_name="Bloco", max_length=5, null=False, blank=False)
     andar = models.CharField(verbose_name="Andar", max_length=5, null=False, blank=False)
     numero_apto = models.IntegerField(verbose_name="Numero do Apartamento", null=False, blank=False)
-    telefone_apto = models.CharField(verbose_name="Telefone", max_length=8, null=False, blank=False)
+    telefone_apto = models.CharField(verbose_name="Telefone", max_length=11, null=False, blank=False)
     """
         choices_status= (
     ('A', 'Ativo(a)'), 
@@ -104,7 +104,7 @@ class Visitante(models.Model):
 
 
 class RegistroVisitante(models.Model):
-    morador = models.ForeignKey(Morador, on_delete=models.DO_NOTHING)  # rever esse parametro
+    morador = models.ForeignKey(Morador, on_delete=models.CASCADE)  # rever esse parametro
     visitante = models.ForeignKey(Visitante, on_delete=models.CASCADE)  # rever esse parametro
     data_entrada = models.DateTimeField(auto_now_add=True, null=False, blank=False)
     data_limite = models.DateTimeField(null=True, blank=True) 
@@ -153,7 +153,7 @@ class RegistroVisitante(models.Model):
 
 
 class RegistroMorador(models.Model):
-    morador = models.ForeignKey(Morador, on_delete=models.DO_NOTHING)  # rever esse parametro
+    morador = models.ForeignKey(Morador, on_delete=models.CASCADE)  # rever esse parametro
     data_entrada = models.DateTimeField(auto_now_add=True, null=False, blank=False)
     data_saida = models.DateTimeField(null=True, blank=True)
     #criador_por = models.ForeignKey(Colaborador, on_delete=models.DO_NOTHING)  # rever esse parametro
@@ -196,7 +196,7 @@ class Carro(models.Model): #Carros de Moradores
     modelo = models.CharField(verbose_name="Modelo", max_length=10, null=False, blank=False)
     placa = models.CharField(verbose_name="Placa", max_length=8, null=False, blank=False)
     cor = models.CharField(verbose_name="Cor", max_length=10, null=False, blank=False)
-    morador = models.ForeignKey(Morador, on_delete=models.DO_NOTHING)
+    morador = models.ForeignKey(Morador, on_delete=models.CASCADE)
     """
         choices_status= (
     ('A', 'Ativo(a)'), 
