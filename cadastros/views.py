@@ -43,7 +43,7 @@ def home_admin(request):
     return render(request, 'home_admin.html')
 
 
-TOTAL_VAGAS = 8
+TOTAL_VAGAS = 5
 def qnt_vagas():
     #total = QntVagasVisita.qnt_vagas
     #vagas_disp = QntVagasVisita.vagas_disponiveis
@@ -99,6 +99,7 @@ def login(request):
             return render(request, "index.html")
         else:
             return HttpResponse("Dados inválidos! Tente novamente. Se persistir o erro entre em contato com os admin.")
+
 
 
 # Essas são CBV: Class Base the View

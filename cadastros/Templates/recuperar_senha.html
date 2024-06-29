@@ -30,10 +30,11 @@
             para e digite uma Nova Senha.</span>
             <form class="login-form" id="recovery-form" method="POST">
                 {% csrf_token %}
-        
+                <label style="text-align: left; color: #838383; font-weight: bold;font-family: 'Roboto', sans-serif;">Usuário</label>
                 <input type="text" name='usuario'  placeholder='Digite seu usuário...'>
-                <!--<input type="text" name="doc_cpf" id="cpf"  placeholder="CPF...">-->
+                <label style="text-align: left; color: #838383; font-weight: bold;font-family: 'Roboto', sans-serif;">Digite sua senha</label>
                 <input type="password" name='senha' placeholder="Digite a nova senha...">
+                <label style="text-align: left; color: #838383; font-weight: bold;font-family: 'Roboto', sans-serif;">Confirme sua senha</label>
                 <input type="password" name='confirm_senha' placeholder="Confirme a senha...">
                 <button type="submit" class="btn_login">Redefinir Senha</button>
         </form>

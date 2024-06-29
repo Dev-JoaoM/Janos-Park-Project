@@ -21,9 +21,11 @@
       <h1>Controle de<br> Motos</h1>
       <img src="{% static '/imagens/moto2.png' %}" alt="Motos de Moradores">
       <p>Cadastrar e gerenciar acesso das Motos</p>
+      {% if request.user.cargo == "ADM" %} 
       <a href="{% url 'motos_cadastro' %}"
-      class="btn btn-primary btn-sm {% if request.user.cargo != "ADM" %} disabled {% endif %}"
+      class="btn btn-sm"
       ><button>Cadastrar Moto</button></a><br>
+      {% endif %}
 
       <a href="{% url 'motos_lista' %}"><button>Listar Motos</button></a>
     </div>
@@ -32,10 +34,11 @@
         <h1>Carros de Moradores</h1>
         <img src="{% static '/imagens/2470642.png' %}" alt="Carros de Moradores">
         <p>Cadastrar e gerenciar acesso dos Carros dos Moradores</p>
-        
+        {% if request.user.cargo == "ADM" %} 
           <a href="{% url 'carros_cadastro' %}"
-          class="btn btn-primary btn-sm {% if request.user.cargo != "ADM" %} disabled {% endif %}"
+          class="btn btn-sm  "
           ><button>Cadastrar Carro de Morador</button></a><br>
+        {% endif %}
         
         <a href="{% url 'carros_lista' %}"><button>Listar Carros de Moradores</button></a>
     </div>
@@ -44,9 +47,11 @@
         <h1>Carros de Visitantes</h1>
         <img src="{% static '/imagens/carrov.png' %}" alt="Carros de Visitantes">
         <p>Cadastrar e gerenciar acesso dos Carros dos Visitantes</p>
-        <a href="{% url 'carros_visitante_cadastro' %}"
-        class="btn btn-primary btn-sm {% if request.user.cargo != "PTR" %} disabled {% endif %}"
-        ><button>Cadastrar Carro de Visitante</button></a><br>
+        {% if request.user.cargo == "ADM" %}
+          <a href="{% url 'carros_visitante_cadastro' %}"
+          class="btn btn-sm {% if request.user.cargo != "PTR" %} disabled {% endif %}"
+          ><button>Cadastrar Carro de Visitante</button></a><br>
+        {% endif %}
 
         <a href="{% url 'carros_visitante_lista' %}"><button>Listar Carros de Visitantes</button></a>
     </div>
